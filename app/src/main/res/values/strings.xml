@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">Noctua</string>
+    <string name="action_settings">Settings</string>
+
+    //Login screen strings
+    <string name="Welcome">Bem-vindo ao Noctua!</string>
+    <string name="User">Usuário</string>
+    <string name="Password">Senha</string>
+    <string name="UserExmp">Exemplo123</string>
+    <string name="Login">Entrar</string>
+    <string name="ForgotPwd">Esqueci minha senha</string>
+    <string name="NewUser">Não tem cadastro?</string>
+    <string name="title_activity_forgot_pwd">ForgotPwd</string>
+
+    //Forgot my password sreen strings
+    <string name="Email">Entre com o e-mail cadastrado</string>
+    <string name="EmailExample">exemplo@provedor.com</string>
+    <string name="Send">Enviar</string>
+
+    //First step of new user sign on strings
+    <string name="title_activity_new_user_step1">NewUserStep1</string>
+    <string name="Name">Nome</string>
+    <string name="NameExample">Maria</string>
+    <string name="Surname">Sobrenome</string>
+    <string name="SurnameExample">Carvalho</string>
+    <string name="Id">CPF</string>
+    <string name="Birthday">Data de nascimento</string>
+    <string name="BirthdayExample">30/04/1997</string>
+    <string name="EmailUser">E-mail</string>
+    <string name="Continue">Continuar</string>
+
+    //Second step of new user sign on strings
+    <string name="NameResponsiblePerson">Nome responsável</string>
+    <string name="NameResponsibleExample">Guilherme</string>
+    <string name="EmailResponsiblePerson">E-mail responsável</string>
+    <string name="title_activity_new_user_step2">NewUserStep2</string>
+    <string name="Relation">Relacionamento</string>
+    <string name="RelationExample">Filho</string>
+    <string name="SignOn">Cadastrar</string>
+    <string name="title_activity_main_screen">MainScreen</string>
+
+    //Main screen strings
+    <string name="Hello">Olá, </string>
+    <string name="Heartbeats">BPM</string>
+    <string name="Bloodpression">Pressão arterial</string>
+    <string name="Temperature">Temperatura</string>
+    <string name="Placeholder">-</string>
+    <string name="Diary">Querido diário</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    //Diary screen strings
+    <string name="title_activity_diary">Diary</string>
+    <string name="HowAreU">Come está se sentindo hoje?</string>
+    <string name="NOK">Sente algum incômodo?</string>
+
+</resources>

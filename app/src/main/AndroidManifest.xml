@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.gui_f.noctua">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Login"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.gui_f.view.noctua.ForgotPwd"
+            android:label="@string/title_activity_forgot_pwd"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.gui_f.view.noctua.NewUserStep1"
+            android:label="@string/title_activity_new_user_step1"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.gui_f.view.noctua.NewUserStep2"
+            android:label="@string/title_activity_new_user_step2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.gui_f.view.noctua.MainScreen"
+            android:label="@string/title_activity_main_screen"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.gui_f.view.noctua.Diary"
+            android:label="@string/title_activity_diary"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+    </application>
+
+</manifest>
