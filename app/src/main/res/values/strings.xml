@@ -2,7 +2,7 @@
     <string name="app_name">Noctua</string>
     <string name="action_settings">Settings</string>
 
-    //Login screen strings
+    <!-- Login screen strings -->
     <string name="Welcome">Bem-vindo ao Noctua!</string>
     <string name="User">Usuário</string>
     <string name="Password">Senha</string>
@@ -12,12 +12,12 @@
     <string name="NewUser">Não tem cadastro?</string>
     <string name="title_activity_forgot_pwd">ForgotPwd</string>
 
-    //Forgot my password sreen strings
+    <!-- Forgot my password sreen strings -->
     <string name="Email">Entre com o e-mail cadastrado</string>
     <string name="EmailExample">exemplo@provedor.com</string>
     <string name="Send">Enviar</string>
 
-    //First step of new user sign on strings
+    <!-- First step of new user sign on strings -->
     <string name="title_activity_new_user_step1">NewUserStep1</string>
     <string name="Name">Nome</string>
     <string name="NameExample">Maria</string>
@@ -29,7 +29,7 @@
     <string name="EmailUser">E-mail</string>
     <string name="Continue">Continuar</string>
 
-    //Second step of new user sign on strings
+    <!-- Second step of new user sign on strings -->
     <string name="NameResponsiblePerson">Nome responsável</string>
     <string name="NameResponsibleExample">Guilherme</string>
     <string name="EmailResponsiblePerson">E-mail responsável</string>
@@ -39,7 +39,7 @@
     <string name="SignOn">Cadastrar</string>
     <string name="title_activity_main_screen">MainScreen</string>
 
-    //Main screen strings
+    <!-- Main screen strings -->
     <string name="Hello">Olá, </string>
     <string name="Heartbeats">BPM</string>
     <string name="Bloodpression">Pressão arterial</string>
@@ -50,9 +50,20 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    //Diary screen strings
+    <!--Diary screen strings -->
     <string name="title_activity_diary">Diary</string>
     <string name="HowAreU">Come está se sentindo hoje?</string>
     <string name="NOK">Sente algum incômodo?</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Drawer Strings -->
+    <string name="Register">Cadastro</string>
+    <string name="FirstAid">Primeiros Socorros</string>
+    <string name="DailyLog">Relatório Diário</string>
+    <string name="WeeklyLog">Relatório Semanal</string>
+    <string name="MonthlyLog">Relatório Mensal</string>
+    <string name="Settings">Configurações</string>
+    <string name="LogOut">Sair</string>
+    <string name="Logs">Relatórios</string>
 
 </resources>

@@ -38,7 +38,7 @@
         <activity
             android:name="com.example.gui_f.view.noctua.Diary"
             android:label="@string/title_activity_diary"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
