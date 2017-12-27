@@ -1,9 +1,11 @@
-package com.example.gui_f.noctua;
+package com.example.gui_f.view.noctua;
 
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,17 +15,18 @@ import android.widget.TextView;
 
 import com.example.gui_f.ObjectWrapperForBinder;
 import com.example.gui_f.model.noctua.UserDTO;
-import com.example.gui_f.view.noctua.ForgotPwd;
-import com.example.gui_f.view.noctua.MainScreen;
-import com.example.gui_f.view.noctua.NewUserStep1;
+import com.example.gui_f.noctua.R;
+import com.example.gui_f.viewmodel.noctua.Login;
+import com.example.gui_f.viewmodel.noctua.LoginImpl;
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private EditText user;
     private EditText password;
     private Button login;
     private TextView forgotPwd;
     private TextView newUser;
+    private Login loginImpl = new LoginImpl();
 
 
     @Override
@@ -37,11 +40,28 @@ public class Login extends AppCompatActivity {
         password = (EditText) findViewById(R.id.editPassword);
 
         login = (Button) findViewById(R.id.btnLogin);
-        forgotPwd = (TextView) findViewById(R.id.textForgotPwd);
-        newUser = (TextView) findViewById(R.id.textNewUser);
+        forgotPwd = (TextView) findViewById(R.id.textForgotPwdLoginScreen);
+        newUser = (TextView) findViewById(R.id.textNewUserLoginScreen);
 
         final String userText = user.getText().toString();
         String passwordText = user.getText().toString();
+
+        forgotPwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(v.getContext(), Password.class);
+                startActivity(intent2);
+            }
+        });
+
+        newUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent3 = new Intent(v.getContext(), NewUserStep1.class);
+                startActivity(intent3);
+                finish();
+            }
+        });
 
         //TODO: Fazer chamada do método de autenticação
         //UserDTO user = autentication(userText, passwordText);
@@ -49,41 +69,19 @@ public class Login extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             /*
-            if(user != null){
-                Intent intent = new Intent(this, MainScreen.class);
-                intent.putExtra("user", user);
-                startActivity(intent);
-            */
-             UserDTO user = new UserDTO();
-             user.setHeartbeats("68");
-             user.setPression("11/8");
-             user.setName("Guilherme");
-             final Bundle bundle = new Bundle();
-             bundle.putBinder("user", new ObjectWrapperForBinder(user));
-            Intent intent = new Intent(v.getContext(), MainScreen.class);
-            intent.putExtra("user", bundle);
-            startActivity(intent);
-            finish();
-            }
-        });
 
-        forgotPwd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ForgotPwd.class);
-                startActivity(intent);
-            }
-        });
-
-        newUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), NewUserStep1.class);
+//            if(user != null) {
+                UserDTO user = loginImpl.searchUser(userText);
+                final Bundle bundle = new Bundle();
+                bundle.putBinder("user", new ObjectWrapperForBinder(user));
+                Intent intent = new Intent(v.getContext(), MainScreen.class);
+                intent.putExtra("user", bundle);
                 startActivity(intent);
                 finish();
+//            }
             }
         });
+
 
     }
 

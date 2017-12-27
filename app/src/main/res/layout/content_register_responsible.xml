@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,12 +8,12 @@
     android:orientation="vertical"
     android:gravity="center"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.gui_f.view.noctua.NewUserStep2"
-    tools:showIn="@layout/activity_new_user_step2">
+    tools:context="com.example.gui_f.view.noctua.RegisterResponsible"
+    tools:showIn="@layout/activity_register_responsible">
 
     <Space
         android:layout_width="wrap_content"
-        android:layout_height="1dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"/>
 
     <TextView
@@ -21,14 +22,13 @@
         android:text="@string/NameResponsiblePerson"/>
 
     <EditText
-        android:id="@+id/editNameResponsible"
+        android:id="@+id/editNameResponsibleRegister"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/NameResponsibleExample"/>
+        android:layout_height="wrap_content" />
 
     <Space
-        android:layout_width="0dp"
-        android:layout_height="1dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_weight="1"/>
 
     <TextView
@@ -37,15 +37,13 @@
         android:text="@string/EmailResponsiblePerson"/>
 
     <EditText
-        android:id="@+id/editEmailResponsible"
+        android:id="@+id/editEmailResponsibleRegister"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/EmailExample"
-        android:inputType="textEmailAddress"/>
+        android:layout_height="wrap_content" />
 
     <Space
-        android:layout_width="0dp"
-        android:layout_height="1dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_weight="1"/>
 
     <TextView
@@ -54,24 +52,23 @@
         android:text="@string/Relation"/>
 
     <EditText
-        android:id="@+id/editRelation"
+        android:id="@+id/editRelationRegister"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/RelationExample"/>
+        android:layout_height="wrap_content" />
 
     <Space
-        android:layout_width="0dp"
-        android:layout_height="1dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_weight="1"/>
 
     <Button
-        android:id="@+id/btnSignOn"
+        android:id="@+id/btnRespRegisterSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/SignOn"/>
+        android:text="@string/Save"/>
 
     <Space
-        android:layout_width="0dp"
-        android:layout_height="1dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_weight="1"/>
 </LinearLayout>

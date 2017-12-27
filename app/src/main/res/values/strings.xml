@@ -2,7 +2,7 @@
     <string name="app_name">Noctua</string>
     <string name="action_settings">Settings</string>
 
-    <!-- Login screen strings -->
+    <!--LoginActivity screen strings -->
     <string name="Welcome">Bem-vindo ao Noctua!</string>
     <string name="User">Usuário</string>
     <string name="Password">Senha</string>
@@ -65,5 +65,16 @@
     <string name="Settings">Configurações</string>
     <string name="LogOut">Sair</string>
     <string name="Logs">Relatórios</string>
+    <string name="title_activity_register">Register</string>
+
+    <string name="Responsible">Dados Responsável</string>
+    <string name="Save">Salvar dados</string>
+    <string name="title_activity_register_responsible">RegisterResponsible</string>
+    <string name="title_activity_password">Password</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="warning_save">Tem certeza de que deseja sair sem salvar?</string>
+    <string name="YesFragment">Sair</string>
+    <string name="SaveFragment">Salvar</string>
 
 </resources>

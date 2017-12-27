@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.gui_f.noctua.Login"
+    tools:context="com.example.gui_f.view.noctua.LoginActivity"
     tools:showIn="@layout/activity_login">
 
     <TextView
@@ -57,11 +57,6 @@
         android:layout_height="1dp"
         android:layout_weight="1"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
 
         <Button
             android:id="@+id/btnLogin"
@@ -69,24 +64,39 @@
             android:layout_height="wrap_content"
             android:text="@string/Login"/>
 
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
         <TextView
-            android:id="@+id/textForgotPwd"
+            android:id="@+id/textForgotPwdLoginScreen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/ForgotPwd"
-            android:clickable="true"/>
+            android:textSize="8pt"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"/>
 
         <TextView
-            android:id="@+id/textNewUser"
+            android:id="@+id/textNewUserLoginScreen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/NewUser"
-            android:clickable="true"/>
-    </LinearLayout>
+            android:textSize="8pt"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:focusable="true"/>
 
     <Space
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_weight="1"/>
+        android:layout_weight="0.5"/>
 
 </LinearLayout>

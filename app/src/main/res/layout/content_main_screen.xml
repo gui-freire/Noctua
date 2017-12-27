@@ -46,8 +46,9 @@
 
         <!--TODO: Colocar imagens nos ImageView -->
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_mainscreen_heartbeat"
+            android:layout_width="400px"
+            android:layout_height="350px"
             android:layout_gravity="center"/>
 
         <TextView
@@ -69,8 +70,9 @@
             android:layout_gravity="center"/>
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_bloopressure"
+            android:layout_width="400px"
+            android:layout_height="350px"
             android:layout_gravity="center"/>
 
         <TextView

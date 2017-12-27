@@ -16,7 +16,6 @@ import android.widget.TextView;
 
 import com.example.gui_f.ObjectWrapperForBinder;
 import com.example.gui_f.model.noctua.UserDTO;
-import com.example.gui_f.noctua.Login;
 import com.example.gui_f.noctua.R;
 
 public class MainScreen extends AppCompatActivity
@@ -35,7 +34,7 @@ public class MainScreen extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        final UserDTO userReceived = ((ObjectWrapperForBinder)getIntent().getExtras().getBinder("user")).getData();
+        final UserDTO userReceived = ((ObjectWrapperForBinder)getIntent().getBundleExtra("user").getBinder("user")).getData();
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -107,10 +106,12 @@ public class MainScreen extends AppCompatActivity
         if (id == R.id.nav_firstAid) {
             // Handle the camera action
         } else if (id == R.id.nav_logOut) {
-            Intent intent = new Intent(this, Login.class);
+            Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_register) {
+            Intent intent = new Intent(this, Register.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_settings) {
 

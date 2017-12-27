@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Login"
+            android:name="com.example.gui_f.view.noctua.LoginActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -19,10 +19,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.example.gui_f.view.noctua.ForgotPwd"
-            android:label="@string/title_activity_forgot_pwd"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.example.gui_f.view.noctua.NewUserStep1"
             android:label="@string/title_activity_new_user_step1"
@@ -39,6 +35,18 @@
             android:name="com.example.gui_f.view.noctua.Diary"
             android:label="@string/title_activity_diary"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.gui_f.view.noctua.Register"
+            android:label="@string/title_activity_register"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.gui_f.view.noctua.RegisterResponsible"
+            android:label="@string/title_activity_register_responsible"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.gui_f.view.noctua.Password"
+            android:label="@string/title_activity_password"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
