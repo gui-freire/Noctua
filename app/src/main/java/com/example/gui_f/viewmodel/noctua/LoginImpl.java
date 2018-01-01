@@ -1,7 +1,7 @@
 package com.example.gui_f.viewmodel.noctua;
 
-import com.example.gui_f.model.noctua.LoginService;
-import com.example.gui_f.model.noctua.LoginServiceImpl;
+import com.example.gui_f.model.noctua.Login.LoginService;
+import com.example.gui_f.model.noctua.Login.LoginServiceImpl;
 import com.example.gui_f.model.noctua.UserDTO;
 
 /**

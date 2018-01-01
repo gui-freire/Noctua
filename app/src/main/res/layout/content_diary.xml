@@ -7,14 +7,15 @@
     android:orientation="vertical"
     android:gravity="center"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.gui_f.view.noctua.Diary"
-    tools:showIn="@layout/activity_diary">
+    tools:context="com.example.gui_f.view.noctua.DiaryActivity"
+    tools:showIn="@layout/activity_diary"
+    android:background="@color/limePastelGreen">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Diary"
-        android:textSize="10pt"/>
+        android:textSize="14pt"/>
 
     <Space
         android:layout_width="wrap_content"
@@ -24,38 +25,75 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/HowAreU"/>
+        android:text="@string/HowAreU"
+        android:textSize="10pt"/>
+
+    <Space
+        android:layout_width="1px"
+        android:layout_height="1px"
+        android:layout_weight="1"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center">
 
-        <!--TODO: colocar imagens -->
-
-        <ImageView
-            android:id="@+id/imgGood"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"/>
-
-        <ImageView
-            android:id="@+id/imgNotSo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"/>
+        <Space
+            android:layout_width="1px"
+            android:layout_height="1px"
+            android:layout_weight="0.8"/>
 
         <ImageView
             android:id="@+id/imgBad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"/>
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:src="@drawable/ic_mood_bad_black_24dp"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <Space
+            android:layout_width="1px"
+            android:layout_height="1px"
+            android:layout_weight="0.8"/>
+
+        <ImageView
+            android:id="@+id/imgKinda"
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:src="@drawable/ic_sentiment_neutral_black_24dp"
+            android:clickable="true"
+            android:focusable="true"/>
+        <Space
+            android:layout_width="1px"
+            android:layout_height="1px"
+            android:layout_weight="0.8"/>
+
+        <ImageView
+            android:id="@+id/imgGood"
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:src="@drawable/ic_mood_black_24dp"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <Space
+            android:layout_width="1px"
+            android:layout_height="1px"
+            android:layout_weight="0.8"/>
+
     </LinearLayout>
+
+    <Space
+        android:layout_width="1px"
+        android:layout_height="1px"
+        android:layout_weight="1"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/NOK"/>
+        android:text="@string/NOK"
+        android:textSize="10pt"/>
 
     <Space
         android:layout_width="wrap_content"
@@ -64,7 +102,7 @@
 
     <EditText
         android:id="@+id/editDiary"
-        android:layout_width="550px"
+        android:layout_width="700px"
         android:layout_height="200px" />
 
 
@@ -77,7 +115,9 @@
         android:id="@+id/btnSendDiary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Send"/>
+        android:text="@string/Send"
+        android:background="@color/tiffanyBlue"
+        android:shadowColor="#000000"/>
 
     <Space
         android:layout_width="wrap_content"

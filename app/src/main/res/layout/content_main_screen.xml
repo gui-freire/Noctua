@@ -6,8 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.gui_f.view.noctua.MainScreen"
-    tools:showIn="@layout/app_bar_main_screen">
+    tools:context="com.example.gui_f.view.noctua.MainScreenActivity"
+    tools:showIn="@layout/app_bar_main_screen"
+    android:background="@color/limePastelGreen">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -99,7 +100,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/Diary"/>
+        android:text="@string/Diary" />
 
     <Space
         android:layout_width="wrap_content"

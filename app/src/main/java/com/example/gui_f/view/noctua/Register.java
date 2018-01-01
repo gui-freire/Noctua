@@ -54,7 +54,7 @@ public class Register extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == RegisterResponsible.RESULT_OK){
-            Intent intent = new Intent(this, MainScreen.class);
+            Intent intent = new Intent(this, MainScreenActivity.class);
             startActivity(intent);
         }
     }
@@ -67,14 +67,14 @@ public class Register extends AppCompatActivity {
     public void doPositiveClick() {
         // Do stuff here.
         Log.i("FragmentAlertDialog", "Positive click!");
-        Intent intent = new Intent(getBaseContext(), MainScreen.class);
+        Intent intent = new Intent(getBaseContext(), MainScreenActivity.class);
         startActivity(intent);
     }
 
     public void doNegativeClick() {
         // Do stuff here.
         Log.i("FragmentAlertDialog", "Negative click!");
-        Intent intent = new Intent(this, MainScreen.class);
+        Intent intent = new Intent(this, MainScreenActivity.class);
         startActivity(intent);
     }
 

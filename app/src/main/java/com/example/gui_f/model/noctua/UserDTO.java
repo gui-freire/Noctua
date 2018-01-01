@@ -8,8 +8,6 @@ public class UserDTO {
     private String name;
     private String surname;
     private String birthday;
-    private String heartbeats;
-    private String pression;
     private String email;
     private ResponsibleDTO responsible;
 
@@ -35,22 +33,6 @@ public class UserDTO {
 
     public void setBirthday(String birthday) {
         this.birthday = birthday;
-    }
-
-    public String getHeartbeats() {
-        return heartbeats;
-    }
-
-    public void setHeartbeats(String heartbeats) {
-        this.heartbeats = heartbeats;
-    }
-
-    public String getPression() {
-        return pression;
-    }
-
-    public void setPression(String pression) {
-        this.pression = pression;
     }
 
     public String getEmail() {

@@ -28,11 +28,11 @@
             android:label="@string/title_activity_new_user_step2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.gui_f.view.noctua.MainScreen"
+            android:name="com.example.gui_f.view.noctua.MainScreenActivity"
             android:label="@string/title_activity_main_screen"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.gui_f.view.noctua.Diary"
+            android:name="com.example.gui_f.view.noctua.DiaryActivity"
             android:label="@string/title_activity_diary"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

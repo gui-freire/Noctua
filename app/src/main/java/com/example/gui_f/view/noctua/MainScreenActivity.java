@@ -16,15 +16,24 @@ import android.widget.TextView;
 
 import com.example.gui_f.ObjectWrapperForBinder;
 import com.example.gui_f.model.noctua.UserDTO;
+import com.example.gui_f.model.noctua.MainScreen.VitalResponse;
 import com.example.gui_f.noctua.R;
+import com.example.gui_f.viewmodel.noctua.MainScreen;
+import com.example.gui_f.viewmodel.noctua.MainScreenImpl;
 
-public class MainScreen extends AppCompatActivity
+import java.util.Calendar;
+
+public class MainScreenActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private TextView user;
     private TextView heartbeats;
     private TextView bloodpression;
     private Button diary;
+
+    private VitalResponse vital = new VitalResponse();
+
+    private MainScreen mainScreen = new MainScreenImpl();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +45,23 @@ public class MainScreen extends AppCompatActivity
 
         final UserDTO userReceived = ((ObjectWrapperForBinder)getIntent().getBundleExtra("user").getBinder("user")).getData();
 
+        //Checks if it needs to get the latest data or if it needs to get a day/week/month data
+        if(intent.getBundleExtra("Daily") != null){
+            int day = intent.getIntExtra("Daily", 0);
+            vital = mainScreen.searchDaily(userReceived.getName(), day);
+
+        } else if(intent.getBundleExtra("Weekly") != null){
+            int week = intent.getIntExtra("Weekly", 0);
+            int month = intent.getIntExtra("Month", 0);
+            vital = mainScreen.searchWeekly(userReceived.getName(), week, month);
+
+        } else if(intent.getBundleExtra("Monthly") != null){
+            int month = intent.getIntExtra("Monthly", 0);
+            vital = mainScreen.searchMonthly(userReceived.getName(), month);
+
+        } else{
+            vital = mainScreen.searchLast(userReceived.getName());
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -52,14 +78,15 @@ public class MainScreen extends AppCompatActivity
         diary = (Button) findViewById(R.id.btnDiary);
 
         user.setText(userReceived.getName());
-        heartbeats.setText(userReceived.getHeartbeats());
-        bloodpression.setText(userReceived.getPression());
+        heartbeats.setText(vital.getHeartbeats());
+        bloodpression.setText(vital.getPression());
 
 
         diary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(v.getContext(), Diary.class);
+                Intent intent1 = new Intent(v.getContext(), DiaryActivity.class);
+                intent1.putExtra("user", userReceived.getName());
                 startActivity(intent1);
             }
         });
@@ -118,35 +145,29 @@ public class MainScreen extends AppCompatActivity
         } else if (id == R.id.navlog_daily) {
             //TODO: refazer chamada que consulta dados e criar uma nova intância dessa tela com os novos valores
             UserDTO newUser = new UserDTO();
-            newUser.setName("Guilherme");
-            newUser.setPression("10/7");
-            newUser.setHeartbeats("72");
             final Bundle bundle = new Bundle();
-            bundle.putBinder("user", new ObjectWrapperForBinder(newUser));
-            Intent intent = new Intent(this, MainScreen.class);
+            Intent intent = new Intent(this, MainScreenActivity.class);
             intent.putExtra("user", bundle);
+            intent.putExtra("Daily", Calendar.DAY_OF_MONTH);
             startActivity(intent);
 
         } else if (id == R.id.navlog_monthly) {
             UserDTO newUser = new UserDTO();
-            newUser.setName("Guilherme");
-            newUser.setPression("12/9");
-            newUser.setHeartbeats("69");
             final Bundle bundle = new Bundle();
             bundle.putBinder("user", new ObjectWrapperForBinder(newUser));
-            Intent intent = new Intent(this, MainScreen.class);
+            Intent intent = new Intent(this, MainScreenActivity.class);
             intent.putExtra("user", bundle);
+            intent.putExtra("Weekly", Calendar.WEEK_OF_MONTH);
+            intent.putExtra("Month", Calendar.MONTH);
             startActivity(intent);
 
         } else if(id == R.id.navlog_weekly){
             UserDTO newUser = new UserDTO();
-            newUser.setName("Guilherme");
-            newUser.setPression("11/7");
-            newUser.setHeartbeats("70");
             final Bundle bundle = new Bundle();
             bundle.putBinder("user", new ObjectWrapperForBinder(newUser));
-            Intent intent = new Intent(this, MainScreen.class);
+            Intent intent = new Intent(this, MainScreenActivity.class);
             intent.putExtra("user", bundle);
+            intent.putExtra("Monthly", Calendar.MONTH);
             startActivity(intent);
         }
 

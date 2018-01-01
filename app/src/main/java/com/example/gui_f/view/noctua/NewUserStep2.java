@@ -2,8 +2,6 @@ package com.example.gui_f.view.noctua;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -51,7 +49,7 @@ public class NewUserStep2 extends AppCompatActivity {
             public void onClick(View v) {
                 final Bundle bundle = new Bundle();
                 bundle.putBinder("user", new ObjectWrapperForBinder(received));
-                Intent intent = new Intent(v.getContext(), MainScreen.class);
+                Intent intent = new Intent(v.getContext(), MainScreenActivity.class);
                 intent.putExtra("user", bundle);
                 startActivity(intent);
                 finish();
