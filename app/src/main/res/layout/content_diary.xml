@@ -49,6 +49,7 @@
             android:layout_width="150px"
             android:layout_height="150px"
             android:src="@drawable/ic_mood_bad_black_24dp"
+            android:tint="@color/tiffanyBlue"
             android:clickable="true"
             android:focusable="true"/>
 
@@ -62,6 +63,7 @@
             android:layout_width="150px"
             android:layout_height="150px"
             android:src="@drawable/ic_sentiment_neutral_black_24dp"
+            android:tint="@color/tiffanyBlue"
             android:clickable="true"
             android:focusable="true"/>
         <Space
@@ -74,6 +76,7 @@
             android:layout_width="150px"
             android:layout_height="150px"
             android:src="@drawable/ic_mood_black_24dp"
+            android:tint="@color/tiffanyBlue"
             android:clickable="true"
             android:focusable="true"/>
 

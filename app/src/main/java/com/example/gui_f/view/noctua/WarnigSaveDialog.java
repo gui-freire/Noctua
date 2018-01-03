@@ -30,14 +30,14 @@ public class WarnigSaveDialog extends DialogFragment {
                 .setPositiveButton(R.string.SaveFragment,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
-                                ((Register)getActivity()).doPositiveClick();
+                                ((RegisterActivity)getActivity()).doPositiveClick();
                             }
                         }
                 )
                 .setNegativeButton(R.string.YesFragment,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
-                                ((Register)getActivity()).doNegativeClick();
+                                ((RegisterActivity)getActivity()).doNegativeClick();
                             }
                         }
                 )

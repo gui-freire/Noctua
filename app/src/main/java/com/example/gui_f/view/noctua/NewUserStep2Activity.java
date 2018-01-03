@@ -12,8 +12,10 @@ import com.example.gui_f.ObjectWrapperForBinder;
 import com.example.gui_f.model.noctua.ResponsibleDTO;
 import com.example.gui_f.model.noctua.UserDTO;
 import com.example.gui_f.noctua.R;
+import com.example.gui_f.viewmodel.noctua.NewUser.NewUser;
+import com.example.gui_f.viewmodel.noctua.NewUser.NewUserImpl;
 
-public class NewUserStep2 extends AppCompatActivity {
+public class NewUserStep2Activity extends AppCompatActivity {
 
     private EditText name;
     private EditText email;
@@ -22,9 +24,14 @@ public class NewUserStep2 extends AppCompatActivity {
 
     private ResponsibleDTO responsible = new ResponsibleDTO();
     private UserDTO received = new UserDTO();
+    private NewUser newUser = new NewUserImpl();
+    int result;
+
+    private UserAlreadyExists userAlreadyExists = new UserAlreadyExists();
+    private GenericError genericError = new GenericError();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_user_step2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -47,12 +54,20 @@ public class NewUserStep2 extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Bundle bundle = new Bundle();
-                bundle.putBinder("user", new ObjectWrapperForBinder(received));
-                Intent intent = new Intent(v.getContext(), MainScreenActivity.class);
-                intent.putExtra("user", bundle);
-                startActivity(intent);
-                finish();
+                result = newUser.registerNewUser(received);
+                if(result == 0){
+                    genericError.setMessage(R.string.Error);
+                    genericError.onCreateDialog(savedInstanceState);
+                } else if(result == 1) {
+                    final Bundle bundle = new Bundle();
+                    bundle.putBinder("user", new ObjectWrapperForBinder(received));
+                    Intent intent = new Intent(v.getContext(), MainScreenActivity.class);
+                    intent.putExtra("user", bundle);
+                    startActivity(intent);
+                    finish();
+                } else if(result == 2){
+                    userAlreadyExists.onCreateDialog(savedInstanceState);
+                }
             }
         });
 

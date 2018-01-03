@@ -38,6 +38,9 @@
     <string name="RelationExample">Filho</string>
     <string name="SignOn">Cadastrar</string>
     <string name="title_activity_main_screen">MainScreen</string>
+    <string name="UserAlreadyExists">Usuário já existe</string>
+    <string name="Okay">Cancelar</string>
+    <string name="Error">Algo deu errado</string>
 
     <!-- Main screen strings -->
     <string name="Hello">Olá, </string>

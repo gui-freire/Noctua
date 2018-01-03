@@ -137,7 +137,7 @@ public class MainScreenActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_register) {
-            Intent intent = new Intent(this, Register.class);
+            Intent intent = new Intent(this, RegisterActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_settings) {

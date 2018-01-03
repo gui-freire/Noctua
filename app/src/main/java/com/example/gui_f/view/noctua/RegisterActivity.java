@@ -12,7 +12,7 @@ import android.widget.EditText;
 
 import com.example.gui_f.noctua.R;
 
-public class Register extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
     private EditText name;
     private EditText surname;
@@ -46,6 +46,7 @@ public class Register extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 finish();
             }
         });
