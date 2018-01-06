@@ -9,17 +9,21 @@
     android:gravity="center"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.gui_f.view.noctua.RegisterActivity"
-    tools:showIn="@layout/activity_register">
+    tools:showIn="@layout/activity_register"
+    android:background="@color/tiffanyBlue">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Name"/>
+        android:text="@string/Name"
+        android:textSize="10pt"/>
 
     <EditText
         android:id="@+id/editRegisterName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="700px"
+        android:layout_height="wrap_content"
+        android:textSize="10pt"
+        android:textColor="@color/limePastelGreen"/>
 
     <Space
         android:layout_width="wrap_content"
@@ -28,12 +32,15 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Surname"/>
+        android:text="@string/Surname"
+        android:textSize="10pt"/>
 
     <EditText
         android:id="@+id/editRegisterSurname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="700px"
+        android:layout_height="wrap_content"
+        android:textSize="10pt"
+        android:textColor="@color/limePastelGreen"/>
 
     <Space
         android:layout_width="wrap_content"
@@ -43,12 +50,15 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/EmailUser"/>
+        android:text="@string/EmailUser"
+        android:textSize="10pt"/>
 
     <EditText
         android:id="@+id/editRegisterEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="700px"
+        android:layout_height="wrap_content"
+        android:textSize="10pt"
+        android:textColor="@color/limePastelGreen"/>
 
     <Space
         android:layout_width="wrap_content"
@@ -58,12 +68,15 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Birthday"/>
+        android:text="@string/Birthday"
+        android:textSize="10pt"/>
 
     <EditText
         android:id="@+id/editRegisterBirthday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="700px"
+        android:layout_height="wrap_content"
+        android:textSize="10pt"
+        android:textColor="@color/limePastelGreen"/>
 
     <Space
         android:layout_width="wrap_content"
@@ -76,18 +89,27 @@
         android:orientation="horizontal">
     <Button
         android:id="@+id/btnRegisterSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Save"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/Save"
+        android:textSize="10pt"
+        android:background="@color/limePastelGreen"/>
 
         <Space
             android:layout_width="2pt"
             android:layout_height="wrap_content" />
     <Button
         android:id="@+id/btnRegisterResp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Responsible"
+        android:textSize="10pt"
+        android:background="@color/limePastelGreen"/>
+    </LinearLayout>
+
+    <Space
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Responsible"/>
-    </LinearLayout>
+        android:layout_weight="1"/>
 
 </LinearLayout>

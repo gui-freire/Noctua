@@ -10,6 +10,7 @@ public class UserDTO {
     private String birthday;
     private String email;
     private ResponsibleDTO responsible;
+    private boolean resp;
 
     public String getName() {
         return name;
@@ -49,5 +50,13 @@ public class UserDTO {
 
     public void setResponsible(ResponsibleDTO responsible) {
         this.responsible = responsible;
+    }
+
+    public boolean isResp() {
+        return resp;
+    }
+
+    public void setResp(boolean resp) {
+        this.resp = resp;
     }
 }

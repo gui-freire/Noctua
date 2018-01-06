@@ -35,6 +35,8 @@ public class MainScreenActivity extends AppCompatActivity
 
     private MainScreen mainScreen = new MainScreenImpl();
 
+    final UserDTO userReceived = ((ObjectWrapperForBinder)getIntent().getBundleExtra("user").getBinder("user")).getData();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +45,7 @@ public class MainScreenActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        final UserDTO userReceived = ((ObjectWrapperForBinder)getIntent().getBundleExtra("user").getBinder("user")).getData();
+
 
         //Checks if it needs to get the latest data or if it needs to get a day/week/month data
         if(intent.getBundleExtra("Daily") != null){
@@ -82,6 +84,12 @@ public class MainScreenActivity extends AppCompatActivity
         bloodpression.setText(vital.getPression());
 
 
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         diary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,6 +146,7 @@ public class MainScreenActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_register) {
             Intent intent = new Intent(this, RegisterActivity.class);
+            intent.putExtra("Email", userReceived.getEmail());
             startActivity(intent);
 
         } else if (id == R.id.nav_settings) {

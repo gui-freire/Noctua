@@ -16,6 +16,7 @@
     <string name="Email">Entre com o e-mail cadastrado</string>
     <string name="EmailExample">exemplo@provedor.com</string>
     <string name="Send">Enviar</string>
+    <string name="SomethingWrong">Algo deu errado</string>
 
     <!-- First step of new user sign on strings -->
     <string name="title_activity_new_user_step1">NewUserStep1</string>
@@ -70,8 +71,8 @@
     <string name="Logs">Relatórios</string>
     <string name="title_activity_register">Register</string>
 
-    <string name="Responsible">Dados Responsável</string>
-    <string name="Save">Salvar dados</string>
+    <string name="Responsible">Dados \n Responsável</string>
+    <string name="Save">Salvar \n dados</string>
     <string name="title_activity_register_responsible">RegisterResponsible</string>
     <string name="title_activity_password">Password</string>
 

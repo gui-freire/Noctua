@@ -10,17 +10,30 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.gui_f.model.noctua.ResponsibleDTO;
 import com.example.gui_f.noctua.R;
+import com.example.gui_f.viewmodel.noctua.Register.Register;
+import com.example.gui_f.viewmodel.noctua.Register.RegisterImpl;
 
-public class RegisterResponsible extends AppCompatActivity {
+public class RegisterResponsibleActivity extends AppCompatActivity {
 
     private EditText responsibleName;
     private EditText responsibleEmail;
     private EditText relation;
     private Button save;
 
+    private ResponsibleDTO dto = new ResponsibleDTO();
+    private Register register = new RegisterImpl();
+
+    private Intent intent;
+
+    private String email;
+
+    private boolean result;
+    private GenericError genericError = new GenericError();
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_responsible);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -31,11 +44,24 @@ public class RegisterResponsible extends AppCompatActivity {
         relation = (EditText) findViewById(R.id.editRelationRegister);
         save = (Button) findViewById(R.id.btnRespRegisterSave);
 
+        intent = getIntent();
+
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setResult(RegisterResponsible.RESULT_OK);
-                finish();
+                dto.setEmail(responsibleEmail.getText().toString());
+                dto.setName(responsibleName.getText().toString());
+                dto.setRelation(relation.getText().toString());
+                email = intent.getStringExtra("Email");
+
+                result = register.changeResponsible(email, dto);
+
+                if(result){
+                    finish();
+                } else {
+                    genericError.setMessage(R.string.Error);
+                    genericError.onCreateDialog(savedInstanceState);
+                }
             }
         });
     }

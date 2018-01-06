@@ -40,11 +40,11 @@
             android:label="@string/title_activity_register"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.gui_f.view.noctua.RegisterResponsible"
+            android:name="com.example.gui_f.view.noctua.RegisterResponsibleActivity"
             android:label="@string/title_activity_register_responsible"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.gui_f.view.noctua.Password"
+            android:name="com.example.gui_f.view.noctua.PasswordActivity"
             android:label="@string/title_activity_password"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

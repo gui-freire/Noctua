@@ -1,5 +1,6 @@
 package com.example.gui_f.viewmodel.noctua.Register;
 
+import com.example.gui_f.model.noctua.ResponsibleDTO;
 import com.example.gui_f.model.noctua.UserDTO;
 
 /**
@@ -8,4 +9,6 @@ import com.example.gui_f.model.noctua.UserDTO;
 
 public interface Register {
     boolean changeData(UserDTO user);
+
+    boolean changeResponsible(String email, ResponsibleDTO resp);
 }

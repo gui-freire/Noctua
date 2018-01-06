@@ -12,14 +12,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.gui_f.noctua.R;
+import com.example.gui_f.viewmodel.noctua.Password.Password;
+import com.example.gui_f.viewmodel.noctua.Password.PasswordImpl;
 
-public class Password extends AppCompatActivity {
+public class PasswordActivity extends AppCompatActivity {
 
     private EditText email;
     private Button send;
+    private Password password = new PasswordImpl();
+    private GenericError genericError = new GenericError();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -34,7 +38,12 @@ public class Password extends AppCompatActivity {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //enviar
+                try {
+                    password.forgotPassword(email.getText().toString());
+                }catch (Exception e){
+                    genericError.setMessage(R.string.SomethingWrong);
+                    genericError.onCreateDialog(savedInstanceState);
+                }
                 finish();
             }
         });

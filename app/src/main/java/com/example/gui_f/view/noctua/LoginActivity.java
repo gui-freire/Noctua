@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         forgotPwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent2 = new Intent(v.getContext(), Password.class);
+                Intent intent2 = new Intent(v.getContext(), PasswordActivity.class);
                 startActivity(intent2);
             }
         });

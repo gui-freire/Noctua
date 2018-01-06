@@ -8,8 +8,9 @@
     android:orientation="vertical"
     android:gravity="center"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.gui_f.view.noctua.RegisterResponsible"
-    tools:showIn="@layout/activity_register_responsible">
+    tools:context="com.example.gui_f.view.noctua.RegisterResponsibleActivity"
+    tools:showIn="@layout/activity_register_responsible"
+    android:background="@color/tiffanyBlue">
 
     <Space
         android:layout_width="wrap_content"
@@ -19,12 +20,16 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/NameResponsiblePerson"/>
+        android:text="@string/NameResponsiblePerson"
+        android:textSize="10pt"
+        android:textColor="@color/limePastelGreen"/>
 
     <EditText
         android:id="@+id/editNameResponsibleRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="700px"
+        android:layout_height="wrap_content"
+        android:textSize="10pt"
+        android:textColor="@color/limePastelGreen" />
 
     <Space
         android:layout_width="wrap_content"
@@ -34,12 +39,16 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/EmailResponsiblePerson"/>
+        android:text="@string/EmailResponsiblePerson"
+        android:textColor="@color/limePastelGreen"
+        android:textSize="10pt"/>
 
     <EditText
         android:id="@+id/editEmailResponsibleRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="700px"
+        android:layout_height="wrap_content"
+        android:textSize="10pt"
+        android:textColor="@color/limePastelGreen"/>
 
     <Space
         android:layout_width="wrap_content"
@@ -49,12 +58,16 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Relation"/>
+        android:text="@string/Relation"
+        android:textSize="10pt"
+        android:textColor="@color/limePastelGreen"/>
 
     <EditText
         android:id="@+id/editRelationRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="700px"
+        android:layout_height="wrap_content"
+        android:textColor="@color/limePastelGreen"
+        android:textSize="10pt"/>
 
     <Space
         android:layout_width="wrap_content"
@@ -65,7 +78,9 @@
         android:id="@+id/btnRespRegisterSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Save"/>
+        android:text="@string/Save"
+        android:textSize="10pt"
+        android:background="@color/limePastelGreen"/>
 
     <Space
         android:layout_width="wrap_content"

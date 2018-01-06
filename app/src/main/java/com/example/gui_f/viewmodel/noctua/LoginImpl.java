@@ -1,5 +1,7 @@
 package com.example.gui_f.viewmodel.noctua;
 
+import android.util.Log;
+
 import com.example.gui_f.model.noctua.Login.LoginService;
 import com.example.gui_f.model.noctua.Login.LoginServiceImpl;
 import com.example.gui_f.model.noctua.UserDTO;
@@ -13,6 +15,7 @@ public class LoginImpl implements Login {
 
     @Override
     public UserDTO searchUser(String user) {
+        Log.i("SearchUser", "Sending user to service");
         return login.searchUser(user);
     }
 }

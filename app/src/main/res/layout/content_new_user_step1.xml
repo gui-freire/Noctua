@@ -5,32 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center_horizontal"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.gui_f.view.noctua.NewUserStep1Activity"
-    tools:showIn="@layout/activity_new_user_step1">
+    tools:showIn="@layout/activity_new_user_step1"
+    android:background="@color/limePastelGreen">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/SignOn"
+        android:gravity="center"
         android:textSize="15pt"/>
 
     <Space
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_weight="1"/>
+        android:layout_weight="0.5"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Name"/>
+        android:text="@string/Name"
+        android:textSize="10pt"/>
 
     <EditText
         android:id="@+id/editName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/NameExample"/>
+        android:hint="@string/NameExample"
+        android:textSize="10pt"
+        android:textColor="@color/tiffanyBlue" />
 
     <Space
         android:layout_width="0dp"
@@ -40,13 +44,16 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Surname"/>
+        android:text="@string/Surname"
+        android:textSize="10pt"/>
 
     <EditText
         android:id="@+id/editSurname"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/SurnameExample"/>
+        android:hint="@string/SurnameExample"
+        android:textColor="@color/tiffanyBlue"
+        android:textSize="10pt" />
 
     <Space
         android:layout_width="0dp"
@@ -56,13 +63,16 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/EmailUser"/>
+        android:text="@string/EmailUser"
+        android:textSize="10pt"/>
 
     <EditText
         android:id="@+id/editEmailNewUsr"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/EmailExample"/>
+        android:hint="@string/EmailExample"
+        android:textSize="10pt"
+        android:textColor="@color/tiffanyBlue"/>
 
     <Space
         android:layout_width="0dp"
@@ -72,20 +82,30 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Birthday"/>
+        android:text="@string/Birthday"
+        android:textSize="10pt"/>
 
     <EditText
         android:id="@+id/editBday"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="date"
-        android:hint="@string/BirthdayExample"/>
+        android:hint="@string/BirthdayExample"
+        android:textSize="10pt"
+        android:textColor="@color/tiffanyBlue"/>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
     <Button
         android:id="@+id/btnContinue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Continue"/>
+        android:text="@string/Continue"
+        android:textSize="10pt"
+        android:background="@color/tiffanyBlue"/>
+    </LinearLayout>
 
     <Space
         android:layout_width="0dp"

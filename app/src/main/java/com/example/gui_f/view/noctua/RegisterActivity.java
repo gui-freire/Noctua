@@ -10,7 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.gui_f.model.noctua.UserDTO;
 import com.example.gui_f.noctua.R;
+import com.example.gui_f.viewmodel.noctua.Register.Register;
+import com.example.gui_f.viewmodel.noctua.Register.RegisterImpl;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -20,9 +23,13 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText email;
     private Button save;
     private Button responsible;
+    private Register register = new RegisterImpl();
+    private UserDTO user = new UserDTO();
+
+    private GenericError genericError = new GenericError();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -38,23 +45,34 @@ public class RegisterActivity extends AppCompatActivity {
         responsible.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), RegisterResponsible.class);
-                startActivityForResult(intent, 1);
+                Intent intent = new Intent(v.getContext(), RegisterResponsibleActivity.class);
+
+                startActivity(intent);
             }
         });
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                finish();
+                user.setName(name.getText().toString());
+                user.setSurname(surname.getText().toString());
+                user.setBirthday(birthday.getText().toString());
+                user.setEmail(email.getText().toString());
+                boolean result = register.changeData(user);
+                if(!result){
+                    genericError.setMessage(R.string.Error);
+                    genericError.onCreateDialog(savedInstanceState);
+                }
+                else{
+                    finish();
+                }
             }
         });
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == RegisterResponsible.RESULT_OK){
+        if(requestCode == RegisterResponsibleActivity.RESULT_OK){
             Intent intent = new Intent(this, MainScreenActivity.class);
             startActivity(intent);
         }
