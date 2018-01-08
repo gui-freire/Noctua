@@ -13,8 +13,8 @@ import org.json.JSONObject;
 
 public class LoginServiceImpl implements LoginService {
 
-    LoginRequest request = new LoginRequest();
-    UserDTO userReturn = new UserDTO();
+    private LoginRequest request = new LoginRequest();
+    private UserDTO userReturn = new UserDTO();
 
     @Override
     public UserDTO searchUser(String user) {
@@ -29,9 +29,11 @@ public class LoginServiceImpl implements LoginService {
         } catch(JSONException je){
             Log.i("SearchUserFail", "Error sending user for search " + je.getMessage());
             return null;
-        } catch (Exception e){
+        } catch (Throwable e){
             Log.i("SearchUserFail", "Error sending user for search " + e.getMessage());
+            e.printStackTrace();
             return null;
         }
     }
 }
+

@@ -8,5 +8,5 @@ public interface DiaryService {
 
     boolean sendFeeling(String user, FeelEnum feel);
 
-    boolean sendDiary(String user, String diary);
+    boolean sendDiary(String user, String diary, FeelEnum feel);
 }

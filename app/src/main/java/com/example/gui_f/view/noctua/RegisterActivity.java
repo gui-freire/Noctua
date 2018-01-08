@@ -24,7 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Button save;
     private Button responsible;
     private Register register = new RegisterImpl();
-    private UserDTO user = new UserDTO();
+    private UserDTO user;
 
     private GenericError genericError = new GenericError();
 
@@ -42,11 +42,22 @@ public class RegisterActivity extends AppCompatActivity {
         save = (Button) findViewById(R.id.btnRegisterSave);
         responsible = (Button) findViewById(R.id.btnRegisterResp);
 
+        if(savedInstanceState != null){
+            name.setText(savedInstanceState.getString("Name"));
+            surname.setText(savedInstanceState.getString("Surname"));
+            birthday.setText(savedInstanceState.getString("Birthday"));
+            email.setText(savedInstanceState.getString("Email"));
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
         responsible.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), RegisterResponsibleActivity.class);
-
                 startActivity(intent);
             }
         });
@@ -59,23 +70,29 @@ public class RegisterActivity extends AppCompatActivity {
                 user.setBirthday(birthday.getText().toString());
                 user.setEmail(email.getText().toString());
                 boolean result = register.changeData(user);
-                if(!result){
-                    genericError.setMessage(R.string.Error);
-                    genericError.onCreateDialog(savedInstanceState);
+                if(result){
+                    finish();
                 }
                 else{
-                    finish();
+                    //genericError.setMessage(R.string.Error);
+//                    genericError.onCreateDialog(savedInstanceState);
                 }
             }
         });
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == RegisterResponsibleActivity.RESULT_OK){
-            Intent intent = new Intent(this, MainScreenActivity.class);
-            startActivity(intent);
-        }
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("Name", name.getText().toString());
+        outState.putString("Surname", surname.getText().toString());
+        outState.putString("Birthday", birthday.getText().toString());
+        outState.putString("Email", email.getText().toString());
     }
 
     private void showDialog() {

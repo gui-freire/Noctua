@@ -35,7 +35,9 @@ public class MainScreenActivity extends AppCompatActivity
 
     private MainScreen mainScreen = new MainScreenImpl();
 
-    final UserDTO userReceived = ((ObjectWrapperForBinder)getIntent().getBundleExtra("user").getBinder("user")).getData();
+    private UserDTO dto = new UserDTO();
+
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,24 +47,25 @@ public class MainScreenActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        intent = getIntent();
 
-
+        dto = (UserDTO) intent.getParcelableExtra("user");
         //Checks if it needs to get the latest data or if it needs to get a day/week/month data
         if(intent.getBundleExtra("Daily") != null){
             int day = intent.getIntExtra("Daily", 0);
-            vital = mainScreen.searchDaily(userReceived.getName(), day);
+            vital = mainScreen.searchDaily(dto.getName(), day);
 
         } else if(intent.getBundleExtra("Weekly") != null){
             int week = intent.getIntExtra("Weekly", 0);
             int month = intent.getIntExtra("Month", 0);
-            vital = mainScreen.searchWeekly(userReceived.getName(), week, month);
+            vital = mainScreen.searchWeekly(dto.getName(), week, month);
 
         } else if(intent.getBundleExtra("Monthly") != null){
             int month = intent.getIntExtra("Monthly", 0);
-            vital = mainScreen.searchMonthly(userReceived.getName(), month);
+            vital = mainScreen.searchMonthly(dto.getName(), month);
 
         } else{
-            vital = mainScreen.searchLast(userReceived.getName());
+            vital = mainScreen.searchLast(dto.getName());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -79,7 +82,7 @@ public class MainScreenActivity extends AppCompatActivity
         bloodpression = (TextView) findViewById(R.id.textBloodPrss);
         diary = (Button) findViewById(R.id.btnDiary);
 
-        user.setText(userReceived.getName());
+        user.setText(dto.getName());
         heartbeats.setText(vital.getHeartbeats());
         bloodpression.setText(vital.getPression());
 
@@ -94,10 +97,15 @@ public class MainScreenActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(v.getContext(), DiaryActivity.class);
-                intent1.putExtra("user", userReceived.getName());
+                intent1.putExtra("user", dto.getName());
                 startActivity(intent1);
             }
         });
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 
     @Override
@@ -145,39 +153,39 @@ public class MainScreenActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_register) {
-            Intent intent = new Intent(this, RegisterActivity.class);
-            intent.putExtra("Email", userReceived.getEmail());
-            startActivity(intent);
+//            Intent intent = new Intent(this, RegisterActivity.class);
+//            intent.putExtra("Email", userReceived.getEmail());
+//            startActivity(intent);
 
         } else if (id == R.id.nav_settings) {
 
         } else if (id == R.id.navlog_daily) {
             //TODO: refazer chamada que consulta dados e criar uma nova intância dessa tela com os novos valores
-            UserDTO newUser = new UserDTO();
-            final Bundle bundle = new Bundle();
-            Intent intent = new Intent(this, MainScreenActivity.class);
-            intent.putExtra("user", bundle);
-            intent.putExtra("Daily", Calendar.DAY_OF_MONTH);
-            startActivity(intent);
+//            UserDTO newUser;
+//            final Bundle bundle = new Bundle();
+//            Intent intent = new Intent(this, MainScreenActivity.class);
+//            intent.putExtra("user", bundle);
+//            intent.putExtra("Daily", Calendar.DAY_OF_MONTH);
+//            startActivity(intent);
 
         } else if (id == R.id.navlog_monthly) {
-            UserDTO newUser = new UserDTO();
-            final Bundle bundle = new Bundle();
-            bundle.putBinder("user", new ObjectWrapperForBinder(newUser));
-            Intent intent = new Intent(this, MainScreenActivity.class);
-            intent.putExtra("user", bundle);
-            intent.putExtra("Weekly", Calendar.WEEK_OF_MONTH);
-            intent.putExtra("Month", Calendar.MONTH);
+//            UserDTO newUser = new UserDTO();
+//            final Bundle bundle = new Bundle();
+//            bundle.putBinder("user", new ObjectWrapperForBinder(newUser));
+//            Intent intent = new Intent(this, MainScreenActivity.class);
+//            intent.putExtra("user", bundle);
+//            intent.putExtra("Weekly", Calendar.WEEK_OF_MONTH);
+//            intent.putExtra("Month", Calendar.MONTH);
             startActivity(intent);
 
         } else if(id == R.id.navlog_weekly){
-            UserDTO newUser = new UserDTO();
-            final Bundle bundle = new Bundle();
-            bundle.putBinder("user", new ObjectWrapperForBinder(newUser));
-            Intent intent = new Intent(this, MainScreenActivity.class);
-            intent.putExtra("user", bundle);
-            intent.putExtra("Monthly", Calendar.MONTH);
-            startActivity(intent);
+//            UserDTO newUser = new UserDTO();
+//            final Bundle bundle = new Bundle();
+//            bundle.putBinder("user", new ObjectWrapperForBinder(newUser));
+//            Intent intent = new Intent(this, MainScreenActivity.class);
+//            intent.putExtra("user", bundle);
+//            intent.putExtra("Monthly", Calendar.MONTH);
+//            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

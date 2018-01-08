@@ -27,10 +27,11 @@ public class DiaryServiceImpl implements DiaryService {
     }
 
     @Override
-    public boolean sendDiary(String user, String diary) {
+    public boolean sendDiary(String user, String diary, FeelEnum feel) {
         try{
             json.put("User", user);
             json.put("DiaryActivity", diary);
+            json.put("Feeling", feel);
             Log.i("SendDiary", "Sending diary to request");
             //TODO: Fazer chamada no serviço
             return true;

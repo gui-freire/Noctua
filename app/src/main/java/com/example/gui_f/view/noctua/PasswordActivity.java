@@ -22,6 +22,8 @@ public class PasswordActivity extends AppCompatActivity {
     private Password password = new PasswordImpl();
     private GenericError genericError = new GenericError();
 
+    private Intent intent;
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,24 +31,34 @@ public class PasswordActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Intent intent = getIntent();
+        intent = getIntent();
 
         email = (EditText) findViewById(R.id.editEmail);
         send = (Button) findViewById(R.id.btnSend);
         //TODO: enviar e-mail para o serviço para enviar um email com senha e usuário
 
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
                     password.forgotPassword(email.getText().toString());
                 }catch (Exception e){
-                    genericError.setMessage(R.string.SomethingWrong);
-                    genericError.onCreateDialog(savedInstanceState);
+//                    genericError.setMessage(R.string.SomethingWrong);
+//                    genericError.onCreateDialog(savedInstanceState);
                 }
                 finish();
             }
         });
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
 }

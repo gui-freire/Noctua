@@ -10,13 +10,13 @@ import com.example.gui_f.model.noctua.UserDTO;
 
 public class ObjectWrapperForBinder extends Binder {
 
-    private UserDTO mData = new UserDTO();
-
-    public ObjectWrapperForBinder(UserDTO data){
-        mData = data;
-    }
-
-    public UserDTO getData(){
-        return mData;
-    }
+//    private UserDTO mData = new UserDTO();
+//
+//    public ObjectWrapperForBinder(UserDTO data){
+//        mData = data;
+//    }
+//
+//    public UserDTO getData(){
+//        return mData;
+//    }
 }

@@ -27,10 +27,11 @@ public class DiaryImpl implements Diary {
     }
 
     @Override
-    public boolean sendDiary(String user, String diary) {
+    public boolean sendDiary(String user, String diary, String feel) {
         Log.i("DiaryImpl", "Sending DiaryActivity...");
+        FeelEnum feeling = FeelEnum.valueOf(feel);
         try{
-            return diaryService.sendDiary(user, diary);
+            return diaryService.sendDiary(user, diary, feeling);
         } catch(Exception e){
             Log.i("DiaryImplFail", "Error in sending diary! " + e.getMessage());
             return false;

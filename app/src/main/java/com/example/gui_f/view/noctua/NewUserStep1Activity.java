@@ -20,7 +20,9 @@ public class NewUserStep1Activity extends AppCompatActivity {
     private EditText birthday;
     private Button btnContinue;
 
-    private UserDTO user = new UserDTO();
+    private UserDTO user;
+
+    private Intent i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +30,25 @@ public class NewUserStep1Activity extends AppCompatActivity {
         setContentView(R.layout.activity_new_user_step1);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Intent i = getIntent();
+        i = getIntent();
 
         name = (EditText) findViewById(R.id.editName);
         surname = (EditText) findViewById(R.id.editSurname);
         email = (EditText) findViewById(R.id.editEmailNewUsr);
         birthday = (EditText) findViewById(R.id.editBday);
         btnContinue = (Button) findViewById(R.id.btnContinue);
+
+        if(savedInstanceState != null){
+            name.setText(savedInstanceState.getString("Name"));
+            surname.setText(savedInstanceState.getString("Surname"));
+            email.setText(savedInstanceState.getString("Email"));
+            birthday.setText(savedInstanceState.getString("Birthday"));
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
 
         user.setName(name.getText().toString());
         user.setSurname(surname.getText().toString());
@@ -45,14 +59,27 @@ public class NewUserStep1Activity extends AppCompatActivity {
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Bundle bundle = new Bundle();
-                bundle.putBinder("user", new ObjectWrapperForBinder(user));
-                Intent intent = new Intent(v.getContext(), NewUserStep2Activity.class);
-                intent.putExtra("user", bundle);
-                startActivity(intent);
-                finish();
+//                final Bundle bundle = new Bundle();
+//                bundle.putBinder("user", new ObjectWrapperForBinder(user));
+//                Intent intent = new Intent(v.getContext(), NewUserStep2Activity.class);
+//                intent.putExtra("user", bundle);
+//                startActivity(intent);
+//                finish();
             }
         });
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("Name", name.getText().toString());
+        outState.putString("Surname", surname.getText().toString());
+        outState.putString("Birthday", birthday.getText().toString());
+        outState.putString("Email", email.getText().toString());
+    }
 }

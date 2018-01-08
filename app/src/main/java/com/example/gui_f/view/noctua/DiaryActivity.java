@@ -2,6 +2,7 @@ package com.example.gui_f.view.noctua;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.example.gui_f.model.noctua.Diary.FeelEnum;
 import com.example.gui_f.noctua.R;
 import com.example.gui_f.viewmodel.noctua.Diary;
 import com.example.gui_f.viewmodel.noctua.DiaryImpl;
@@ -25,6 +27,8 @@ public class DiaryActivity extends AppCompatActivity {
 
     private Diary diaryService = new DiaryImpl();
 
+    private GenericError genericError = new GenericError();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,11 @@ public class DiaryActivity extends AppCompatActivity {
         bad = (ImageView) findViewById(R.id.imgBad);
         kinda = (ImageView) findViewById(R.id.imgKinda);
         good = (ImageView) findViewById(R.id.imgGood);
+        diary = (EditText) findViewById(R.id.editDiary);
+
+        if(savedInstanceState != null){
+            diary.setText(savedInstanceState.getString("Diary"));
+        }
     }
 
     @Override
@@ -57,28 +66,40 @@ public class DiaryActivity extends AppCompatActivity {
         bad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                diaryService.sendFeeling(user, "Bad");
+                feeling = FeelEnum.BAD.toString();
             }
         });
 
         kinda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                diaryService.sendFeeling(user, "Moderate");
+                feeling = FeelEnum.MODERATE.toString();
             }
         });
 
         good.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                diaryService.sendFeeling(user, "Good");
+                feeling = FeelEnum.GOOD.toString();
+            }
+        });
+
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    if (diary != null) {
+                        diaryService.sendDiary(user, diary.getText().toString(), feeling);
+                    }
+                }catch (Exception e){
+
+                }
             }
         });
     }
 
     @Override
     protected void onStop() {
-        onSaveInstanceState();
         super.onStop();
     }
 

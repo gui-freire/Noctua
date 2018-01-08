@@ -23,7 +23,7 @@ public class NewUserStep2Activity extends AppCompatActivity {
     private Button login;
 
     private ResponsibleDTO responsible = new ResponsibleDTO();
-    private UserDTO received = new UserDTO();
+    private UserDTO received;
     private NewUser newUser = new NewUserImpl();
     int result;
 
@@ -42,35 +42,58 @@ public class NewUserStep2Activity extends AppCompatActivity {
        relation = (EditText) findViewById(R.id.editRelation);
        login = (Button) findViewById(R.id.btnSignOn);
 
-       responsible.setEmail(email.getText().toString());
-       responsible.setName(name.getText().toString());
-       responsible.setRelation(relation.getText().toString());
+       if(savedInstanceState != null){
+           name.setText(savedInstanceState.getString("Name"));
+           email.setText(savedInstanceState.getString("Email"));
+           relation.setText(savedInstanceState.getString("Relation"));
+       }
+    }
 
-       received = ((ObjectWrapperForBinder)getIntent().getExtras().getBinder("user")).getData();
-       received.setResponsible(responsible);
+    @Override
+    protected void onStart() {
+        super.onStart();
 
-       //TODO: fazer chamada no webservice para salvar dados
+        responsible.setEmail(email.getText().toString());
+        responsible.setName(name.getText().toString());
+        responsible.setRelation(relation.getText().toString());
+
+//        received = ((ObjectWrapperForBinder)getIntent().getExtras().getBinder("user")).getData();
+//        received.setResponsible(responsible);
+
+        //TODO: fazer chamada no webservice para salvar dados
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 result = newUser.registerNewUser(received);
                 if(result == 0){
-                    genericError.setMessage(R.string.Error);
-                    genericError.onCreateDialog(savedInstanceState);
+//                    genericError.setMessage(R.string.Error);
+//                    genericError.onCreateDialog(savedInstanceState);
                 } else if(result == 1) {
-                    final Bundle bundle = new Bundle();
-                    bundle.putBinder("user", new ObjectWrapperForBinder(received));
-                    Intent intent = new Intent(v.getContext(), MainScreenActivity.class);
-                    intent.putExtra("user", bundle);
-                    startActivity(intent);
-                    finish();
+//                    final Bundle bundle = new Bundle();
+//                    bundle.putBinder("user", new ObjectWrapperForBinder(received));
+//                    Intent intent = new Intent(v.getContext(), MainScreenActivity.class);
+//                    intent.putExtra("user", bundle);
+//                    startActivity(intent);
+//                    finish();
                 } else if(result == 2){
-                    userAlreadyExists.onCreateDialog(savedInstanceState);
+//                    userAlreadyExists.onCreateDialog(savedInstanceState);
                 }
             }
         });
 
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("Name", name.getText().toString());
+        outState.putString("Email", email.getText().toString());
+        outState.putString("Relation", relation.getText().toString());
+    }
 }

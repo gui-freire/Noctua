@@ -12,10 +12,11 @@ import org.json.JSONObject;
 public class LoginRequest {
     //TODO: FAZER CHAMADA NO SERVIÇO
 
+    private UserDTO response = new UserDTO();
+    private ResponsibleDTO responsibleDTO = new ResponsibleDTO();
+
     public UserDTO searchUser(JSONObject in){
         //Mock
-        UserDTO response = new UserDTO();
-        ResponsibleDTO responsibleDTO = new ResponsibleDTO();
 
         response.setEmail("gui-freire@uol.com.br");
         response.setBirthday("30/04/1997");

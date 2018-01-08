@@ -26,6 +26,11 @@ public class LoginActivity extends AppCompatActivity {
     private TextView newUser;
     private Login loginImpl = new LoginImpl();
 
+    private String passwordText;
+    private String userText;
+
+    private UserDTO userDTO;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +46,15 @@ public class LoginActivity extends AppCompatActivity {
         forgotPwd = (TextView) findViewById(R.id.textForgotPwdLoginScreen);
         newUser = (TextView) findViewById(R.id.textNewUserLoginScreen);
 
-        final String userText = user.getText().toString();
-        String passwordText = user.getText().toString();
+        if(savedInstanceState != null){
+            user.setText(savedInstanceState.getString("User"));
+            password.setText(savedInstanceState.getString("Password"));
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
 
         forgotPwd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,20 +79,31 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                userText = user.getText().toString();
+                passwordText = user.getText().toString();
 
 //            if(user != null) {
-                UserDTO user = loginImpl.searchUser(userText);
-                final Bundle bundle = new Bundle();
-                bundle.putBinder("user", new ObjectWrapperForBinder(user));
+                userDTO = loginImpl.searchUser(userText);
                 Intent intent = new Intent(v.getContext(), MainScreenActivity.class);
-                intent.putExtra("user", bundle);
+                intent.putExtra("user", userDTO);
                 startActivity(intent);
                 finish();
 //            }
             }
         });
 
+    }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("User", user.getText().toString());
+        outState.putString("Password", password.getText().toString());
     }
 
     @Override

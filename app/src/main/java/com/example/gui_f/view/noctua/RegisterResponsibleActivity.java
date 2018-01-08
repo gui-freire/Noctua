@@ -46,6 +46,17 @@ public class RegisterResponsibleActivity extends AppCompatActivity {
 
         intent = getIntent();
 
+        if(savedInstanceState != null){
+            responsibleName.setText(savedInstanceState.getString("Name"));
+            responsibleEmail.setText(savedInstanceState.getString("Email"));
+            relation.setText(savedInstanceState.getString("Relation"));
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,11 +70,19 @@ public class RegisterResponsibleActivity extends AppCompatActivity {
                 if(result){
                     finish();
                 } else {
-                    genericError.setMessage(R.string.Error);
-                    genericError.onCreateDialog(savedInstanceState);
+//                    genericError.setMessage(R.string.Error);
+//                    genericError.onCreateDialog(savedInstanceState);
                 }
             }
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("Name", responsibleName.getText().toString());
+        outState.putString("Email", responsibleEmail.getText().toString());
+        outState.putString("Relation", relation.getText().toString());
     }
 
     private void showDialog() {
