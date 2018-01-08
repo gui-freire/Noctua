@@ -1,4 +1,4 @@
-package com.example.gui_f.view.noctua;
+package com.example.gui_f.view.noctua.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.gui_f.ObjectWrapperForBinder;
 import com.example.gui_f.model.noctua.UserDTO;
 import com.example.gui_f.noctua.R;
 import com.example.gui_f.viewmodel.noctua.Login;

@@ -1,4 +1,4 @@
-package com.example.gui_f.view.noctua;
+package com.example.gui_f.view.noctua.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import android.widget.ImageView;
 
 import com.example.gui_f.model.noctua.Diary.FeelEnum;
 import com.example.gui_f.noctua.R;
+import com.example.gui_f.view.noctua.GenericError;
 import com.example.gui_f.viewmodel.noctua.Diary;
 import com.example.gui_f.viewmodel.noctua.DiaryImpl;
 

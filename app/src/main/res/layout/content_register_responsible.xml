@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:gravity="center"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.gui_f.view.noctua.RegisterResponsibleActivity"
+    tools:context="com.example.gui_f.view.noctua.Activity.RegisterResponsibleActivity"
     tools:showIn="@layout/activity_register_responsible"
     android:background="@color/tiffanyBlue">
 

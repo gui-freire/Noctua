@@ -1,4 +1,4 @@
-package com.example.gui_f.view.noctua;
+package com.example.gui_f.view.noctua.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.gui_f.ObjectWrapperForBinder;
 import com.example.gui_f.model.noctua.UserDTO;
 import com.example.gui_f.model.noctua.MainScreen.VitalResponse;
 import com.example.gui_f.noctua.R;
@@ -39,6 +38,8 @@ public class MainScreenActivity extends AppCompatActivity
 
     private Intent intent;
 
+    private Intent list;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,20 +50,24 @@ public class MainScreenActivity extends AppCompatActivity
 
         intent = getIntent();
 
-        dto = (UserDTO) intent.getParcelableExtra("user");
+        if (savedInstanceState != null) {
+            dto = savedInstanceState.getParcelable("user");
+        } else{
+            dto = (UserDTO) intent.getParcelableExtra("user");
+        }
+
         //Checks if it needs to get the latest data or if it needs to get a day/week/month data
         if(intent.getBundleExtra("Daily") != null){
-            int day = intent.getIntExtra("Daily", 0);
-            vital = mainScreen.searchDaily(dto.getName(), day);
+
 
         } else if(intent.getBundleExtra("Weekly") != null){
-            int week = intent.getIntExtra("Weekly", 0);
-            int month = intent.getIntExtra("Month", 0);
-            vital = mainScreen.searchWeekly(dto.getName(), week, month);
+//            int week = intent.getIntExtra("Weekly", 0);
+//            int month = intent.getIntExtra("Month", 0);
+//            vital = mainScreen.searchWeekly(dto.getName(), week, month);
 
         } else if(intent.getBundleExtra("Monthly") != null){
-            int month = intent.getIntExtra("Monthly", 0);
-            vital = mainScreen.searchMonthly(dto.getName(), month);
+//            int month = intent.getIntExtra("Monthly", 0);
+//            vital = mainScreen.searchMonthly(dto.getName(), month);
 
         } else{
             vital = mainScreen.searchLast(dto.getName());
@@ -85,9 +90,12 @@ public class MainScreenActivity extends AppCompatActivity
         user.setText(dto.getName());
         heartbeats.setText(vital.getHeartbeats());
         bloodpression.setText(vital.getPression());
+    }
 
-
-
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelable("user", dto);
     }
 
     @Override
@@ -146,46 +154,37 @@ public class MainScreenActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_firstAid) {
-            // Handle the camera action
-        } else if (id == R.id.nav_logOut) {
+        if (id == R.id.nav_logOut) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_register) {
-//            Intent intent = new Intent(this, RegisterActivity.class);
-//            intent.putExtra("Email", userReceived.getEmail());
-//            startActivity(intent);
+            Intent intent = new Intent(this, RegisterActivity.class);
+            intent.putExtra("user", dto);
+            startActivity(intent);
 
         } else if (id == R.id.nav_settings) {
 
         } else if (id == R.id.navlog_daily) {
-            //TODO: refazer chamada que consulta dados e criar uma nova intância dessa tela com os novos valores
-//            UserDTO newUser;
-//            final Bundle bundle = new Bundle();
-//            Intent intent = new Intent(this, MainScreenActivity.class);
-//            intent.putExtra("user", bundle);
-//            intent.putExtra("Daily", Calendar.DAY_OF_MONTH);
-//            startActivity(intent);
+            list = new Intent(this, RecordActivity.class);
 
+            list.putExtra("Method", "Daily");
+            list.putExtra("Day", Calendar.DAY_OF_MONTH);
+            list.putExtra("user", dto.getEmail());
+
+            startActivity(list);
         } else if (id == R.id.navlog_monthly) {
-//            UserDTO newUser = new UserDTO();
-//            final Bundle bundle = new Bundle();
-//            bundle.putBinder("user", new ObjectWrapperForBinder(newUser));
-//            Intent intent = new Intent(this, MainScreenActivity.class);
-//            intent.putExtra("user", bundle);
-//            intent.putExtra("Weekly", Calendar.WEEK_OF_MONTH);
-//            intent.putExtra("Month", Calendar.MONTH);
+            Intent intent = new Intent(this, MainScreenActivity.class);
+            intent.putExtra("user", dto);
+            intent.putExtra("Weekly", Calendar.WEEK_OF_MONTH);
+            intent.putExtra("Month", Calendar.MONTH);
             startActivity(intent);
 
         } else if(id == R.id.navlog_weekly){
-//            UserDTO newUser = new UserDTO();
-//            final Bundle bundle = new Bundle();
-//            bundle.putBinder("user", new ObjectWrapperForBinder(newUser));
-//            Intent intent = new Intent(this, MainScreenActivity.class);
-//            intent.putExtra("user", bundle);
-//            intent.putExtra("Monthly", Calendar.MONTH);
-//            startActivity(intent);
+            Intent intent = new Intent(this, MainScreenActivity.class);
+            intent.putExtra("user", dto);
+            intent.putExtra("Monthly", Calendar.MONTH);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

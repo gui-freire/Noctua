@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 
 import com.example.gui_f.noctua.R;
+import com.example.gui_f.view.noctua.Activity.RegisterActivity;
 
 /**
  * Created by gui-f on 26/12/2017.

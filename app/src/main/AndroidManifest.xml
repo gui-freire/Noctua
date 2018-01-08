@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.example.gui_f.view.noctua.LoginActivity"
+            android:name="com.example.gui_f.view.noctua.Activity.LoginActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -20,32 +20,36 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.gui_f.view.noctua.NewUserStep1Activity"
+            android:name="com.example.gui_f.view.noctua.Activity.NewUserStep1Activity"
             android:label="@string/title_activity_new_user_step1"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.gui_f.view.noctua.NewUserStep2Activity"
+            android:name="com.example.gui_f.view.noctua.Activity.NewUserStep2Activity"
             android:label="@string/title_activity_new_user_step2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.gui_f.view.noctua.MainScreenActivity"
+            android:name="com.example.gui_f.view.noctua.Activity.MainScreenActivity"
             android:label="@string/title_activity_main_screen"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.gui_f.view.noctua.DiaryActivity"
+            android:name="com.example.gui_f.view.noctua.Activity.DiaryActivity"
             android:label="@string/title_activity_diary"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.gui_f.view.noctua.RegisterActivity"
+            android:name="com.example.gui_f.view.noctua.Activity.RegisterActivity"
             android:label="@string/title_activity_register"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.gui_f.view.noctua.RegisterResponsibleActivity"
+            android:name="com.example.gui_f.view.noctua.Activity.RegisterResponsibleActivity"
             android:label="@string/title_activity_register_responsible"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.gui_f.view.noctua.PasswordActivity"
+            android:name="com.example.gui_f.view.noctua.Activity.PasswordActivity"
             android:label="@string/title_activity_password"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.gui_f.view.noctua.Activity.RecordActivity"
+            android:label="@string/title_activity_record"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

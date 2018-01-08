@@ -1,4 +1,4 @@
-package com.example.gui_f.view.noctua;
+package com.example.gui_f.view.noctua.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,10 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.gui_f.ObjectWrapperForBinder;
 import com.example.gui_f.model.noctua.ResponsibleDTO;
 import com.example.gui_f.model.noctua.UserDTO;
 import com.example.gui_f.noctua.R;
+import com.example.gui_f.view.noctua.GenericError;
+import com.example.gui_f.view.noctua.UserAlreadyExists;
 import com.example.gui_f.viewmodel.noctua.NewUser.NewUser;
 import com.example.gui_f.viewmodel.noctua.NewUser.NewUserImpl;
 
@@ -21,9 +22,10 @@ public class NewUserStep2Activity extends AppCompatActivity {
     private EditText email;
     private EditText relation;
     private Button login;
+    private Intent i;
 
     private ResponsibleDTO responsible = new ResponsibleDTO();
-    private UserDTO received;
+    private UserDTO received = new UserDTO();
     private NewUser newUser = new NewUserImpl();
     int result;
 
@@ -53,14 +55,14 @@ public class NewUserStep2Activity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        i = getIntent();
+
+        received = (UserDTO) i.getParcelableExtra("user");
         responsible.setEmail(email.getText().toString());
         responsible.setName(name.getText().toString());
         responsible.setRelation(relation.getText().toString());
 
-//        received = ((ObjectWrapperForBinder)getIntent().getExtras().getBinder("user")).getData();
-//        received.setResponsible(responsible);
-
-        //TODO: fazer chamada no webservice para salvar dados
+        received.setResponsible(responsible);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,12 +72,10 @@ public class NewUserStep2Activity extends AppCompatActivity {
 //                    genericError.setMessage(R.string.Error);
 //                    genericError.onCreateDialog(savedInstanceState);
                 } else if(result == 1) {
-//                    final Bundle bundle = new Bundle();
-//                    bundle.putBinder("user", new ObjectWrapperForBinder(received));
-//                    Intent intent = new Intent(v.getContext(), MainScreenActivity.class);
-//                    intent.putExtra("user", bundle);
-//                    startActivity(intent);
-//                    finish();
+                    Intent intent = new Intent(v.getContext(), MainScreenActivity.class);
+                    intent.putExtra("user", received);
+                    startActivity(intent);
+                    finish();
                 } else if(result == 2){
 //                    userAlreadyExists.onCreateDialog(savedInstanceState);
                 }

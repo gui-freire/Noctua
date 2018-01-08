@@ -79,6 +79,7 @@ public class UserDTO implements Parcelable{
         dest.writeString(birthday);
         dest.writeString(email);
         dest.writeInt(resp ? 1 : 0);
+        dest.writeParcelable(responsible, flags);
     }
 
     public static final Parcelable.Creator<UserDTO> CREATOR = new Creator<UserDTO>() {
@@ -99,5 +100,6 @@ public class UserDTO implements Parcelable{
         birthday = pc.readString();
         email = pc.readString();
         resp = (pc.readInt() == 1);
+        responsible = pc.readParcelable(ResponsibleDTO.class.getClassLoader());
     }
 }

@@ -1,6 +1,8 @@
-package com.example.gui_f.view.noctua;
+package com.example.gui_f.view.noctua.Activity;
 
+import android.app.Dialog;
 import android.app.DialogFragment;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.gui_f.model.noctua.ResponsibleDTO;
+import com.example.gui_f.model.noctua.UserDTO;
 import com.example.gui_f.noctua.R;
+import com.example.gui_f.view.noctua.GenericError;
 import com.example.gui_f.viewmodel.noctua.Register.Register;
 import com.example.gui_f.viewmodel.noctua.Register.RegisterImpl;
 
@@ -32,6 +36,9 @@ public class RegisterResponsibleActivity extends AppCompatActivity {
     private boolean result;
     private GenericError genericError = new GenericError();
 
+    private UserDTO received = new UserDTO();
+    private ResponsibleDTO receivedResp = new ResponsibleDTO();
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +52,12 @@ public class RegisterResponsibleActivity extends AppCompatActivity {
         save = (Button) findViewById(R.id.btnRespRegisterSave);
 
         intent = getIntent();
+        received = intent.getParcelableExtra("user");
+        receivedResp = received.getResponsible();
+
+        responsibleName.setText(receivedResp.getName());
+        responsibleEmail.setText(receivedResp.getEmail());
+        relation.setText(receivedResp.getRelation());
 
         if(savedInstanceState != null){
             responsibleName.setText(savedInstanceState.getString("Name"));
@@ -86,15 +99,28 @@ public class RegisterResponsibleActivity extends AppCompatActivity {
     }
 
     private void showDialog() {
-        DialogFragment newFragment = WarnigSaveDialog.newInstance(R.string.warning_save);
-        newFragment.show(getFragmentManager(), "tag");
+        Fragment newFragment = DialogFragment.instantiate(this, "Tem certeza de que deseja sair sem salvar?");
+//        newFragment.
     }
 
     public void doPositiveClick() {
         // Do stuff here.
         Log.i("FragmentAlertDialog", "Positive click!");
-        Intent intent = new Intent(getBaseContext(), MainScreenActivity.class);
-        startActivity(intent);
+        dto.setEmail(responsibleEmail.getText().toString());
+        dto.setName(responsibleName.getText().toString());
+        dto.setRelation(relation.getText().toString());
+        email = intent.getStringExtra("Email");
+
+        result = register.changeResponsible(email, dto);
+
+        if(result){
+            finish();
+        } else {
+//                    genericError.setMessage(R.string.Error);
+//                    genericError.onCreateDialog(savedInstanceState);
+        }
+
+        finish();
     }
 
     public void doNegativeClick() {
@@ -103,9 +129,9 @@ public class RegisterResponsibleActivity extends AppCompatActivity {
         finish();
     }
 
-    @Override
-    public void onBackPressed() {
-        showDialog();
-    }
+//    @Override
+//    public void onBackPressed() {
+//        showDialog();
+//    }
 
 }
