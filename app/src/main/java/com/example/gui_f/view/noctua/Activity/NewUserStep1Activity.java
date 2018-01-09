@@ -10,6 +10,8 @@ import android.widget.EditText;
 
 import com.example.gui_f.model.noctua.UserDTO;
 import com.example.gui_f.noctua.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class NewUserStep1Activity extends AppCompatActivity {
 
@@ -17,11 +19,15 @@ public class NewUserStep1Activity extends AppCompatActivity {
     private EditText surname;
     private EditText email;
     private EditText birthday;
+    private EditText password;
     private Button btnContinue;
 
     private UserDTO user = new UserDTO();
 
     private Intent i;
+
+    private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +41,10 @@ public class NewUserStep1Activity extends AppCompatActivity {
         surname = (EditText) findViewById(R.id.editSurname);
         email = (EditText) findViewById(R.id.editEmailNewUsr);
         birthday = (EditText) findViewById(R.id.editBday);
+        password = (EditText) findViewById(R.id.editPasswReg);
         btnContinue = (Button) findViewById(R.id.btnContinue);
+
+        mAuth = FirebaseAuth.getInstance();
 
         if(savedInstanceState != null){
             name.setText(savedInstanceState.getString("Name"));
@@ -49,14 +58,22 @@ public class NewUserStep1Activity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        user.setName(name.getText().toString());
-        user.setSurname(surname.getText().toString());
-        user.setBirthday(birthday.getText().toString());
-        user.setEmail(email.getText().toString());
+        currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            name.setText(currentUser.getDisplayName());
+            email.setText(currentUser.getEmail());
+        }
 
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                user.setName(name.getText().toString());
+                user.setSurname(surname.getText().toString());
+                user.setBirthday(birthday.getText().toString());
+                user.setEmail(email.getText().toString());
+                user.setPassword(password.getText().toString());
+
                 Intent intent = new Intent(v.getContext(), NewUserStep2Activity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);

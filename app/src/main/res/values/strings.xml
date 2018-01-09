@@ -171,5 +171,7 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="title_activity_record">Record</string>
+    
+    <string name="NotificationTitle">ATENÇÃO</string>
 
 </resources>

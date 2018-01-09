@@ -15,6 +15,8 @@ import com.example.gui_f.view.noctua.GenericError;
 import com.example.gui_f.view.noctua.UserAlreadyExists;
 import com.example.gui_f.viewmodel.noctua.NewUser.NewUser;
 import com.example.gui_f.viewmodel.noctua.NewUser.NewUserImpl;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class NewUserStep2Activity extends AppCompatActivity {
 
@@ -27,7 +29,9 @@ public class NewUserStep2Activity extends AppCompatActivity {
     private ResponsibleDTO responsible = new ResponsibleDTO();
     private UserDTO received = new UserDTO();
     private NewUser newUser = new NewUserImpl();
-    int result;
+    private int result;
+    private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
 
     private UserAlreadyExists userAlreadyExists = new UserAlreadyExists();
     private GenericError genericError = new GenericError();
@@ -38,6 +42,8 @@ public class NewUserStep2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_new_user_step2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mAuth = FirebaseAuth.getInstance();
 
        name = (EditText) findViewById(R.id.editNameResponsible);
        email = (EditText) findViewById(R.id.editEmailResponsible);
@@ -58,22 +64,26 @@ public class NewUserStep2Activity extends AppCompatActivity {
         i = getIntent();
 
         received = (UserDTO) i.getParcelableExtra("user");
-        responsible.setEmail(email.getText().toString());
-        responsible.setName(name.getText().toString());
-        responsible.setRelation(relation.getText().toString());
-
-        received.setResponsible(responsible);
+        currentUser = mAuth.getCurrentUser();
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                responsible.setEmail(email.getText().toString());
+                responsible.setName(name.getText().toString());
+                responsible.setRelation(relation.getText().toString());
+                received.setResponsible(responsible);
+
                 result = newUser.registerNewUser(received);
+                mAuth.createUserWithEmailAndPassword(received.getEmail(), received.getPassword());
                 if(result == 0){
 //                    genericError.setMessage(R.string.Error);
 //                    genericError.onCreateDialog(savedInstanceState);
                 } else if(result == 1) {
                     Intent intent = new Intent(v.getContext(), MainScreenActivity.class);
                     intent.putExtra("user", received);
+
                     startActivity(intent);
                     finish();
                 } else if(result == 2){

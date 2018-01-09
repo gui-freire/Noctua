@@ -68,6 +68,7 @@ public class DiaryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 feeling = FeelEnum.BAD.toString();
+                bad.setBackgroundColor(getResources().getColor(R.color.tiffanyBlue));
             }
         });
 
@@ -75,6 +76,7 @@ public class DiaryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 feeling = FeelEnum.MODERATE.toString();
+                kinda.setBackgroundColor(getResources().getColor(R.color.tiffanyBlue));
             }
         });
 
@@ -82,6 +84,7 @@ public class DiaryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 feeling = FeelEnum.GOOD.toString();
+                good.setBackgroundColor(getResources().getColor(R.color.tiffanyBlue));
             }
         });
 

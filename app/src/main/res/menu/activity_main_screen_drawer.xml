@@ -4,6 +4,25 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+
+        <item android:title="@string/Logs">
+            <menu>
+                <item
+                    android:id="@+id/navlog_daily"
+                    android:icon="@drawable/ic_menu_slideshow"
+                    android:title="@string/DailyLog" />
+                <item
+                    android:id="@+id/navlog_weekly"
+                    android:icon="@drawable/ic_menu_manage"
+                    android:title="@string/WeeklyLog" />
+
+                <item
+                    android:id="@+id/navlog_monthly"
+                    android:icon="@drawable/ic_menu_manage"
+                    android:title="@string/MonthlyLog" />
+            </menu>
+        </item>
+
         <item
             android:id="@+id/nav_register"
             android:icon="@drawable/ic_menu_camera"
@@ -16,30 +35,22 @@
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_menu_manage"
-            android:title="@string/Settings" />
+            android:title="@string/Settings"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:clickable="true"
+            android:orientation="vertical">
 
         <item
             android:id="@+id/nav_logOut"
             android:icon="@drawable/ic_menu_manage"
             android:title="@string/LogOut" />
+
+        </LinearLayout>
     </group>
-
-    <item android:title="@string/Logs">
-        <menu>
-            <item
-                android:id="@+id/navlog_daily"
-                android:icon="@drawable/ic_menu_slideshow"
-                android:title="@string/DailyLog" />
-            <item
-                android:id="@+id/navlog_weekly"
-                android:icon="@drawable/ic_menu_manage"
-                android:title="@string/WeeklyLog" />
-
-            <item
-                android:id="@+id/navlog_monthly"
-                android:icon="@drawable/ic_menu_manage"
-                android:title="@string/MonthlyLog" />
-        </menu>
-    </item>
 
 </menu>

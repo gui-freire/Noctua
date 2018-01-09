@@ -12,6 +12,7 @@ public class UserDTO implements Parcelable{
     private String surname;
     private String birthday;
     private String email;
+    private String password;
     private ResponsibleDTO responsible;
     private boolean resp;
 
@@ -63,6 +64,14 @@ public class UserDTO implements Parcelable{
         this.resp = resp;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public UserDTO(){}
 
     //Parcelable methods
@@ -78,6 +87,7 @@ public class UserDTO implements Parcelable{
         dest.writeString(surname);
         dest.writeString(birthday);
         dest.writeString(email);
+        dest.writeString(password);
         dest.writeInt(resp ? 1 : 0);
         dest.writeParcelable(responsible, flags);
     }
@@ -99,6 +109,7 @@ public class UserDTO implements Parcelable{
         surname = pc.readString();
         birthday = pc.readString();
         email = pc.readString();
+        password = pc.readString();
         resp = (pc.readInt() == 1);
         responsible = pc.readParcelable(ResponsibleDTO.class.getClassLoader());
     }

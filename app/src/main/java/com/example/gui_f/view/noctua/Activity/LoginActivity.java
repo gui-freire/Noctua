@@ -2,8 +2,10 @@ package com.example.gui_f.view.noctua.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,6 +17,12 @@ import com.example.gui_f.model.noctua.UserDTO;
 import com.example.gui_f.noctua.R;
 import com.example.gui_f.viewmodel.noctua.Login;
 import com.example.gui_f.viewmodel.noctua.LoginImpl;
+import com.example.gui_f.viewmodel.noctua.MainScreen;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -29,6 +37,8 @@ public class LoginActivity extends AppCompatActivity {
     private String userText;
 
     private UserDTO userDTO;
+
+    private FirebaseAuth mAuth;
 
 
     @Override
@@ -45,6 +55,8 @@ public class LoginActivity extends AppCompatActivity {
         forgotPwd = (TextView) findViewById(R.id.textForgotPwdLoginScreen);
         newUser = (TextView) findViewById(R.id.textNewUserLoginScreen);
 
+        mAuth = FirebaseAuth.getInstance();
+
         if(savedInstanceState != null){
             user.setText(savedInstanceState.getString("User"));
             password.setText(savedInstanceState.getString("Password"));
@@ -55,6 +67,10 @@ public class LoginActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        final FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            user.setText(currentUser.getEmail());
+        }
         forgotPwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,22 +88,30 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        //TODO: Fazer chamada do método de autenticação
-        //UserDTO user = autentication(userText, passwordText);
+
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 userText = user.getText().toString();
-                passwordText = user.getText().toString();
+                passwordText = password.getText().toString();
 
-//            if(user != null) {
-                userDTO = loginImpl.searchUser(userText);
-                Intent intent = new Intent(v.getContext(), MainScreenActivity.class);
-                intent.putExtra("user", userDTO);
-                startActivity(intent);
-                finish();
-//            }
+                userDTO = loginImpl.searchUser(currentUser.getEmail());
+                if(userDTO != null) {
+                    mAuth.signInWithEmailAndPassword(userText, passwordText)
+                            .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if(task.isSuccessful()) {
+                                        Intent mainIntent = new Intent(LoginActivity.this, MainScreenActivity.class);
+                                        mainIntent.putExtra("user", userDTO);
+                                        startActivity(mainIntent);
+                                        finish();
+                                    }
+                                }
+                            });
+                }
+
             }
         });
 
@@ -126,5 +150,6 @@ public class LoginActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 
 }

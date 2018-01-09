@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "544085745313",
+    "firebase_url": "https://noctua2-5489b.firebaseio.com",
+    "project_id": "noctua2-5489b",
+    "storage_bucket": "noctua2-5489b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:544085745313:android:5a432dcf7ca2fe5d",
+        "android_client_info": {
+          "package_name": "com.example.gui_f.noctua"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "544085745313-1hvcv1njrd9octgrqhgj2f4jhna3t731.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gui_f.noctua",
+            "certificate_hash": "785ec9d517c89cbaf02ba2d6b68fb55a384b7bdf"
+          }
+        },
+        {
+          "client_id": "544085745313-uk7tna9a49p6k8401o3a9hfck1fnqvpa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEQ-M1Cx6tb_URt7c2gY_MrEyoSb_r6kQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "544085745313-uk7tna9a49p6k8401o3a9hfck1fnqvpa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

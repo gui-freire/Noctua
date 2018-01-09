@@ -8,7 +8,8 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.gui_f.view.noctua.Activity.NewUserStep1Activity"
     tools:showIn="@layout/activity_new_user_step1"
-    android:background="@color/limePastelGreen">
+    android:background="@color/limePastelGreen"
+    android:scrollbars="vertical">
 
     <TextView
         android:layout_width="match_parent"
@@ -93,6 +94,24 @@
         android:hint="@string/BirthdayExample"
         android:textSize="10pt"
         android:textColor="@color/tiffanyBlue"/>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="1dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Password"
+        android:textSize="10pt"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editPasswReg"
+        android:textSize="10pt"
+        android:textColor="@color/tiffanyBlue"
+        android:hint="*************"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
