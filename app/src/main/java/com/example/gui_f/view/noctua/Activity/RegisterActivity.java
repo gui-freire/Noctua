@@ -1,7 +1,9 @@
 package com.example.gui_f.view.noctua.Activity;
 
-import android.app.DialogFragment;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +16,6 @@ import android.widget.EditText;
 import com.example.gui_f.model.noctua.UserDTO;
 import com.example.gui_f.noctua.R;
 import com.example.gui_f.view.noctua.GenericError;
-import com.example.gui_f.view.noctua.WarnigSaveDialog;
 import com.example.gui_f.viewmodel.noctua.Register.Register;
 import com.example.gui_f.viewmodel.noctua.Register.RegisterImpl;
 
@@ -89,11 +90,11 @@ public class RegisterActivity extends AppCompatActivity {
                 user.setEmail(email.getText().toString());
                 boolean result = register.changeData(user, context);
                 if(result){
+                    showSuccessDialog();
                     finish();
                 }
                 else{
-                    //genericError.setMessage(R.string.Error);
-//                    genericError.onCreateDialog(savedInstanceState);
+                   showErrorDialog();
                 }
             }
         });
@@ -113,36 +114,56 @@ public class RegisterActivity extends AppCompatActivity {
         outState.putString("Email", email.getText().toString());
     }
 
+    //Builds a AlertDialog
     private void showDialog() {
-        DialogFragment newFragment = WarnigSaveDialog.newInstance(R.string.warning_save);
-        newFragment.show(getFragmentManager(), "tag");
-    }
-
-    public void doPositiveClick() {
-        // Do stuff here.
-        Log.i("FragmentAlertDialog", "Positive click!");
-        user.setName(name.getText().toString());
-        user.setSurname(surname.getText().toString());
-        user.setBirthday(birthday.getText().toString());
-        user.setEmail(email.getText().toString());
-        boolean result = register.changeData(user, context);
-        if(result){
-            finish();
-        }
-        else{
-            //genericError.setMessage(R.string.Error);
-//                    genericError.onCreateDialog(savedInstanceState);
-        };
-    }
-
-    public void doNegativeClick() {
-        // Do stuff here.
-        Log.i("FragmentAlertDialog", "Negative click!");
-        finish();
+       new AlertDialog.Builder(RegisterActivity.this)
+               .setMessage(R.string.warning_save)
+               .setPositiveButton(R.string.SaveFragment, new DialogInterface.OnClickListener() {
+                   @Override
+                   public void onClick(DialogInterface dialog, int which) {
+                       Log.i("FragmentAlertDialog", "Positive click!");
+                       setProgressBarIndeterminateVisibility(true);
+                       user.setName(name.getText().toString());
+                       user.setSurname(surname.getText().toString());
+                       user.setBirthday(birthday.getText().toString());
+                       user.setEmail(email.getText().toString());
+                       boolean result = register.changeData(user, context);
+                       if(result){
+                           setProgressBarIndeterminateVisibility(false);
+                           showSuccessDialog();
+                           finish();
+                           ((Activity) context).finish();
+                       }
+                       else{
+                          showErrorDialog();
+                       }
+                   }
+               })
+               .setNegativeButton(R.string.YesFragment, new DialogInterface.OnClickListener() {
+                   @Override
+                   public void onClick(DialogInterface dialog, int which) {
+                       Log.i("FragmentAlertDialog", "Negative click!");
+                       finish();
+                   }
+               })
+               .show();
     }
 
     @Override
     public void onBackPressed() {
         showDialog();
+    }
+
+
+    public void showErrorDialog(){
+        new android.app.AlertDialog.Builder(RegisterActivity.this)
+                .setMessage(R.string.Error)
+                .setNeutralButton(R.string.Cancel,null).show();
+    }
+
+    public void showSuccessDialog(){
+        new android.app.AlertDialog.Builder(RegisterActivity.this)
+                .setMessage(R.string.RegisterSuccess)
+                .setNeutralButton(R.string.Cancel,null).show();
     }
 }

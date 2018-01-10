@@ -9,7 +9,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.gui_f.view.noctua.Activity.LoginActivity"
     tools:showIn="@layout/activity_login"
-    android:background="@color/limePastelGreen">
+    android:background="@color/backgroundColour">
 
     <TextView
         android:layout_width="wrap_content"
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/UserExmp"
         android:textSize="10pt"
-        android:textColor="@color/tiffanyBlue"
+        android:textColor="@color/textColour"
         />
 
     <Space
@@ -60,7 +60,7 @@
         android:inputType="textPassword"
         android:hint="************"
         android:textSize="10pt"
-        android:textColor="@color/tiffanyBlue"/>
+        android:textColor="@color/textColour"/>
 
     <Space
         android:layout_width="0dp"
@@ -74,18 +74,12 @@
             android:layout_height="wrap_content"
             android:text="@string/Login"
             android:textSize="10pt"
-            android:backgroundTint="@color/tiffanyBlue" />
+            android:backgroundTint="@color/buttonColour" />
 
         <Space
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
-
-        <Button
-            android:id="@+id/notfic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Notificação"/>
 
         <TextView
             android:id="@+id/textForgotPwdLoginScreen"
@@ -96,7 +90,7 @@
             android:clickable="true"
             android:focusable="true"
             android:textSize="10pt"
-            android:textColor="@color/tiffanyBlue" />
+            android:textColor="@color/buttonColour" />
 
         <Space
             android:layout_width="wrap_content"
@@ -112,7 +106,7 @@
             android:clickable="true"
             android:focusable="true"
             android:textSize="10pt"
-            android:textColor="@color/tiffanyBlue"/>
+            android:textColor="@color/buttonColour"/>
 
     <Space
         android:layout_width="0dp"

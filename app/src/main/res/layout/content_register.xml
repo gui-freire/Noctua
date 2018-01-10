@@ -10,7 +10,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.gui_f.view.noctua.Activity.RegisterActivity"
     tools:showIn="@layout/activity_register"
-    android:background="@color/tiffanyBlue">
+    android:background="@color/backgroundColour">
 
     <TextView
         android:layout_width="wrap_content"
@@ -23,7 +23,7 @@
         android:layout_width="700px"
         android:layout_height="wrap_content"
         android:textSize="10pt"
-        android:textColor="@color/limePastelGreen"/>
+        android:textColor="@color/textColour"/>
 
     <Space
         android:layout_width="wrap_content"
@@ -40,7 +40,7 @@
         android:layout_width="700px"
         android:layout_height="wrap_content"
         android:textSize="10pt"
-        android:textColor="@color/limePastelGreen"/>
+        android:textColor="@color/textColour"/>
 
     <Space
         android:layout_width="wrap_content"
@@ -58,7 +58,7 @@
         android:layout_width="700px"
         android:layout_height="wrap_content"
         android:textSize="10pt"
-        android:textColor="@color/limePastelGreen"/>
+        android:textColor="@color/textColour"/>
 
     <Space
         android:layout_width="wrap_content"
@@ -76,7 +76,7 @@
         android:layout_width="700px"
         android:layout_height="wrap_content"
         android:textSize="10pt"
-        android:textColor="@color/limePastelGreen"/>
+        android:textColor="@color/textColour"/>
 
     <Space
         android:layout_width="wrap_content"
@@ -93,7 +93,7 @@
         android:layout_height="match_parent"
         android:text="@string/Save"
         android:textSize="10pt"
-        android:background="@color/limePastelGreen"/>
+        android:background="@color/buttonColour"/>
 
         <Space
             android:layout_width="2pt"
@@ -104,7 +104,7 @@
         android:layout_height="wrap_content"
         android:text="@string/Responsible"
         android:textSize="10pt"
-        android:background="@color/limePastelGreen"/>
+        android:background="@color/buttonColour"/>
     </LinearLayout>
 
     <Space

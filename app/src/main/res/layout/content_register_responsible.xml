@@ -10,7 +10,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.gui_f.view.noctua.Activity.RegisterResponsibleActivity"
     tools:showIn="@layout/activity_register_responsible"
-    android:background="@color/tiffanyBlue">
+    android:background="@color/backgroundColour">
 
     <Space
         android:layout_width="wrap_content"
@@ -22,14 +22,14 @@
         android:layout_height="wrap_content"
         android:text="@string/NameResponsiblePerson"
         android:textSize="10pt"
-        android:textColor="@color/limePastelGreen"/>
+        android:textColor="@color/textColour"/>
 
     <EditText
         android:id="@+id/editNameResponsibleRegister"
         android:layout_width="700px"
         android:layout_height="wrap_content"
         android:textSize="10pt"
-        android:textColor="@color/limePastelGreen" />
+        android:textColor="@color/textColour" />
 
     <Space
         android:layout_width="wrap_content"
@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/EmailResponsiblePerson"
-        android:textColor="@color/limePastelGreen"
+        android:textColor="@color/textColour"
         android:textSize="10pt"/>
 
     <EditText
@@ -48,7 +48,7 @@
         android:layout_width="700px"
         android:layout_height="wrap_content"
         android:textSize="10pt"
-        android:textColor="@color/limePastelGreen"/>
+        android:textColor="@color/textColour"/>
 
     <Space
         android:layout_width="wrap_content"
@@ -60,13 +60,13 @@
         android:layout_height="wrap_content"
         android:text="@string/Relation"
         android:textSize="10pt"
-        android:textColor="@color/limePastelGreen"/>
+        android:textColor="@color/textColour"/>
 
     <EditText
         android:id="@+id/editRelationRegister"
         android:layout_width="700px"
         android:layout_height="wrap_content"
-        android:textColor="@color/limePastelGreen"
+        android:textColor="@color/textColour"
         android:textSize="10pt"/>
 
     <Space
@@ -80,7 +80,7 @@
         android:layout_height="wrap_content"
         android:text="@string/Save"
         android:textSize="10pt"
-        android:background="@color/limePastelGreen"/>
+        android:background="@color/buttonColour"/>
 
     <Space
         android:layout_width="wrap_content"

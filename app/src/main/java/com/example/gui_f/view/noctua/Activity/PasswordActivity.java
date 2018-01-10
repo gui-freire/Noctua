@@ -1,6 +1,9 @@
 package com.example.gui_f.view.noctua.Activity;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -47,10 +50,10 @@ public class PasswordActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+                    showSuccessDialog();
                     password.forgotPassword(email.getText().toString(), context);
                 }catch (Exception e){
-//                    genericError.setMessage(R.string.SomethingWrong);
-//                    genericError.onCreateDialog(savedInstanceState);
+                    showErrorDialog();
                 }
                 finish();
             }
@@ -60,5 +63,24 @@ public class PasswordActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
+    }
+
+    public void showSuccessDialog(){
+        new AlertDialog.Builder(PasswordActivity.this)
+                .setMessage(R.string.ChangePassword)
+                .setNeutralButton(R.string.Okay, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                })
+                .show();
+    }
+
+    public void showErrorDialog(){
+        new AlertDialog.Builder(PasswordActivity.this)
+                .setMessage(R.string.Error)
+                .setNeutralButton(R.string.Okay, null)
+                .show();
     }
 }

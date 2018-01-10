@@ -8,7 +8,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.gui_f.view.noctua.Activity.MainScreenActivity"
     tools:showIn="@layout/app_bar_main_screen"
-    android:background="@color/limePastelGreen">
+    android:background="@color/backgroundColour">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -19,14 +19,14 @@
             android:layout_height="wrap_content"
             android:text="@string/Hello"
             android:textSize="12pt"
-            android:textColor="@color/tiffanyBlue"/>
+            android:textColor="@color/textColour"/>
 
         <TextView
             android:id="@+id/textUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12pt"
-            android:textColor="@color/tiffanyBlue"/>
+            android:textColor="@color/textColour"/>
 
     </LinearLayout>
 
@@ -47,7 +47,7 @@
             android:layout_gravity="center"
             android:text="@string/Heartbeats"
             android:textSize="10pt"
-            android:textColor="@color/tiffanyBlue"/>
+            android:textColor="@color/textColour"/>
 
         <ImageView
             android:src="@mipmap/ic_mainscreen_heartbeat"
@@ -62,7 +62,7 @@
             android:text="@string/Placeholder"
             android:layout_gravity="center"
             android:textSize="10pt"
-            android:textColor="@color/tiffanyBlue"/>
+            android:textColor="@color/textColour"/>
 
         <Space
             android:layout_width="wrap_content"
@@ -75,7 +75,7 @@
             android:text="@string/Bloodpression"
             android:layout_gravity="center"
             android:textSize="10pt"
-            android:textColor="@color/tiffanyBlue"/>
+            android:textColor="@color/textColour"/>
 
         <ImageView
             android:src="@mipmap/ic_bloopressure"
@@ -90,7 +90,7 @@
             android:layout_gravity="center"
             android:text="@string/Placeholder"
             android:textSize="10pt"
-            android:textColor="@color/tiffanyBlue"/>
+            android:textColor="@color/textColour"/>
 
         <Space
             android:layout_width="wrap_content"
@@ -110,7 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/Diary" android:textSize="10pt"
-        android:backgroundTint="@color/tiffanyBlue"/>
+        android:backgroundTint="@color/buttonColour"/>
 
     <Space
         android:layout_width="wrap_content"

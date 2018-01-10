@@ -1,6 +1,9 @@
 package com.example.gui_f.view.noctua.Activity;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -95,11 +98,16 @@ public class LoginActivity extends AppCompatActivity {
                 passwordText = password.getText().toString();
 
                 userDTO = loginImpl.searchUser(userText, passwordText, context);
-                if(userDTO != null) {
+                if(!userDTO.isExists()){
+                    showIncorrectDialog();
+                }
+                else if(userDTO != null) {
                     Intent mainIntent = new Intent(LoginActivity.this, MainScreenActivity.class);
                     mainIntent.putExtra("user", userDTO);
                     startActivity(mainIntent);
                     finish();
+                } else{
+                    showInexistentDialog();
                 }
             }
         });
@@ -140,5 +148,26 @@ public class LoginActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void showIncorrectDialog(){
+        new AlertDialog.Builder(LoginActivity.this)
+                .setMessage(R.string.IncorrectUser)
+                .setNeutralButton(R.string.Okay, null)
+                .show();
+    }
+
+    public void showInexistentDialog(){
+        new AlertDialog.Builder(LoginActivity.this)
+                .setMessage(R.string.UserAlreadyExists)
+                .setPositiveButton(R.string.CreateNew, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(LoginActivity.this, NewUserStep1Activity.class);
+                        startActivity(intent);
+                        ((Activity) context).finish();
+                    }
+                })
+                .setNegativeButton(R.string.Okay, null)
+                .show();
+    }
 
 }

@@ -15,6 +15,7 @@ public class UserDTO implements Parcelable{
     private String password;
     private ResponsibleDTO responsible;
     private boolean resp;
+    private boolean exists;
 
     public String getName() {
         return name;
@@ -72,6 +73,14 @@ public class UserDTO implements Parcelable{
         this.password = password;
     }
 
+    public boolean isExists() {
+        return exists;
+    }
+
+    public void setExists(boolean exists) {
+        this.exists = exists;
+    }
+
     public UserDTO(){}
 
     //Parcelable methods
@@ -89,6 +98,7 @@ public class UserDTO implements Parcelable{
         dest.writeString(email);
         dest.writeString(password);
         dest.writeInt(resp ? 1 : 0);
+        dest.writeInt(exists ? 1 : 0);
         dest.writeParcelable(responsible, flags);
     }
 
@@ -111,6 +121,7 @@ public class UserDTO implements Parcelable{
         email = pc.readString();
         password = pc.readString();
         resp = (pc.readInt() == 1);
+        exists = (pc.readInt() == 1);
         responsible = pc.readParcelable(ResponsibleDTO.class.getClassLoader());
     }
 }

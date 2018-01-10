@@ -1,6 +1,8 @@
 package com.example.gui_f.view.noctua.Activity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -59,9 +61,7 @@ public class MainScreenActivity extends AppCompatActivity
             dto = (UserDTO) intent.getParcelableExtra("user");
         }
 
-        //Checks if it needs to get the latest data or if it needs to get a day/week/month data
-
-            vital = mainScreen.searchLast(dto.getName(), context);
+        vital = mainScreen.searchLast(dto.getName(), context);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -99,6 +99,9 @@ public class MainScreenActivity extends AppCompatActivity
                 startActivity(intent1);
             }
         });
+
+        if(heartbeats.equals("-") || bloodpression.equals("-"))
+            showNoDataDialog();
     }
 
     @Override
@@ -180,5 +183,12 @@ public class MainScreenActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void showNoDataDialog(){
+        new AlertDialog.Builder(MainScreenActivity.this)
+                .setMessage(R.string.NoData)
+                .setNeutralButton(R.string.Okay, null)
+                .show();
     }
 }

@@ -75,6 +75,7 @@ public class LoginServiceImpl implements LoginService {
         userReturn.setBirthday("30/04/1997");
         userReturn.setName("Guilherme");
         userReturn.setSurname("Freire");
+        userReturn.setExists(true);
 
         dto.setName("Cristina");
         dto.setRelation("Mãe");

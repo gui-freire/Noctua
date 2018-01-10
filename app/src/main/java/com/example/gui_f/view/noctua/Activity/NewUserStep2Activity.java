@@ -1,6 +1,8 @@
 package com.example.gui_f.view.noctua.Activity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -75,16 +77,16 @@ public class NewUserStep2Activity extends AppCompatActivity {
 
                 result = newUser.registerNewUser(received, context);
                 if(result == 0){
-//                    genericError.setMessage(R.string.Error);
-//                    genericError.onCreateDialog(savedInstanceState);
+                    showErrorDialog();
                 } else if(result == 1) {
+                    showUserRegisteredDialog();
                     Intent intent = new Intent(v.getContext(), MainScreenActivity.class);
                     intent.putExtra("user", received);
 
                     startActivity(intent);
                     finish();
-                } else if(result == 2){
-//                    userAlreadyExists.onCreateDialog(savedInstanceState);
+                } else if(result == 2) {
+                    showUserExistsDialog();
                 }
             }
         });
@@ -102,5 +104,26 @@ public class NewUserStep2Activity extends AppCompatActivity {
         outState.putString("Name", name.getText().toString());
         outState.putString("Email", email.getText().toString());
         outState.putString("Relation", relation.getText().toString());
+    }
+
+    public void showErrorDialog(){
+        new AlertDialog.Builder(NewUserStep2Activity.this)
+                .setMessage(R.string.Error)
+                .setNeutralButton(R.string.Okay, null)
+                .show();
+    }
+
+    public void showUserRegisteredDialog(){
+        new AlertDialog.Builder(NewUserStep2Activity.this)
+                .setMessage(R.string.NewUserSuccess)
+                .setNeutralButton(R.string.Okay, null)
+                .show();
+    }
+
+    public void showUserExistsDialog(){
+        new AlertDialog.Builder(NewUserStep2Activity.this)
+                .setMessage(R.string.UserAlreadyExists)
+                .setNeutralButton(R.string.Cancel, null)
+                .show();
     }
 }

@@ -40,7 +40,7 @@
     <string name="SignOn">Cadastrar</string>
     <string name="title_activity_main_screen">MainScreen</string>
     <string name="UserAlreadyExists">Usuário já existe</string>
-    <string name="Okay">Cancelar</string>
+    <string name="Cancel">Cancelar</string>
     <string name="Error">Algo deu errado</string>
 
     <!-- Main screen strings -->
@@ -173,5 +173,14 @@
     <string name="title_activity_record">Record</string>
     
     <string name="NotificationTitle">ATENÇÃO</string>
+
+    <string name="RegisterSuccess">Alteração feita com sucesso!</string>
+    <string name="IncorrectUser">Senha ou usuário incorretos!</string>
+    <string name="CreateNew">Criar usuário</string>
+    <string name="NoData">Opa, parece que você não tem nenhum dado a ser mostrado</string>
+    <string name="NewUserSuccess">Usuário cadastrado com sucesso</string>
+    <string name="Okay">Okay</string>
+    <string name="UserExists">Usuário já existe</string>
+    <string name="ChangePassword">Sua senha foi enviada para seu e-mail.</string>
 
 </resources>

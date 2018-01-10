@@ -1,11 +1,13 @@
 package com.example.gui_f.view.noctua.Activity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,6 +34,8 @@ public class DiaryActivity extends AppCompatActivity {
     private GenericError genericError = new GenericError();
 
     private Context context = this;
+
+    private String user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +70,7 @@ public class DiaryActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         Intent intent = getIntent();
-        final String user = intent.getStringExtra("user");
+        user = intent.getStringExtra("user");
         bad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,5 +119,52 @@ public class DiaryActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle outState) {
         outState.putString("Diary", diary.getText().toString());
         super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        showAlertDialog();
+    }
+
+    public void showAlertDialog(){
+        new AlertDialog.Builder(context)
+                .setMessage(R.string.warning_save)
+                .setPositiveButton(R.string.SaveFragment, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Log.d("AlertDialogPositive", "Positive click!");
+                        try {
+                            if (diary == null) {
+                                diary.setText("");
+                            }
+                            if(diaryService.sendDiary(user, diary.getText().toString(), feeling, context))
+                                showSuccessDialog();
+                            else
+                                showErrorDialog();
+                        }catch (Exception e){
+                            showErrorDialog();
+                        }
+                    }
+                })
+                .setNegativeButton(R.string.YesFragment, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                })
+                .show();
+    }
+
+    public void showErrorDialog(){
+        new android.app.AlertDialog.Builder(DiaryActivity.this)
+                .setMessage(getResources().getString(R.string.Error))
+                .setNeutralButton(getResources().getString(R.string.Okay),null).show();
+    }
+
+    public void showSuccessDialog(){
+        new android.app.AlertDialog.Builder(DiaryActivity.this)
+                .setMessage(getResources().getString(R.string.RegisterSuccess))
+                .setNeutralButton(getResources().getString(R.string.Okay),null).show();
     }
 }

@@ -1,22 +1,28 @@
 package com.example.gui_f.view.noctua.Activity;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.example.gui_f.model.noctua.ResponsibleDTO;
 import com.example.gui_f.model.noctua.UserDTO;
 import com.example.gui_f.noctua.R;
 import com.example.gui_f.view.noctua.GenericError;
+import com.example.gui_f.viewmodel.noctua.NewUser.NewUser;
 import com.example.gui_f.viewmodel.noctua.Register.Register;
 import com.example.gui_f.viewmodel.noctua.Register.RegisterImpl;
 
@@ -35,7 +41,6 @@ public class RegisterResponsibleActivity extends AppCompatActivity {
     private String email;
 
     private boolean result;
-    private GenericError genericError = new GenericError();
 
     private Context context = this;
 
@@ -61,6 +66,7 @@ public class RegisterResponsibleActivity extends AppCompatActivity {
         responsibleName.setText(receivedResp.getName());
         responsibleEmail.setText(receivedResp.getEmail());
         relation.setText(receivedResp.getRelation());
+
 
         if(savedInstanceState != null){
             responsibleName.setText(savedInstanceState.getString("Name"));
@@ -101,40 +107,60 @@ public class RegisterResponsibleActivity extends AppCompatActivity {
         outState.putString("Relation", relation.getText().toString());
     }
 
-    private void showDialog() {
-        Fragment newFragment = DialogFragment.instantiate(this, "Tem certeza de que deseja sair sem salvar?");
-//        newFragment.
+    private void showAlertDialog() {
+        new AlertDialog.Builder(RegisterResponsibleActivity.this)
+        .setMessage(getResources().getString(R.string.warning_save))
+        .setPositiveButton(getResources().getString(R.string.SaveFragment),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Log.i("FragmentAlertDialog", "Positive click!");
+//                        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+                        setProgressBarIndeterminateVisibility(true);
+                        dto.setEmail(responsibleEmail.getText().toString());
+                        dto.setName(responsibleName.getText().toString());
+                        dto.setRelation(relation.getText().toString());
+                        email = intent.getStringExtra("Email");
+
+                        result = register.changeResponsible(email, dto, context);
+
+                        if(result){
+                            setProgressBarIndeterminateVisibility(false);
+                            finish();
+                            ((Activity) context).finish();
+                        } else{
+                            setProgressBarIndeterminateVisibility(false);
+                            showErrorDialog();
+                        }
+                    }
+                })
+
+        .setNegativeButton(getResources().getString(R.string.YesFragment),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Log.i("FragmentAlertDialog", "Negative click!");
+                        finish();
+                    }
+                }).show();
     }
 
-    public void doPositiveClick() {
-        // Do stuff here.
-        Log.i("FragmentAlertDialog", "Positive click!");
-        dto.setEmail(responsibleEmail.getText().toString());
-        dto.setName(responsibleName.getText().toString());
-        dto.setRelation(relation.getText().toString());
-        email = intent.getStringExtra("Email");
 
-        result = register.changeResponsible(email, dto, context);
-
-        if(result){
-            finish();
-        } else {
-//                    genericError.setMessage(R.string.Error);
-//                    genericError.onCreateDialog(savedInstanceState);
-        }
-
-        finish();
+    @Override
+    public void onBackPressed() {
+        showAlertDialog();
     }
 
-    public void doNegativeClick() {
-        // Do stuff here.
-        Log.i("FragmentAlertDialog", "Negative click!");
-        finish();
+    public void showErrorDialog(){
+        new AlertDialog.Builder(RegisterResponsibleActivity.this)
+                .setMessage(getResources().getString(R.string.Error))
+        .setNeutralButton(getResources().getString(R.string.Okay),null).show();
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        showDialog();
-//    }
+    public void showSuccessDialog(){
+        new AlertDialog.Builder(RegisterResponsibleActivity.this)
+                .setMessage(getResources().getString(R.string.RegisterSuccess))
+        .setNeutralButton(getResources().getString(R.string.Okay),null).show();
+    }
 
 }
