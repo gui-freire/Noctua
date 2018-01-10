@@ -1,5 +1,7 @@
 package com.example.gui_f.model.noctua.NewUser;
 
+import android.content.Context;
+
 import com.example.gui_f.model.noctua.UserDTO;
 
 /**
@@ -7,5 +9,5 @@ import com.example.gui_f.model.noctua.UserDTO;
  */
 
 public interface NewUserService {
-    int registerNewUser(UserDTO user);
+    int registerNewUser(UserDTO user, Context context);
 }

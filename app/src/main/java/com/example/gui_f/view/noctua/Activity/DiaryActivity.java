@@ -1,5 +1,6 @@
 package com.example.gui_f.view.noctua.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -29,6 +30,8 @@ public class DiaryActivity extends AppCompatActivity {
     private Diary diaryService = new DiaryImpl();
 
     private GenericError genericError = new GenericError();
+
+    private Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +86,7 @@ public class DiaryActivity extends AppCompatActivity {
         good.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //TODO: fazer com que apenas uma opção possa ser selecionada
                 feeling = FeelEnum.GOOD.toString();
                 good.setBackgroundColor(getResources().getColor(R.color.tiffanyBlue));
             }
@@ -93,8 +97,8 @@ public class DiaryActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     if (diary != null) {
-                        diaryService.sendDiary(user, diary.getText().toString(), feeling);
-                    }
+                        diaryService.sendDiary(user, diary.getText().toString(), feeling, context);
+                    } //TODO: diário realmente precisa estar preenchido?
                 }catch (Exception e){
 
                 }

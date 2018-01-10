@@ -1,5 +1,6 @@
 package com.example.gui_f.view.noctua.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -30,8 +31,7 @@ public class NewUserStep2Activity extends AppCompatActivity {
     private UserDTO received = new UserDTO();
     private NewUser newUser = new NewUserImpl();
     private int result;
-    private FirebaseAuth mAuth;
-    private FirebaseUser currentUser;
+    private Context context = this;
 
     private UserAlreadyExists userAlreadyExists = new UserAlreadyExists();
     private GenericError genericError = new GenericError();
@@ -43,7 +43,6 @@ public class NewUserStep2Activity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mAuth = FirebaseAuth.getInstance();
 
        name = (EditText) findViewById(R.id.editNameResponsible);
        email = (EditText) findViewById(R.id.editEmailResponsible);
@@ -64,7 +63,6 @@ public class NewUserStep2Activity extends AppCompatActivity {
         i = getIntent();
 
         received = (UserDTO) i.getParcelableExtra("user");
-        currentUser = mAuth.getCurrentUser();
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,8 +73,7 @@ public class NewUserStep2Activity extends AppCompatActivity {
                 responsible.setRelation(relation.getText().toString());
                 received.setResponsible(responsible);
 
-                result = newUser.registerNewUser(received);
-                mAuth.createUserWithEmailAndPassword(received.getEmail(), received.getPassword());
+                result = newUser.registerNewUser(received, context);
                 if(result == 0){
 //                    genericError.setMessage(R.string.Error);
 //                    genericError.onCreateDialog(savedInstanceState);

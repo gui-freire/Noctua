@@ -1,5 +1,7 @@
 package com.example.gui_f.viewmodel.noctua.Register;
 
+import android.content.Context;
+
 import com.example.gui_f.model.noctua.ResponsibleDTO;
 import com.example.gui_f.model.noctua.UserDTO;
 
@@ -8,7 +10,7 @@ import com.example.gui_f.model.noctua.UserDTO;
  */
 
 public interface Register {
-    boolean changeData(UserDTO user);
+    boolean changeData(UserDTO user, Context context);
 
-    boolean changeResponsible(String email, ResponsibleDTO resp);
+    boolean changeResponsible(String email, ResponsibleDTO resp, Context context);
 }

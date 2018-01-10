@@ -26,9 +26,6 @@ public class NewUserStep1Activity extends AppCompatActivity {
 
     private Intent i;
 
-    private FirebaseAuth mAuth;
-    private FirebaseUser currentUser;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +41,6 @@ public class NewUserStep1Activity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.editPasswReg);
         btnContinue = (Button) findViewById(R.id.btnContinue);
 
-        mAuth = FirebaseAuth.getInstance();
 
         if(savedInstanceState != null){
             name.setText(savedInstanceState.getString("Name"));
@@ -57,12 +53,6 @@ public class NewUserStep1Activity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
-        currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            name.setText(currentUser.getDisplayName());
-            email.setText(currentUser.getEmail());
-        }
 
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override

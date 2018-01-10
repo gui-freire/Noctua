@@ -1,6 +1,7 @@
 package com.example.gui_f.view.noctua.Activity;
 
 import android.app.ListActivity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -31,6 +32,8 @@ public class RecordActivity extends ListActivity {
     private int week;
     private int month;
 
+    private Context context = this;
+
     private final String DAILY = "Relatório Diário";
     private final String WEEKLY = "Relatório Semanal";
     private final String MONTHLY = "Reatório Mensal";
@@ -55,7 +58,7 @@ public class RecordActivity extends ListActivity {
             title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
             listView.addHeaderView(title);
-            List<String> list = listToString(mainScreen.searchDaily(email, day));
+            List<String> list = listToString(mainScreen.searchDaily(email, day, context));
 
             listAdapter = new ArrayAdapter<String>(
                     this,
@@ -70,7 +73,7 @@ public class RecordActivity extends ListActivity {
             title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
             listView.addHeaderView(title);
-            List<String> list = listToString(mainScreen.searchWeekly(email, week, month));
+            List<String> list = listToString(mainScreen.searchWeekly(email, week, month, context));
 
             listAdapter = new ArrayAdapter<String>(
                     this,
@@ -84,7 +87,7 @@ public class RecordActivity extends ListActivity {
             title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
             listView.addHeaderView(title);
-            List<String> list = listToString(mainScreen.searchMonthly(email, month));
+            List<String> list = listToString(mainScreen.searchMonthly(email, month, context));
 
             listAdapter = new ArrayAdapter<String>(
                     this,

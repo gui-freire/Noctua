@@ -1,7 +1,14 @@
 package com.example.gui_f.model.noctua.Register;
 
+import android.content.Context;
 import android.util.Log;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.gui_f.model.noctua.AppController;
 import com.example.gui_f.model.noctua.ResponsibleDTO;
 import com.example.gui_f.model.noctua.UserDTO;
 
@@ -14,10 +21,12 @@ import org.json.JSONObject;
 
 public class RegisterServiceImpl implements RegisterService {
 
-    JSONObject json = new JSONObject();
+    private JSONObject json = new JSONObject();
+    private String webserviceUri = "http://jfsajfsa";
+    private String httpResponse;
 
     @Override
-    public boolean changeData(UserDTO user) {
+    public boolean changeData(UserDTO user, Context context) {
         try{
             json.put("name", user.getName());
             json.put("surname", user.getSurname());
@@ -37,10 +46,35 @@ public class RegisterServiceImpl implements RegisterService {
             Log.i("RegisterError", "Error in sending changed user to service " + e.getMessage());
             return false;
         }
+
+//        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, webserviceUri, json,
+//                new Response.Listener<JSONObject>() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        try {
+//                            httpResponse = response.toString();
+//                        } catch (Exception e){
+//                            Log.d("RegisterError", "Something went wrong on the webservice call " + e.getMessage());
+//                        }
+//                    }
+//                }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                VolleyLog.d(error.getMessage());
+//            }
+//        });
+//
+//        AppController.getInstance(context).addToRequestQueue(request);
+
+//        if(httpResponse == "200"){
+//            return true;
+//        } else{
+//            return false;
+//        }
     }
 
     @Override
-    public boolean changeResponsible(String user, ResponsibleDTO responsibleDTO) {
+    public boolean changeResponsible(String user, ResponsibleDTO responsibleDTO, Context context) {
         try{
             json.put("user", user);
             json.accumulate("responsible", responsibleDTO);
@@ -54,5 +88,24 @@ public class RegisterServiceImpl implements RegisterService {
             Log.i("RegisterRespError", "Error in sending responsible to service " + e.getMessage());
             return false;
         }
+
+//        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, webserviceUri, json,
+//                new Response.Listener<JSONObject>() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        try {
+//                            httpResponse = response.toString();
+//                        } catch (Exception e) {
+//                            Log.d("JsonLoginError", "Something went wrong on the webservice call " + e.getMessage());
+//                        }
+//                    }
+//                }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                VolleyLog.d(error.getMessage());
+//            }
+//        });
+//
+//        AppController.getInstance(context).addToRequestQueue(request);
     }
 }

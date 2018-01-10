@@ -1,5 +1,7 @@
 package com.example.gui_f.model.noctua.Login;
 
+import android.content.Context;
+
 import com.example.gui_f.model.noctua.UserDTO;
 
 /**
@@ -7,5 +9,5 @@ import com.example.gui_f.model.noctua.UserDTO;
  */
 
 public interface LoginService {
-    UserDTO searchUser(String user);
+    UserDTO searchUser(String user, String password, Context context);
 }

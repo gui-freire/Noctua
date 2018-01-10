@@ -1,5 +1,6 @@
 package com.example.gui_f.viewmodel.noctua.NewUser;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.example.gui_f.model.noctua.NewUser.NewUserService;
@@ -15,10 +16,10 @@ public class NewUserImpl implements NewUser {
     NewUserService newUserService = new NewUserServiceImpl();
 
     @Override
-    public int registerNewUser(UserDTO user) {
+    public int registerNewUser(UserDTO user, Context context) {
         try{
             Log.i("RegisterNewUser", "User sent to service");
-            return newUserService.registerNewUser(user);
+            return newUserService.registerNewUser(user, context);
         } catch(Exception e){
             Log.i("RegisterNewUserFail", "Error while user sent to service");
             return 0;

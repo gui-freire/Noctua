@@ -1,5 +1,6 @@
 package com.example.gui_f.view.noctua.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -40,6 +41,8 @@ public class MainScreenActivity extends AppCompatActivity
 
     private Intent list;
 
+    private Context context = this;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,21 +60,8 @@ public class MainScreenActivity extends AppCompatActivity
         }
 
         //Checks if it needs to get the latest data or if it needs to get a day/week/month data
-        if(intent.getBundleExtra("Daily") != null){
 
-
-        } else if(intent.getBundleExtra("Weekly") != null){
-//            int week = intent.getIntExtra("Weekly", 0);
-//            int month = intent.getIntExtra("Month", 0);
-//            vital = mainScreen.searchWeekly(dto.getName(), week, month);
-
-        } else if(intent.getBundleExtra("Monthly") != null){
-//            int month = intent.getIntExtra("Monthly", 0);
-//            vital = mainScreen.searchMonthly(dto.getName(), month);
-
-        } else{
-            vital = mainScreen.searchLast(dto.getName());
-        }
+            vital = mainScreen.searchLast(dto.getName(), context);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -174,14 +164,14 @@ public class MainScreenActivity extends AppCompatActivity
 
             startActivity(list);
         } else if (id == R.id.navlog_monthly) {
-            Intent intent = new Intent(this, MainScreenActivity.class);
+            Intent intent = new Intent(this, RecordActivity.class);
             intent.putExtra("user", dto);
             intent.putExtra("Weekly", Calendar.WEEK_OF_MONTH);
             intent.putExtra("Month", Calendar.MONTH);
             startActivity(intent);
 
         } else if(id == R.id.navlog_weekly){
-            Intent intent = new Intent(this, MainScreenActivity.class);
+            Intent intent = new Intent(this, RecordActivity.class);
             intent.putExtra("user", dto);
             intent.putExtra("Monthly", Calendar.MONTH);
             startActivity(intent);

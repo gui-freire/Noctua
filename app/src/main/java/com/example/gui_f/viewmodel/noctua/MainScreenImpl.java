@@ -1,5 +1,6 @@
 package com.example.gui_f.viewmodel.noctua;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.example.gui_f.model.noctua.MainScreen.MainScreenService;
@@ -20,10 +21,10 @@ public class MainScreenImpl implements MainScreen {
     private List<VitalResponse> vitalList = new ArrayList<>();
 
     @Override
-    public VitalResponse searchLast(String user) {
+    public VitalResponse searchLast(String user, Context context) {
         try{
             Log.i("SearchLast","Sending data to MainScreenService");
-            vital = mainScreenService.searchLast(user);
+            vital = mainScreenService.searchLast(user, context);
             return vital;
         } catch (Exception e){
             Log.i("SearchLastFail", "Error in searchLast " + e.getMessage());
@@ -32,10 +33,10 @@ public class MainScreenImpl implements MainScreen {
     }
 
     @Override
-    public List<VitalResponse> searchDaily(String user, int day) {
+    public List<VitalResponse> searchDaily(String user, int day, Context context) {
         try{
             Log.i("SearchDay", "Sending data to MainScreenService");
-            vitalList = mainScreenService.searchDaily(user, day);
+            vitalList = mainScreenService.searchDaily(user, day, context);
             return vitalList;
         }catch (Exception e){
             Log.i("SearchDayFail", "Error in searchDaily " + e.getMessage());
@@ -44,10 +45,10 @@ public class MainScreenImpl implements MainScreen {
     }
 
     @Override
-    public List<VitalResponse> searchWeekly(String user, int week, int month) {
+    public List<VitalResponse> searchWeekly(String user, int week, int month, Context context) {
         try{
             Log.i("SearchWeek", "Sending data to MainScreenService");
-            vitalList = mainScreenService.searchWeekly(user, week, month);
+            vitalList = mainScreenService.searchWeekly(user, week, month, context);
             return vitalList;
         }catch (Exception e){
             Log.i("SearchWeekFail", "Error in searchWeekly " + e.getMessage());
@@ -56,10 +57,10 @@ public class MainScreenImpl implements MainScreen {
     }
 
     @Override
-    public List<VitalResponse> searchMonthly(String user, int month) {
+    public List<VitalResponse> searchMonthly(String user, int month, Context context) {
         try{
             Log.i("SearchMonth", "Sending data to MainScreenService");
-            vitalList = mainScreenService.searchMonthly(user, month);
+            vitalList = mainScreenService.searchMonthly(user, month, context);
             return vitalList;
         }catch (Exception e){
             Log.i("SearchMonthFail", "Error in searchMonthly " + e.getMessage());

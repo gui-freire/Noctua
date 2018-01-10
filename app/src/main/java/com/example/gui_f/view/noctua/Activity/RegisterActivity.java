@@ -1,6 +1,7 @@
 package com.example.gui_f.view.noctua.Activity;
 
 import android.app.DialogFragment;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +30,8 @@ public class RegisterActivity extends AppCompatActivity {
     private UserDTO user = new UserDTO();
 
     private GenericError genericError = new GenericError();
+
+    private Context context = this;
 
     private Intent i;
 
@@ -84,7 +87,7 @@ public class RegisterActivity extends AppCompatActivity {
                 user.setSurname(surname.getText().toString());
                 user.setBirthday(birthday.getText().toString());
                 user.setEmail(email.getText().toString());
-                boolean result = register.changeData(user);
+                boolean result = register.changeData(user, context);
                 if(result){
                     finish();
                 }
@@ -122,7 +125,7 @@ public class RegisterActivity extends AppCompatActivity {
         user.setSurname(surname.getText().toString());
         user.setBirthday(birthday.getText().toString());
         user.setEmail(email.getText().toString());
-        boolean result = register.changeData(user);
+        boolean result = register.changeData(user, context);
         if(result){
             finish();
         }

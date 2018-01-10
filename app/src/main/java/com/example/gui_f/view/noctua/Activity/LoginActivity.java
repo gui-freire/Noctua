@@ -1,5 +1,6 @@
 package com.example.gui_f.view.noctua.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -38,7 +39,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private UserDTO userDTO;
 
-    private FirebaseAuth mAuth;
+    private Context context = this;
+
 
 
     @Override
@@ -55,7 +57,6 @@ public class LoginActivity extends AppCompatActivity {
         forgotPwd = (TextView) findViewById(R.id.textForgotPwdLoginScreen);
         newUser = (TextView) findViewById(R.id.textNewUserLoginScreen);
 
-        mAuth = FirebaseAuth.getInstance();
 
         if(savedInstanceState != null){
             user.setText(savedInstanceState.getString("User"));
@@ -67,10 +68,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        final FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            user.setText(currentUser.getEmail());
-        }
+
         forgotPwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,22 +94,13 @@ public class LoginActivity extends AppCompatActivity {
                 userText = user.getText().toString();
                 passwordText = password.getText().toString();
 
-                userDTO = loginImpl.searchUser(currentUser.getEmail());
+                userDTO = loginImpl.searchUser(userText, passwordText, context);
                 if(userDTO != null) {
-                    mAuth.signInWithEmailAndPassword(userText, passwordText)
-                            .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if(task.isSuccessful()) {
-                                        Intent mainIntent = new Intent(LoginActivity.this, MainScreenActivity.class);
-                                        mainIntent.putExtra("user", userDTO);
-                                        startActivity(mainIntent);
-                                        finish();
-                                    }
-                                }
-                            });
+                    Intent mainIntent = new Intent(LoginActivity.this, MainScreenActivity.class);
+                    mainIntent.putExtra("user", userDTO);
+                    startActivity(mainIntent);
+                    finish();
                 }
-
             }
         });
 

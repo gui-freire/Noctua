@@ -3,6 +3,7 @@ package com.example.gui_f.view.noctua.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -35,6 +36,8 @@ public class RegisterResponsibleActivity extends AppCompatActivity {
 
     private boolean result;
     private GenericError genericError = new GenericError();
+
+    private Context context = this;
 
     private UserDTO received = new UserDTO();
     private ResponsibleDTO receivedResp = new ResponsibleDTO();
@@ -78,7 +81,7 @@ public class RegisterResponsibleActivity extends AppCompatActivity {
                 dto.setRelation(relation.getText().toString());
                 email = intent.getStringExtra("Email");
 
-                result = register.changeResponsible(email, dto);
+                result = register.changeResponsible(email, dto, context);
 
                 if(result){
                     finish();
@@ -111,7 +114,7 @@ public class RegisterResponsibleActivity extends AppCompatActivity {
         dto.setRelation(relation.getText().toString());
         email = intent.getStringExtra("Email");
 
-        result = register.changeResponsible(email, dto);
+        result = register.changeResponsible(email, dto, context);
 
         if(result){
             finish();

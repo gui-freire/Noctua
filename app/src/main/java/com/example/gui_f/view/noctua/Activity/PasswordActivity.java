@@ -1,5 +1,6 @@
 package com.example.gui_f.view.noctua.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -22,6 +23,7 @@ public class PasswordActivity extends AppCompatActivity {
     private Button send;
     private Password password = new PasswordImpl();
     private GenericError genericError = new GenericError();
+    private Context context = this;
 
     private Intent intent;
 
@@ -36,9 +38,6 @@ public class PasswordActivity extends AppCompatActivity {
 
         email = (EditText) findViewById(R.id.editEmail);
         send = (Button) findViewById(R.id.btnSend);
-        //TODO: enviar e-mail para o serviço para enviar um email com senha e usuário
-
-
     }
 
     @Override
@@ -48,7 +47,7 @@ public class PasswordActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    password.forgotPassword(email.getText().toString());
+                    password.forgotPassword(email.getText().toString(), context);
                 }catch (Exception e){
 //                    genericError.setMessage(R.string.SomethingWrong);
 //                    genericError.onCreateDialog(savedInstanceState);
