@@ -24,12 +24,11 @@ public class DiaryServiceImpl implements DiaryService {
     private String httpResponse;
 
     @Override
-    public boolean sendFeeling(String user, FeelEnum feel, Context context) {
+    public boolean sendFeeling(String user, String feel, Context context) {
         try{
             json.put("User", user);
             json.put("Feeling", feel.toString());
             Log.i("SendFeeling", "Sending feeling to request");
-            //TODO: Fazer chamada no serviço
             return true;
         } catch (Exception e){
             Log.i("SendFeelingError", "Error sending feeling to request: " + e.getMessage());
@@ -63,7 +62,7 @@ public class DiaryServiceImpl implements DiaryService {
     }
 
     @Override
-    public boolean sendDiary(String user, String diary, FeelEnum feel, Context context) {
+    public boolean sendDiary(String user, String diary, String feel, Context context) {
         try{
             json.put("User", user);
             json.put("DiaryActivity", diary);

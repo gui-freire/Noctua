@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -53,6 +54,7 @@ public class RegisterResponsibleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register_responsible);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         responsibleName = (EditText) findViewById(R.id.editNameResponsibleRegister);
         responsibleEmail = (EditText) findViewById(R.id.editEmailResponsibleRegister);

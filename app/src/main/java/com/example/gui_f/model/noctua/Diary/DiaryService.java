@@ -8,7 +8,7 @@ import android.content.Context;
 
 public interface DiaryService {
 
-    boolean sendFeeling(String user, FeelEnum feel, Context context);
+    boolean sendFeeling(String user, String feel, Context context);
 
-    boolean sendDiary(String user, String diary, FeelEnum feel, Context context);
+    boolean sendDiary(String user, String diary, String feel, Context context);
 }

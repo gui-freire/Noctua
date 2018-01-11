@@ -2,6 +2,7 @@ package com.example.gui_f.view.noctua.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -10,8 +11,6 @@ import android.widget.EditText;
 
 import com.example.gui_f.model.noctua.UserDTO;
 import com.example.gui_f.noctua.R;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class NewUserStep1Activity extends AppCompatActivity {
 
@@ -33,6 +32,8 @@ public class NewUserStep1Activity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         i = getIntent();
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         name = (EditText) findViewById(R.id.editName);
         surname = (EditText) findViewById(R.id.editSurname);

@@ -2,9 +2,9 @@ package com.example.gui_f.view.noctua.Activity;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -18,8 +18,6 @@ import com.example.gui_f.view.noctua.GenericError;
 import com.example.gui_f.view.noctua.UserAlreadyExists;
 import com.example.gui_f.viewmodel.noctua.NewUser.NewUser;
 import com.example.gui_f.viewmodel.noctua.NewUser.NewUserImpl;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class NewUserStep2Activity extends AppCompatActivity {
 
@@ -44,6 +42,8 @@ public class NewUserStep2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_new_user_step2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
 
        name = (EditText) findViewById(R.id.editNameResponsible);

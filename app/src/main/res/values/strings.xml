@@ -171,7 +171,7 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="title_activity_record">Record</string>
-    
+
     <string name="NotificationTitle">ATENÇÃO</string>
 
     <string name="RegisterSuccess">Alteração feita com sucesso!</string>
@@ -182,5 +182,6 @@
     <string name="Okay">Okay</string>
     <string name="UserExists">Usuário já existe</string>
     <string name="ChangePassword">Sua senha foi enviada para seu e-mail.</string>
+    <string name="title_activity_first_aid">FirstAidActivity</string>
 
 </resources>

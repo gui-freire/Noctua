@@ -8,7 +8,28 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.gui_f.view.noctua.Activity.MainScreenActivity"
     tools:showIn="@layout/app_bar_main_screen"
-    android:background="@color/backgroundColour">
+    android:background="@color/backgroundColour"
+    android:scrollbars="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+    <ImageView
+        android:src="@mipmap/ic_launcher_foreground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -36,7 +57,7 @@
         android:layout_weight="1"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center">
@@ -50,9 +71,9 @@
             android:textColor="@color/textColour"/>
 
         <ImageView
-            android:src="@mipmap/ic_mainscreen_heartbeat"
-            android:layout_width="400px"
-            android:layout_height="350px"
+            android:src="@mipmap/ic_heartbeat"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
             android:layout_gravity="center"/>
 
         <TextView
@@ -78,7 +99,7 @@
             android:textColor="@color/textColour"/>
 
         <ImageView
-            android:src="@mipmap/ic_bloopressure"
+            android:src="@mipmap/ic_pression"
             android:layout_width="400px"
             android:layout_height="350px"
             android:layout_gravity="center"/>
@@ -116,6 +137,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"/>
+
+        </LinearLayout>
+    </ScrollView>
+
 
 
 

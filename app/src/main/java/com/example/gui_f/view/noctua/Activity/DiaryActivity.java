@@ -1,9 +1,11 @@
 package com.example.gui_f.view.noctua.Activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -36,6 +38,10 @@ public class DiaryActivity extends AppCompatActivity {
     private Context context = this;
 
     private String user;
+
+    private boolean badBool;
+    private boolean kindaBool;
+    private boolean goodBool;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +81,17 @@ public class DiaryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 feeling = FeelEnum.BAD.toString();
-                bad.setBackgroundColor(getResources().getColor(R.color.tiffanyBlue));
+                if(badBool){
+                    badBool = false;
+                    bad.clearColorFilter();
+                } else {
+                    bad.setColorFilter(getResources().getColor(R.color.tiffanyBlue));
+                    badBool = true;
+                    kinda.clearColorFilter();
+                    kindaBool = false;
+                    good.clearColorFilter();
+                    goodBool = false;
+                }
             }
         });
 
@@ -83,16 +99,35 @@ public class DiaryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 feeling = FeelEnum.MODERATE.toString();
-                kinda.setBackgroundColor(getResources().getColor(R.color.tiffanyBlue));
+                if(kindaBool){
+                    kindaBool = false;
+                    kinda.clearColorFilter();
+                } else{
+                    kinda.setColorFilter(getResources().getColor(R.color.tiffanyBlue));
+                    kindaBool = true;
+                    goodBool = false;
+                    good.clearColorFilter();
+                    badBool = false;
+                    bad.clearColorFilter();
+                }
             }
         });
 
         good.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: fazer com que apenas uma opção possa ser selecionada
                 feeling = FeelEnum.GOOD.toString();
-                good.setBackgroundColor(getResources().getColor(R.color.tiffanyBlue));
+                if(goodBool){
+                    goodBool = false;
+                    good.clearColorFilter();
+                } else {
+                    good.setColorFilter(getResources().getColor(R.color.tiffanyBlue));
+                    goodBool = true;
+                    kindaBool = false;
+                    kinda.clearColorFilter();
+                    badBool = false;
+                    bad.clearColorFilter();
+                }
             }
         });
 
@@ -102,9 +137,13 @@ public class DiaryActivity extends AppCompatActivity {
                 try {
                     if (diary != null) {
                         diaryService.sendDiary(user, diary.getText().toString(), feeling, context);
-                    } //TODO: diário realmente precisa estar preenchido?
+                        ((Activity) context).finish();
+                    } else{
+                        diaryService.sendDiary(user, "", feeling, context);
+                        ((Activity) context).finish();
+                    }
                 }catch (Exception e){
-
+                    Log.d("Error", e.getMessage());
                 }
             }
         });
@@ -123,7 +162,6 @@ public class DiaryActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         showAlertDialog();
     }
 

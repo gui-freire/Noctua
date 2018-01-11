@@ -53,7 +53,8 @@ public class MainScreenActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        intent = getIntent();
+        if(intent != null)
+            intent = getIntent();
 
         if (savedInstanceState != null) {
             dto = savedInstanceState.getParcelable("user");
@@ -107,6 +108,11 @@ public class MainScreenActivity extends AppCompatActivity
     @Override
     protected void onStop() {
         super.onStop();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
     }
 
     @Override

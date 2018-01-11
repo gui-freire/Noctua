@@ -18,9 +18,8 @@ public class DiaryImpl implements Diary {
     @Override
     public boolean sendFeeling(String user, String feel, Context context) {
         Log.i("DiaryImpl", "Sending feeling...");
-        FeelEnum feeling = FeelEnum.valueOf(feel);
         try{
-            return diaryService.sendFeeling(user, feeling, context);
+            return diaryService.sendFeeling(user, feel, context);
         } catch (Exception e){
             Log.i("DiaryImplFail", "Error in sending feeling! " + e.getMessage());
             return false;
@@ -30,9 +29,8 @@ public class DiaryImpl implements Diary {
     @Override
     public boolean sendDiary(String user, String diary, String feel, Context context) {
         Log.i("DiaryImpl", "Sending DiaryActivity...");
-        FeelEnum feeling = FeelEnum.valueOf(feel);
         try{
-            return diaryService.sendDiary(user, diary, feeling, context);
+            return diaryService.sendDiary(user, diary, feel, context);
         } catch(Exception e){
             Log.i("DiaryImplFail", "Error in sending diary! " + e.getMessage());
             return false;
