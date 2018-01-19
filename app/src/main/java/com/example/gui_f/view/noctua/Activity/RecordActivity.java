@@ -4,14 +4,13 @@ import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.gui_f.model.noctua.MainScreen.VitalResponse;
+import com.example.gui_f.noctua.R;
 import com.example.gui_f.viewmodel.noctua.MainScreen.MainScreen;
 import com.example.gui_f.viewmodel.noctua.MainScreen.MainScreenImpl;
 
@@ -55,13 +54,14 @@ public class RecordActivity extends ListActivity {
             title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
             listView.addHeaderView(title);
+            listView.setBackgroundColor(getResources().getColor(R.color.backgroundColour));
             List<String> list = listToString(mainScreen.searchDaily(email, day, context));
-
             listAdapter = new ArrayAdapter<String>(
                     this,
                     android.R.layout.simple_list_item_1, //Android pre made list
                     list);
             listView.setAdapter(listAdapter);
+
 
         } else if(method.equals("Weekly")){
             TextView title = new TextView(this);
@@ -70,6 +70,7 @@ public class RecordActivity extends ListActivity {
             title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
             listView.addHeaderView(title);
+            listView.setBackgroundColor(getResources().getColor(R.color.backgroundColour));
             List<String> list = listToString(mainScreen.searchWeekly(email, week, month, context));
 
             listAdapter = new ArrayAdapter<String>(
@@ -84,21 +85,15 @@ public class RecordActivity extends ListActivity {
             title.setTextSize(30);
             title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
-            try {
-                listView.addHeaderView(title);
-                List<String> list = listToString(mainScreen.searchMonthly(email, month, context));
+            listView.addHeaderView(title);
+            listView.setBackgroundColor(getResources().getColor(R.color.backgroundColour));
+            List<String> list = listToString(mainScreen.searchMonthly(email, month, context));
 
-
-                listAdapter = new ArrayAdapter<String>(
-                        this,
-                        android.R.layout.simple_list_item_1,
-                        list
-                );
-                listView.setAdapter(listAdapter);
-
-            } catch (Exception e){
-                Log.d("error", e.getMessage());
-            }
+            listAdapter = new ArrayAdapter<String>(
+                    this,
+                    android.R.layout.simple_list_item_1,
+                    list);
+                    listView.setAdapter(listAdapter);
         }
     }
 
@@ -107,6 +102,8 @@ public class RecordActivity extends ListActivity {
         super.onStart();
     }
 
+
+    //Converts the object to a string to be showed on the list
     private List<String> listToString(List<VitalResponse> vitalList){
         List<String> converted = new ArrayList<>();
         StringBuilder item;

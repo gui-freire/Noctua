@@ -5,9 +5,13 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -55,6 +59,26 @@ public class LoginActivity extends AppCompatActivity {
         forgotPwd = (TextView) findViewById(R.id.textForgotPwdLoginScreen);
         newUser = (TextView) findViewById(R.id.textNewUserLoginScreen);
 
+        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        user.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                preferences.edit().putString("email", s.toString()).commit();
+            }
+        });
+
+        user.setText(preferences.getString("email", ""));
+
 
         if(savedInstanceState != null){
             user.setText(savedInstanceState.getString("User"));
@@ -65,7 +89,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
 
         forgotPwd.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -153,11 +153,7 @@ public class MainScreenActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_logOut) {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-
-        } else if (id == R.id.nav_register) {
+        if (id == R.id.nav_register) {
             Intent intent = new Intent(this, RegisterActivity.class);
             intent.putExtra("user", dto);
             startActivity(intent);
@@ -191,6 +187,10 @@ public class MainScreenActivity extends AppCompatActivity
         } else if(id == R.id.nav_firstAid){
             Intent intent = new Intent(this, FirstAidActivity.class);
             startActivity(intent);
+        } else if(id == R.id.logout){
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

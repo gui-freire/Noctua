@@ -18,9 +18,10 @@
         android:textColor="@color/textColour"
         android:background="@color/backgroundColour"/>
 
-    <ListView
-        android:id="@+id/listRecord"
+    <fragment
+        class="com.example.gui_f.view.noctua.Activity.Fragment.RecordListFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:id="@+id/frgList"/>
 
 </LinearLayout>

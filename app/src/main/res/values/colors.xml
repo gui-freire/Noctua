@@ -5,8 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="tiffanyBlue">#00cccc</color>
     <color name="limePastelGreen">#a4e8a4</color>
-    <color name="toolbarColour">#cdf2cd</color>
-    <color name="textColour">#00aacc</color>
-    <color name="buttonColour">#00cccc</color>
-    <color name="backgroundColour">#cdf2cd</color>
+    <color name="toolbarColour">#90e290</color>
+    <color name="textColour">#000000</color>
+    <color name="buttonColour">#ffffff</color>
+    <color name="backgroundColour">#e1f7e1</color>
 </resources>
