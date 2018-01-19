@@ -20,13 +20,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/NameResponsiblePerson"
+        android:textColor="@color/textColour"
         android:textSize="10pt"/>
 
     <EditText
         android:id="@+id/editNameResponsible"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:hint="@string/NameResponsibleExample"
+        android:gravity="center"
         android:textSize="10pt"
         android:textColor="@color/textColour"/>
 
@@ -39,13 +42,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/EmailResponsiblePerson"
-        android:textSize="10pt"/>
+        android:textSize="10pt"
+        android:textColor="@color/textColour"/>
 
     <EditText
         android:id="@+id/editEmailResponsible"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:hint="@string/EmailExample"
+        android:layout_margin="10dp"
         android:inputType="textEmailAddress"
         android:textSize="10pt"
         android:textColor="@color/textColour"/>
@@ -59,12 +65,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Relation"
+        android:textColor="@color/textColour"
         android:textSize="10pt"/>
 
     <EditText
         android:id="@+id/editRelation"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
         android:hint="@string/RelationExample"
         android:textSize="10pt"
         android:textColor="@color/textColour"/>
@@ -76,11 +85,11 @@
 
     <Button
         android:id="@+id/btnSignOn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:text="@string/SignOn"
         android:textSize="10pt"
-        android:background="@color/textColour"/>
+        android:background="@color/buttonColour"/>
 
     <Space
         android:layout_width="0dp"

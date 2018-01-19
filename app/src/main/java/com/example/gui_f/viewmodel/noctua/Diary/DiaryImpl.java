@@ -1,11 +1,10 @@
-package com.example.gui_f.viewmodel.noctua;
+package com.example.gui_f.viewmodel.noctua.Diary;
 
 import android.content.Context;
 import android.util.Log;
 
 import com.example.gui_f.model.noctua.Diary.DiaryService;
 import com.example.gui_f.model.noctua.Diary.DiaryServiceImpl;
-import com.example.gui_f.model.noctua.Diary.FeelEnum;
 
 /**
  * Created by gui-f on 27/12/2017.

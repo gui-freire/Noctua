@@ -2,28 +2,20 @@ package com.example.gui_f.view.noctua.Activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 
 import com.example.gui_f.model.noctua.ResponsibleDTO;
 import com.example.gui_f.model.noctua.UserDTO;
 import com.example.gui_f.noctua.R;
-import com.example.gui_f.view.noctua.GenericError;
-import com.example.gui_f.viewmodel.noctua.NewUser.NewUser;
 import com.example.gui_f.viewmodel.noctua.Register.Register;
 import com.example.gui_f.viewmodel.noctua.Register.RegisterImpl;
 

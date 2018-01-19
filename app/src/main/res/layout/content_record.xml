@@ -15,7 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textSize="12pt"
-        android:textColor="@color/textColour"/>
+        android:textColor="@color/textColour"
+        android:background="@color/backgroundColour"/>
 
     <ListView
         android:id="@+id/listRecord"

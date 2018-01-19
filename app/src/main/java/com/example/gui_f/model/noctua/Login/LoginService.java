@@ -9,5 +9,5 @@ import com.example.gui_f.model.noctua.UserDTO;
  */
 
 public interface LoginService {
-    UserDTO searchUser(String user, String password, Context context);
+    UserDTO searchUser(String user, String password, String firebaseKey, Context context);
 }

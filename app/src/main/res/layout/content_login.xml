@@ -15,6 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Welcome"
+        android:textColor="@color/textColour"
         android:textSize="14pt"
         />
 
@@ -28,15 +29,18 @@
         android:layout_height="wrap_content"
         android:text="@string/User"
         android:gravity="center_horizontal"
+        android:textColor="@color/textColour"
         android:textSize="10pt"
         />
 
 
     <EditText
         android:id="@+id/editUser"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/UserExmp"
+        android:gravity="center_horizontal"
+        android:layout_margin="10dp"
         android:textSize="10pt"
         android:textColor="@color/textColour"
         />
@@ -51,13 +55,16 @@
         android:layout_height="wrap_content"
         android:text="@string/Password"
         android:textSize="10pt"
+        android:textColor="@color/textColour"
         />
 
     <EditText
         android:id="@+id/editPassword"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
+        android:layout_margin="10dp"
+        android:gravity="center_horizontal"
         android:hint="************"
         android:textSize="10pt"
         android:textColor="@color/textColour"/>
@@ -70,8 +77,8 @@
 
         <Button
             android:id="@+id/btnLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
             android:text="@string/Login"
             android:textSize="10pt"
             android:backgroundTint="@color/buttonColour" />

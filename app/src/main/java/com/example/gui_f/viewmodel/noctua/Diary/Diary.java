@@ -1,4 +1,4 @@
-package com.example.gui_f.viewmodel.noctua;
+package com.example.gui_f.viewmodel.noctua.Diary;
 
 import android.content.Context;
 

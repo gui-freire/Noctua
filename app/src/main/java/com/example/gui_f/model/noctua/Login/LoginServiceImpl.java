@@ -30,11 +30,12 @@ public class LoginServiceImpl implements LoginService {
     private String webserviceUri = "http://suamae.com.br";
 
     @Override
-    public UserDTO searchUser(String user, String password, Context context) {
+    public UserDTO searchUser(String user, String password, String firebaseKey, Context context) {
 
         try{
             jsonObject.put("user", user);
             jsonObject.put("password", password);
+            jsonObject.put("key", firebaseKey);
 
         } catch(JSONException je){
             Log.i("SearchUserFail", "Error sending user for search " + je.getMessage());

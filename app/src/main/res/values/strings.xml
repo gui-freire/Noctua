@@ -6,7 +6,7 @@
     <string name="Welcome">Bem-vindo ao Noctua!</string>
     <string name="User">Usuário</string>
     <string name="Password">Senha</string>
-    <string name="UserExmp">Exemplo123</string>
+    <string name="UserExmp">exemplo@gmail.com</string>
     <string name="Login">Entrar</string>
     <string name="ForgotPwd">Esqueci minha senha</string>
     <string name="NewUser">Não tem cadastro?</string>
@@ -76,7 +76,6 @@
     <string name="title_activity_register_responsible">RegisterResponsible</string>
     <string name="title_activity_password">Password</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="warning_save">Tem certeza de que deseja sair sem salvar?</string>
     <string name="YesFragment">Sair</string>
     <string name="SaveFragment">Salvar</string>
@@ -184,4 +183,1197 @@
     <string name="ChangePassword">Sua senha foi enviada para seu e-mail.</string>
     <string name="title_activity_first_aid">FirstAidActivity</string>
 
+    <!--Texts and title for the first aid screens-->
+    <string name="basic">Exames primários</string>
+    <string name="basic_text">
+        "Mantenha a calma. \n"
+        "Procure o auxílio de outras pessoas, caso seja necessário, e peça que chamem um médico. \n"
+        "Ligue para emergência em sua cidade \n"
+        "Mantenha os curiosos à distância, pois assim o socorrista terá espaço suficiente para trabalhar. \n"
+        "Faça o exame primário para a avaliação completa do estado da vítima. "
+        "Mas atenção: o exame secundário, que visa descobrir quais foram as lesões sofridas,"
+        " só pode ser feito se a vítima se encontrar em condições estáveis."
+        "analise o ambiente em que se encontra a vítima, "
+        "a fim de minimizar os riscos tanto para o acidentado como para o socorrista "
+        "(fios elétricos, animais, tráfego, entre outros). \n"
+        "Caso necessite parar ou desviar o trânsito, procure pessoas capazes de fazê-lo. \n"
+        "Se necessário, remova a vítima para um local adequado. \n"
+        "Aja sempre com o intuito de acalmar a pessoa, e sem movimentá-la com gestos bruscos. \n"
+        "Converse com a vítima, pois, se ela responder, significa que não existe problema "
+        "respiratório grave. Caso ela não consiga se comunicar adequadamente, verifique se está respirando. \n"
+        "Em caso negativo, você deve agir rápido: proteja a sua mão, abra a boca da vítima "
+        "e verifique se há algo atrapanlhando a respiração, como prótese dentária ou vômito; remova imediatamente. "
+        "Se necessário, faça a respiração boca-a- boca e a reanimação cárdio-pulmonar (RCP). \n"
+        "Se a vítima estiver vomitando, coloque-a na posição lateral de segurança "
+        "(com a cabeça voltada para o lado, a fim de evitar engasgos). \n \n"
+
+        "<b>EXAME PRIMÁRIO</b> \n \n"
+
+        "Envolve a avaliação completa da vítima, com especial atenção para tudo o que possa provocar risco de vida. \n"
+        "Observar o ambiente em que a vítima se encontra. \n"
+        "Colocar reto o pescoço da vítima e manter a mandíbula segura, "
+        "visando desobstruir as vias respiratórias e amenizar a pressão na coluna cervical. \n"
+        "Avaliar se a vítima apresenta parada respiratória ou cardíaca. "
+        "Em caso positivo, começar imediatamente a reanimação cárdio-pulmonar (R.C.P.). \n"
+        "Analisar a existência de hemorragias, e buscar meios para contê-las. \n"
+        "Verificar o estado de consciência da vítima. \n"
+        "Avaliar a intensidade da dor. \n"
+        "Conferir a temperatura do acidentado. \n"
+        "Manter a vítima aquecida com cobertores e/ou lençóis. \n \n"
+
+        "<b>EXAME SECUNDÁRIO</b> \n \n"
+
+        "Este exame somente é feito quando o acidentado se apresenta em condições estável. \n \n"
+
+        "Cabeça e face \n \n"
+
+        "Analise a região superior do couro cabeludo, procurando alguma alteração. \n"
+        "Escorregue as mãos pela parte de trás da cabeça. \n"
+        "Apalpe a parte frontal do crânio (testa e região superior). \n \n"
+
+        "Tronco \n \n"
+
+        "Toque na clavícula (osso do ombro), um lado de cada vez. \n"
+        "Apalpe a face anterior (da frente) do tórax. \n"
+        "Apalpe o abdômen. \n"
+        "Pressione o quadril anterior e lateralmente. \n \n"
+
+        "Obs: durante este exame, fique atento para o surgimento de bolhas e crepitações sob a pele,
+        que podem indicar necessidade de atendimento médico imediato. \n \n"
+
+        "Membros superiores \n zn"
+
+        "Apalpe braços, ombros, cotovelos, antebraços e mãos. \n"
+        "Verifique o pulso radial (no punho). \n"
+        "Examine a movimentação dos membros. \n \n"
+
+       "Membros inferiores \n zn"
+
+        "Apalpe a coxa desde a virilha. \n"
+        "Apalpe joelho, perna e pé. \n"
+        "Cheque o pulso pedioso (no peito do pé). \n"
+        "Examine a motricidade (movimentação). \n"
+        "Repita o exame na outra perna. \n zn"
+
+        "Obs: Ao analisar a capacidade de movimento da vítima, deve-se ter cuidado redobrado ante "
+        "uma suspeita de fratura. Evite ao máximo mexer no paciente, e providencie o socorro especializado. \n \n"
+
+        "Retirado de: http://www.prefeiturarp.usp.br/pages/cipa/manual_primeiros_socorros.htm "
+    </string>
+
+    <string name="transport">Transporte de vítimas</string>
+    <string name="transport_text">
+        "Para aumentar as chances de recuperação, o ideal é que a vítima seja atendida no local do acidente. "
+        "Caso isto não seja possível por falta de segurança, tanto para ela como para o socorrista, "
+        deve-se transportá-la para um local seguro, porém respeitando certos cuidados específicos. Veja como: \n \n"
+
+        "<b>Como ajudar?</b> \n \n"
+
+        "Antes de retirar a vítima do local do acidente: \n \n"
+
+        "Preste atenção ao movimentá-la para não agravar as lesões já existentes. \n"
+        "Examine o estado geral da vítima. \n"
+        "Tente calcular o peso da pessoa. \n"
+        "Considere o número de socorristas para ajudar. \n"
+        "Retenha a hemorragia. \n"
+        "Mantenha a vítima respirando. \n"
+        "Evite ou controle o estado de choque. \n"
+        "Imobilize as áreas com suspeita de fraturas. \n \n"
+
+        "O transporte da vítima pode ser feito por maca, que é a melhor forma. "
+        "Se por acaso não houver uma disponível no local, ela pode ser improvisada com duas camisas "
+        "ou um paletó e dois bastões resistentes, ou até mesmo enrolando-se um "
+        "cobertor várias vezes em uma tábua larga. \n \n"
+
+        "Para erguer a vítima \n \n"
+
+        "Com apenas um socorrista: \n \n"
+
+        "Apoio lateral simples: \n \n"
+
+        "O braço da vítima é passado sobre os ombros do socorrista, por trás do pescoço. \n"
+        "O socorrista segura firmemente o braço da vítima. \n"
+        "Com o outro braço, o socorrista envolve o acidentado por trás da cintura. \n \n"
+
+        "Arrastamento de roupa: \n"
+        "A vítima é arrastada no sentido do eixo cranial pelo socorrista, "
+        "que utiliza a camisa ou casaco como ponto de apoio. \n \n"
+
+        "Arrastamento tipo cobertor: \n"
+        "Posicione a vítima estendida de lado. Coloque o cobertor por debaixo do corpo do paciente, "
+        "desvire-o, colocando-o de barriga para cima, e puxe o cobertor do outro lado. "
+        "Inicie o transporte puxando o cobertor próximo à cabeça da vítima. \n \n"
+
+        "Com dois socorristas: \n \n"
+
+        "Para o atendimento eficiente de politramautizados, é importante ter em mente que, "
+        "em muitos casos, a vítima não pode e não deve se movimentar espontaneamente, "
+        "devido às lesões já existentes ou a lesões que possam ocorrer por uma locomoção indevida. "
+        "Portanto, a melhor maneira de mover uma vítima deitada é o uso da prancha longa, "
+        "quando o acesso ao paciente é viável. \n \n"
+
+        "A seguir, veja os métodos disponíveis para transporte com maca ou prancha longa. "
+        "Esta técnica deve ser realizada da forma apropriada, "
+        "tanto para evitar complicações para as vítimas como danos lombares para os socorristas. \n \n"
+
+        "Posição dos socorristas para erguer a vítima do solo \n \n"
+
+        "Logo que a vítima estiver em cima da prancha, cada socorrista deve se posicionar em uma "
+        "das extremidades da prancha (o socorrista A deve colocar-se de costas para o paciente, "
+        "e o B, aos seus pés). \n"
+        "Depois, os socorristas devem posicionar os pés ligeiramente afastados, e não paralelos ou alinhados. \n"
+        "Ao se abaixar para elevar a maca, os socorristas devem ficar de joelhos na posição tripé, "
+        "ou seja, um joelho no chão e outro afastado, fora da posição do antebraço. \n"
+        "O socorrista A deve comandar as manobras, indicando quando é a hora de elevar a vítima. "
+        "Eles então se posicionam de cócoras, levantando o joelho que estava apoiado no chão. \n"
+        "Após a ordem do socorrista A, ambos devem elevar a vítima utilizando os músculos da coxa. "
+        "Desta forma, evita-se o uso incorreto da musculatura da coluna, o que pode causar sérios danos. \n"
+        "Para iniciar a caminhada, o socorrista A deve sempre dar o comando, "
+        "dirigindo-se com a vítima para a ambulância ou para outro lugar seguro. \n \n"
+
+        "Transposição de um obstáculo simples \n \n"
+
+        "Durante a caminhada, podem aparecer obstáculos no caminho, tais como árvores caídas, por exemplo. "
+        "O procedimento adequado nestes casos é: \n \n"
+
+        "Quando se aproximar do obstáculo, o socorrista A deve avisar ao outro socorrista do problema. \n
+        "Os socorristas devem colocar o paciente no solo delicadamente, sempre com a orientação do socorrista A. \n"
+        "Com a prancha ao chão, os socorristas devem se posicionar nas laterais, um com a mão na "
+        "altura do ombro da vítima e o outro com a mão um pouco abaixo dos joelhos, "
+        "e manter os pés ligeiramente afastados. \n"
+        "Para elevar a prancha, o socorrista A dirige a operação: ambos se colocam de cócoras, "
+        "erguendo os joelhos que estavam de apoio no chão. \n"
+        "Em seguida, os socorristas se levantam, usando os músculos das coxas para erguer a vítima. \n"
+        "Depois, sempre sob o comando do socorrista A, posicionam a prancha com a cabeceira sobre o obstáculo. \n"
+        "Os socorristas se colocam face a face, caminhando em direção ao paciente, "
+        "movimentando a maca na lateral e deslizando as mãos ao longo da prancha. \n"
+        "O socorrista B se posiciona na extremidade da prancha. \n"
+        "Enquanto o socorrista B segura a prancha , o socorrista A pula o obstáculo e pega "
+        "a extremidade da prancha perto da cabeceira da vítima. \n"
+        "Depois, sob a ordem do socorrista A, os dois seguem de forma que apóiem a extremidade dos "
+        "pés do paciente sobre o obstáculo. O socorrista B salta o obstáculo e vem se posicionar "
+        "próximo à cabeceira do paciente. \n"
+        "Os socorristas ficam frente a frente e andam em direção ao meio da prancha. "
+        "Em seguida, a prancha é colocada no solo e o processo recomeça. \n \n"
+        
+        "Retirado de: http://www.prefeiturarp.usp.br/pages/cipa/manual_primeiros_socorros.htm "
+    </string>
+
+    <string name="drowning">Afogamento</string>
+    <string name="drowning_text">
+        "O afogamento é o acidente causado pela submersão do indivíduo, geralmente na água do mar "
+        "ou piscina, no qual o acidentado apresenta desde sintomas leves a graves, como a asfixia "
+        "(dificuldade de respirar); a partir daí, podem ocorrer alterações em outros sistemas "
+        "do corpo. O local do afogamento (água doce ou salgada) determina diferenças nas "
+        "alterações corpóreas; no entanto, os procedimentos de primeiros socorros são os mesmos. \n \n"
+
+        "Os acidentes ocorridos no mar registram um maior número de vítimas entre os adultos. "
+        "Já em piscinas, esta estatística mostra maior freqüência de crianças envolvidas. "
+        "Por isso, é importantíssimo vigiar as crianças não só na praia, "
+        "mas também em locais onde existam piscinas, mesmo que não estejam sendo usadas. \n \n"
+
+        "É possível atuar no socorro com medidas simples, ainda que a pessoa disposta a "
+        "ajudar não tenha treinamento. Mesmo assim, lembre-se: a ajuda ao afogado só deve ser feita "
+        "se não for colocar em risco a vida do socorrista. \n \n"
+
+        "<b>Como ajudar?</b> \n \n"
+
+        "Coloque o acidentado fora da água o mais rápido possível. \n"
+        "Se suspeitar de algum tipo de traumatismo (história de queda ou acidente ao mergulhar), "
+        "mantenha sempre reta e imobilizada a cabeça da vítima. \n"
+        "Inicie imediatamente a respiração boca-a-boca. \n"
+        "Aqueça o acidentado. \n"
+        "Leve-o ao hospital mais próximo, o mais rápido possível. \n \n"
+        
+        "Retirado de: http://www.prefeiturarp.usp.br/pages/cipa/manual_primeiros_socorros.htm "
+    </string>
+
+    <string name="asphyxia">Asfixia</string>
+    <string name="asphyxia_text">
+        "É o bloqueio ou a dificuldade de respiração por qualquer forma de impedimento da entrada "
+        "de ar nos pulmões; pode ser também a impossibilidade de troca gasosa (oxigênio por gás "
+        "carbônico) eficiente. Este impedimento pode ser causado por afogamento, inalação de fumaça "
+        "ou produtos tóxicos, objetos (sacos plásticos, objetos inalados), compressão do pescoço "
+        "(enforcamento, esmagamento) ou ausência da respiração por problemas orgânicos. \n \n"
+
+        "<b>Sinais e sintomas</b> \n \n"
+
+        "Dificuldade respiratória. \n"
+        "Ruídos durante a respiração. \n"
+        "Agitação ou prostração. \n"
+        "Palidez ou arroxeamento da pele. \n"
+        "Perda da consciência. \n"
+        "Parada cárdio-respiratória. \n \n"
+
+        "<b>Como ajudar?</b> \n \n"
+
+        "Coloque a vítima em um ambiente arejado. Caso você saiba que a pessoa se engasgou com "
+        "alguma coisa, proceda as manobras devidas para este caso (descritas abaixo). "
+        "Se tiver havido afogamento ou inalação de fumaça e o acidentado não responder aos "
+        "estímulos ou apresentar parada das respirações, inicie as manobras de reanimação "
+        "cárdio-respiratória. Não perca tempo - leve o acidentado ao hospital mais "
+        "próximo o mais rápido possível. \n \n"
+
+        "Posicione-se atrás da pessoa e coloque os braços em torno de sua cintura. "
+        "Deixe que a cabeça, os braços e parte do tronco fiquem pendentes para frente. \n"
+        "Aperte o punho de uma mão com a outra, e coloque sobre o estômago da pessoa, "
+        "bem acima do umbigo, na linha da cintura (abaixo das costelas). \n"
+        "Comprima rapidamente o punho contra o estômago, como um golpe. Repita 4 vezes este procedimento, "
+        "ou até que o corpo estranho seja expelido. Complete com 4 compressões torácicas (sob o esterno). \n \n"
+
+        "Se a pessoa for muito grande para esta manobra, deite-a de costas, ajoelhe-se sobre ela "
+        "e faça pressão com as mãos cruzadas, bruscamente, logo acima da linha da cintura. "
+        "Peça que outra pessoa fique atenta para remover o corpo estranho da boca. "
+        Se a pessoa vomitar, gire todo o corpo para o lado, a fim de evitar asfixia. \n \n"
+        
+        "Retirado de: http://www.prefeiturarp.usp.br/pages/cipa/manual_primeiros_socorros.htm "
+    </string>
+
+    <string name="electricity">Choque elétrico</string>
+    <string name="electricity_text">
+        "Como em todos os acidentes, a prevenção é sempre a melhor forma de evitar problemas. "
+        "Por isso, mantenha protegidas as tomadas no local onde houver crianças, "
+        "não deixe fios de eletrodomésticos desencapados e não tente consertar fiações elétricas "
+        "sem a presença de um profissional. \n \n"
+
+        "<b>Como ajudar?</b> \n \n"
+
+        "Ligue para o Corpo de Bombeiros da sua cidade. \n"
+        "Procure não tentar mexer com a vítima presa ao cabo elétrico; só o faça se você "
+        "tiver treinamento para isto, caso contrário você poderá se tornar outra vítima. \n"
+        "Se souber a localização da chave geral, desligue-a imediatamente. \n" 
+        "Busque socorro imediato para desligar a pessoa da fonte de energia. Quanto menor for o "
+        "tempo da vítima em contato com a eletricidade, maior será sua chance de sobrevivência. \n"
+        "Aproxime-se apenas de materiais secos não-condutores de eletricidade; caso contrário, "
+        "use uma vara, ramo, corda ou um pano secos para afastar ou empurrar o fio da vítima. "
+        "Se isto não for possível, chame imediatamente quem entenda do assunto. \n" 
+        "Observe se a vítima está respirando e se existe algo em sua boca que esteja atrapalhando "
+        "a passagem de ar. Comece a respiração boca-a-boca. \n"
+        "Certifique-se de que a língua do paciente não esteja obstruindo a passagem do ar. "
+        "Caso esteja, eleve o queixo da vítima ou posicione-o na lateral, para a respiração voltar ao normal. \n"
+        "Leve a vítima ao hospital. \n \n"
+        
+        "Retirado de: http://www.prefeiturarp.usp.br/pages/cipa/manual_primeiros_socorros.htm "
+    </string>
+
+    <string name="seizure">Convulsão</string>
+    <string name="seizure_text">
+        "A convulsão ocorre devido a uma descarga elétrica súbita e atípica dos neurônios, "
+        "que se manifesta mais comumente por movimentos anormais de diversos tipos. "
+        "Esses movimentos incomuns e incontroláveis podem surgir de forma localizada ou generalizada, "
+        "dependendo da causa do distúrbio neurológico. O quadro pode vir acompanhado por perda "
+        "ou alteração da consciência. \n \n"
+
+        "<b>Causas</b> \n \n"
+
+        "Há diversas delas, entre as quais: \n \n"
+
+        "Febre (em crianças pequenas). \n"
+        "Traumas de crânio. \n"
+        "Doenças neurológicas. \n"
+        "Infecções do sistema nervoso. \n"
+        "Distúrbios do metabolismo corporal. \n"
+        "Intoxicações. \n \n"
+
+        "<b>Sinais</b> \n \n"
+
+        "Durante a crise, o paciente pode apresentar: \n \n"
+
+        "Movimentos ritmados em todo o corpo ou em algum membro isoladamente. \n"
+        "Perda da consciência. \n"
+        "Salivação. \n"
+        "Vômitos. \n"
+        "Febre. \n \n"
+
+        "<b>Como ajudar?</b> \n \n"
+
+        "Retire roupas apertadas do paciente. \n"
+        "Proteja a pessoa contra objetos duros, ásperos ou pontiagudos. \n"
+        "Coloque a vítima em local seguro, de onde não possa cair - "
+        "no chão ou em uma cama cercada, por exemplo. \n"
+        "Retire travesseiros e lençóis, para evitar o risco de asfixia. \n"
+        "Coloque a pessoa deitada de lado (em decúbito dorsal), para permitir a drenagem de saliva e vômito \n \n"
+
+        "Não introduza lenço ou objetos entre os dentes — é inútil e perigoso. \n"
+        "Leve o enfermo ao hospital mais próximo sem demora. \n \n"
+
+        "Para evitar a crise convulsiva, deve-se diminuir a febre com banhos e medicações "
+        prescritas pelo médico. O primeiro procedimento não deve ser realizado durante a convulsão, "
+        "devido ao risco de aspiração. \n \n"
+
+        "Retirado de: http://www.prefeiturarp.usp.br/pages/cipa/manual_primeiros_socorros.htm "
+    </string>
+
+    <string name="epilepsy">Epilepsia</string>
+    <string name="epilepsy_text">
+        "É uma perturbação neurológica que afeta as funções cerebrais. \n"
+        "Os neurônios transmitem informações desorganizadas uns para os outros, provocando "
+        "um confronto e a completa confusão das mensagens nervosas. \n \n"
+
+        "<b>Sinais e sintomas</b> \n \n"
+
+        "Perda de consciência e desmaio. \n"
+        "Contrações musculares bruscas e involuntárias. \n"
+        "Olhos revirados. \n"
+        "Excesso de salivação. \n \n"
+
+        "<b>Como ajudar?</b> \n \n"
+
+        "Posicione a vítima na lateral, para que não se engasgue com o excesso de salivação. \n"
+        "Não coloque panos entre os dentes ou na boca do paciente, pois o risco de sufocamento "
+        "é muito grande frente ao pequeno benefício de proteger a língua do mesmo. \n"
+        "Apóie a cabeça do paciente em uma almofada ou algo similar. Não tente impedir os "
+        "movimentos convulsivos; apenas afaste os objetos em volta que possam machucar a vítima. \n"
+        "Alargue as roupas da vítima. \n"
+        "Nunca administre nenhum medicamento sem prescrição médica. \n"
+        "Preste atenção aos movimentos convulsivos — o relato da testemunha sobre a crise "
+        "é essencial para um bom diagnóstico clínico. \n"
+        "Acomode a pessoa confortavelmente quando a convulsão parar. \n"
+        "Deixe-a dormir, se ela quiser. \n"
+        "Verifique se a respiração está normal. \n"
+        "Leve o paciente ao médico ou ao hospital. \n \n"
+
+        "Retirado de: http://www.prefeiturarp.usp.br/pages/cipa/manual_primeiros_socorros.htm "
+    </string>
+
+    <string name="fainting">Desmaio</string>
+    <string name="fainting_text">
+        "O desmaio é a perda temporária de consciência, que pode ser provocada por fatores diversos. "
+        "O importante é manter a calma e tentar ajudar a vítima. \n \n"
+
+        "<b>Causas</b> \n \n"
+
+        "Emoções bruscas. \n"
+        "Cansaço. \n"
+        "Fome. \n"
+        "Nervosismo. \n"
+        "Traumatismo. \n"
+        "Hipoglicemia (baixo nível de açúcar no sangue). \n"
+        "Queda de pressão. \n"
+        "Arritmia cardíaca (qualquer desvio da normalidade no ritmo das contrações cardíacas). \n \n"
+
+        "<b>Sinais e sintomas</b> \n \n"
+
+        "Pele pálida. \n"
+        "Sudorese. \n"
+        "Pulso e respiração fracos. \n \n"
+
+        "<b>Como ajudar?</b> \n \n"
+
+        "Deite a vítima e eleve as pernas. \n"
+        "Afrouxe as roupas da pessoa. \n"
+        "Verifique o pulso do paciente. Caso não consiga sentir a pulsação, apalpe a artéria "
+        "carótida, na lateral do pescoço. \n"
+        "Caso o desmaio persista por mais de 1 ou 2 minutos, aqueça a vítima, chame o médico "
+        "imediatamente ou leve a pessoa ao hospital. \n \n"
+
+        "Obs: Caso você sinta que vai desmaiar ao ver sangue ou ferimentos, por exemplo, "
+        "deite-se e eleve as pernas; ou sente-se e curve o tronco para frente, colocando "
+        "a cabeça no meio das pernas, abaixo dos joelhos, e respire profundamente, pressionando a nuca. \n \n"
+
+        "Retirado de: http://www.prefeiturarp.usp.br/pages/cipa/manual_primeiros_socorros.htm "
+    </string>
+
+    <string name="state_of_shock">Estado de choque</string>
+    <string name="state_of_shock_text">
+        "Os casos de estado de choque são provocados geralmente por lesões graves, tais como: \n \n"
+
+        "Hemorragias ou emoções intensas. \n"
+        "Queimaduras graves. \n"
+        "Ferimentos graves ou extensos. \n"
+        "Choque elétrico. \n"
+        "Intoxicação por produtos químicos ou alimentos. \n"
+        "Parada cárdio-respiratória. \n"
+        "Exposição excessiva ao calor ou ao frio. \n"
+        "Dor profunda. \n"
+        "Infecções. \n"
+        "fraturas. \n \n"
+
+        "<b>Sinais e sintomas</b> \n \n"
+
+        "Pele pálida e fria. \n"
+        "Sudorese nas mãos e na testa. \n"
+        "Sensação de frio. \n"
+        "Náuseas e vômitos. \n"
+        "Dificuldade respiratória. \n"
+        "Visão nublada. \n"
+        "Pulso fraco e rápido. \n \n"
+
+        "<b>Como ajudar?</b> \n \n"
+
+        "Examine o estado da vítima. \n"
+        "Mantenha a pessoa deitada e aquecida. \n"
+        "Alargue as roupas da vítima. \n"
+        "Eemova da boca qualquer objeto que atrapalhe a respiração (dentadura, goma de mascar) e "
+        "mantenha a vítima respirando. \n"
+        "Posicione a cabeça na lateral, para o caso de ela vomitar, "
+        "Levante as pernas da vítima, mas somente se não houver suspeita de fraturas. \n"
+        "Mantenha a cabeça do paciente em posição mais baixa que o tronco, de preferência. \n"
+        "Leve-o ao hospital. \n \n"
+
+        "<i>Importante</i> \n \n"
+
+        "<b>NUNCA:</b> \n \n"
+
+        "Dê bebidas alcoólicas à vítima. \n"
+        "Dê líquido a uma pessoa inconsciente ou semi-inconsciente. \n"
+        "Dê líquidos se suspeitar de lesão abdominal ou se o acidentado estiver em estado grave. \n \n"
+
+        "Retirado de: http://www.prefeiturarp.usp.br/pages/cipa/manual_primeiros_socorros.htm "
+    </string>
+
+    <string name="earache">Dor de ouvido</string>
+    <string name="earache_text">
+        "Apesar de parecer uma ocorrência simples, a dor de ouvido pode ser sinal de infecção "
+        "local, com possibilidade de atingir o sistema nervoso central. Veja como agir. \n \n"
+
+        "<b>Como agir:</b> \n \n"
+
+        "Erga a cabeça do paciente e coloque-a sobre vários travesseiros. \n"
+        "Aplique compressas de água morna sobre o ouvido dolorido e dê um analgésico "
+        "para amenizar a dor. \n"
+        "Não permita que a pessoa assoe o nariz, pois a pressão pode agravar a dor. \n"
+        Procure o médico assim que puder. Somente use outros medicamentos se receitados pelo especialista. \n \n"
+
+        "Retirado de: http://www.prefeiturarp.usp.br/pages/cipa/manual_primeiros_socorros.htm "
+    </string>
+
+    <string name="fractures">Fraturas</string>
+    <string name="fractures_text">
+        "As fraturas são ocasionadas pela ruptura completa ou parcial na continuidade dos ossos. "
+        "Podem ser classificadas em: \n \n"
+
+        "Fechadas: quando a pele do local fraturado não se rompe. \n"
+        "Abertas ou expostas: quando a pele se rompe e o osso fica exposto. Esta ruptura pode ser "
+        "causada por algum objeto cortante ou pelos próprios fragmentos ósseos. Neste caso, a "
+        "probabilidade de infecção é muito grande, e por isso a fratura deve ser examinada "
+        "com atenção pelo médico. \n \n"
+        
+        "Ainda se pode classificar a fratura por sua extensão: \n \n"
+
+        "Completa: envolve toda a espessura do osso. \n"
+        "Incompleta: envolve apenas uma parte do diâmetro do osso. \n \n"
+        
+        "<b>Sinais e sintomas</b> \n \n"
+
+        "Dor profunda na área fraturada. \n"
+        "Hematoma (ruptura de vasos sanguíneos, com acúmulo de sangue no local). \n"
+        "Paralisia por lesão dos nervos. \n"
+        "Movimentos com estalos (semelhantes ao som de amassar de papel). \n \n"
+        
+        "<b>Como ajudar?</b> \n \n"
+
+        "Não tente colocar o osso da vítima no lugar. \n"
+        "Procure não limpar os ferimentos. Movimentos desnecessários podem provocar complicações sérias e infecções. \n"
+        "Dê analgésico via oral, para amenizar a dor. \n"
+        "Coloque compressa de gelo na área traumatizada para diminuir a dor e o inchaço. \n"
+        "Caso não tenha certeza da fratura, trate a vítima como se a ruptura realmente "
+        "tivesse ocorrido, imobilizando a região. \n"
+        "Chame o médico o mais rápido possível, ou leve a vítima ao hospital. \n \n"
+        
+        "<i>Fraturas nos braços</i> \n \n"
+
+        "Se o osso não estiver exposto, faça compressa com gelo \n"
+        "Caso a fratura seja exposta, enfaixe com gazes. \n"
+        "Imobilize com materiais improvisados, como tiras de pano e pedaços de madeira. \n"
+        "Coloque o membro fraturado no material usado para a imobilização. \n"
+        "Enrole a tala com as ataduras, para que fique bem firme. \n"
+        "Leve o paciente imediatamente ao hospital. \n"
+        "Caso a fratura seja nos braços, faça uma tipóia, como na imagem \n"
+        "Coloque uma atadura triangular, uma camisa ou pano sobre o tórax da vítima, "
+        "e amarre as pontas. \n \n"
+        
+        "<i>Fraturas na coluna vertebral</i> \n \n"
+
+        "A coluna vertebral é responsável por várias funções importantíssimas, como respiração "
+        "e movimentação. Portanto, a fratura da coluna pode provocar lesões importantes, "
+        "principalmente na medula óssea, causando danos irreversíveis. \n \n"
+        
+        "<b>Sinais e sintomas</b> \n \n"
+
+        "Incapacidade ou problemas com a movimentação de membros. \n"
+        "Perda de sensibilidade nas pernas. \n"
+        "Formigamento em alguma parte do corpo, principalmente nas pernas. \n"
+        "Dor no pescoço e na região lombar. \n \n"
+
+        "<b>Como ajudar?</b> \n \n"
+
+        "Não deixe a vítima se mexer; qualquer movimento inadequado pode trazer "
+        "consequências gravíssimas. \n"
+        "Chame a emergência imediatamente. \n \n"
+        
+        "<i>Como imobilizar a vítima? </i>\n \n"
+
+        "Identifique a área lesada, cortando a roupa. \n"
+        "Retire anéis e braceletes que possam vir a comprometer a circulação. \n"
+        "Cubra as lesões com curativos. \n"
+        "Acolchoe imobilizadores que possam machucar a vítima. \n"
+        "Imobilize a área acima e abaixo da articulação lesada, de forma que a vítima não "
+        "possa movimentar a região. \n \n"
+        
+        "<i>Material usado para imobilização</i> \n \n"
+
+        "Imobilizadores rígidos: são materiais flexíveis que, moldados ao corpo, conservam a "
+        "estabilidade. Podem ser de madeira, papelão ou alumínio. Sua fixação no membro lesado "
+        "é feita com bandagens. \n"
+        "Bandagem: é o material usado para fixar um curativo sobre a ferida. Deve ser "
+        "suficientemente justa para reduzir a dor e os sangramentos, e frouxa o bastante para "
+        "permitir a circulação sanguínea. As bandagens mais usadas são as triangulares. \n \n"
+        
+        "Retirado de: http://www.prefeiturarp.usp.br/pages/cipa/manual_primeiros_socorros.htm "
+    </string>
+
+    <string name="bleeding">Hemorragia</string>
+    <string name="bleeding_text">
+        "São conseqüência de um rompimento, cisão ou dilaceração dos vasos sangüíneos, veias ou "
+        "artérias, o que provoca a perda de sangue circulante para dentro ou para fora do corpo. "
+        "As medidas a serem tomadas para reter uma hemorragia dependerão do local afetado. \n \n"
+
+        "Existem dois tipos básicos de hemorragia: \n \n"
+
+        "Hemorragia venosa: é identificada pelo sangue de cor mais escura, por ser rico em "
+        "gás carbônico, e sangramento contínuo. \n"
+        "Hemorragia arterial: é qualificada fundamentalmente pelo sangramento em jatos de cor "
+        vermelho vivo. É considerada mais séria que a hemorragia venosa, por possuir uma maior "
+        "pressão sangüínea. \n \n"
+
+        "<b>Sinais e sintomas</b> \n \n"
+
+        "Enjôos e vômitos. \n"
+        "Ritmo cardíaco acelerado. \n"
+        "Pulso fino (que mal se pode sentir). \n"
+        "Respiração rápida e superficial. \n"
+        "Sede. \n"
+        "Sudorese. \n"
+        "Desmaios. \n"
+        "Diminuição da temperatura, ocasionando frio e calafrios. \n"
+        "Estado de choque. \n"
+        "Tonteira. \n"
+        "Mucosas sem cor. \n \n"
+
+        "<i>Hemorragia externa</i> \n \n"
+
+        "Esta forma de hemorragia é o sangramento de estruturas superficiais. Normalmente, "
+        "pode ser contida com regras básicas de primeiros socorros. \n \n"
+
+        "<b>Como ajudar?</b> \n \n"
+
+        "Deite a vítima imediatamente. \n"
+        "Use luvas para tratá-la, se possível. \n"
+        "Eleve o membro lesado a uma altura superior à do coração, para que se dificulte a vazão do "
+        "sangue, pela própria pressão. \n"
+        "Aplique um curativo com gaze ou pano limpo sobre a área ferida, e comprima-o firmemente "
+        "por pelo menos 10 minutos. \n"
+        "Coloque uma bandagem por cima do curativo. \n"
+        "Caso o sangramento persista, faça pressão sobre a artéria mais próxima do local afetado. \n"
+        "Quando o sangramento parar, deixe a parte afetada em repouso. \n"
+        "Não faça garroteamento no local. \n"
+        "Leve a vítima ao hospital. \n \n"
+
+        "<i>Hemorragia interna</i> \n \n"
+
+        "Esta hemorragia se caracteriza pela ruptura de vasos ou órgãos internos. Já que o "
+        "sangramento não pode ser visto, é necessário que se preste muita atenção aos sinais e "
+        "sintomas específicos, para evitar o choque da vítima e ter tempo hábil de encaminhá-la "
+        "ao socorro adequado. \n \n"
+
+        "<b>Sinais e sintomas</b> \n \n"
+
+        "Pele pálida e fria. \n"
+        "Dedos e mãos (extremidades) arroxeados pela redução de circulação sangüínea. \n"
+        "Mucosas dos olhos e boca esbranquiçadas. \n"
+        "Tonteira. \n"
+        "Sudorese. \n \n"
+
+        "<b>Como ajudar?</b> \n \n"
+
+        "Para a retenção da hemorragia (hemostasia): \n \n"
+
+        "Acalme a vítima, se estiver consciente. \n"
+        "Posicione-a com a cabeça em um nível mais baixo que o corpo. \n"
+        "Aqueça a vítima com cobertor ou algo similar. \n"
+        "Interrompa o consumo de líquidos. \n"
+        "Leve a vítima ao hospital imediatamente. \n \n"
+
+        "<i>Hemorragia nasal</i> \n \n"
+
+        "Esta é a hemorragia que mais acontece entre adultos e crianças. É causada pela ruptura dos "
+        "vasos sangüíneos do nariz, devido à exposição excessiva ao sol, trabalho sob temperaturas "
+        "elevadas, atividades físicas muito desgastantes e redução da pressão atmosférica, como "
+        "também por causa de outras doenças. \n \n"
+
+        "Às vezes até uma crise hipertensiva pode acarretar esta hemorragia; nestes casos, é "
+        "preciso medir a pressão arterial. É recomendável a consulta imediata ao médico, para um "
+        "exame mais detalhado e um diagnóstico correto. \n \n"
+
+        "<b>Como ajudar?</b> \n \n"
+
+        "Alargue as roupas que estejam apertando o tórax e o pescoço da vítima. \n"
+        "Acalme-a. \n"
+        "Sente-a em lugar arejado. \n"
+        "Solicite à vítima que respire pela boca. \n"
+        "Não permita que ela assoe o nariz. \n"
+        "Faça pressão com os dedos sobre a narina que estiver sangrando, durante 5 a 10 minutos. \n"
+        "Coloque um chumaço de algodão na narina em sangramento, para fazer de tampão. \n"
+        "Faça compressa com gelo no nariz. \n"
+        "Caso não pare o sangramento, leve a vítima ao hospital. \n \n"
+        
+        "Retirado de: http://www.prefeiturarp.usp.br/pages/cipa/manual_primeiros_socorros.htm "
+    </string>
+
+    <string name="insolation">Insolação</string>
+    <string name="insolation_text">
+        "Ocorre após uma grande exposição ao sol, em dias de calor intenso. O corpo desidrata mais "
+        "rápido por causa do excesso de suor. Fenômenos como o golpe de calor podem ocorrer quando "
+        "a regulação da temperatura é incapaz de dissipar o acúmulo de calor corporal. Este "
+        "fenômeno é muito grave e potencialmente fatal. \n \n"
+
+        "Por isso, o tempo de exposição ao calor ou ao sol deve ser criteriosamente observado. "
+        "Muitas vezes, um curto período de tempo — 15 a 30 minutos, por exemplo — é suficiente "
+        "para causar sérios danos se a temperatura a que se está exposto for muito alta, como "
+        "freqüentemente ocorre em países tropicais como o nosso. \n \n"
+
+        "<b>Sinais e sintomas</b> \n \n"
+
+        "Mal-estar. \n"
+        "Dor de cabeça forte. \n"
+        "Calor. \n"
+        "Ardor. \n"
+        "Febre. \n"
+        "Redução da quantidade de urina. \n"
+        "Sede em excesso. \n"
+        "Vermelhidão por todo o corpo, em alguns casos com o aparecimento de bolhas d'água. \n"
+        "Convulsão nos casos mais sérios. \n \n"
+
+        "<b>Como ajudar?</b> \n \n"
+
+        "Transporte a vítima para um local arejado, fresco e de preferência em frente a um "
+        "ventilador. Nunca permita que ela permaneça em um ambiente abafado e quente. \n"
+        "Aplique compressas frias pelo corpo. \n"
+        "Dê um banho na vítima (com água em temperatura ambiente, mas sempre fresca). \n"
+        "Faça-a beber bastante líquido. \n"
+        "Caso os sinais e sintomas persistam por mais de 1 hora, leve a vítima ao médico ou ao hospital. \n
+        "Nos casos mais graves — febre alta (acima de 38º), vômitos ou convulsões — leve a "
+        "vítima ao hospital imediatamente. \n \n"
+        
+        "Retirado de: http://www.prefeiturarp.usp.br/pages/cipa/manual_primeiros_socorros.htm "
+    </string>
+
+    <string name="intoxication">Intoxicação</string>
+    <string name="intoxication_text">
+        "Podem ocorrer por várias vias, entre elas: \n \n"
+
+        "Oral: com o consumo de qualquer substância tóxica pela boca; \n"
+        "Cutânea: no contato da pele com qualquer produto tóxico; \n"
+        "Respiratória: pela inalação de gases ou vapores liberados por produtos tóxicos. \n \n"
+
+        "<b>Sinais e sintomas</b> \n \n"
+
+        "Estes dependerão das vias de penetração e da substância tóxica. Contudo, "
+        "de uma maneira geral, podemos observar: \n \n"
+
+        "Vestígios na boca ou na pele, indicando ingestão, inalação ou contato da vítima "
+        "com substâncias tóxicas; \n"
+        "Odor incomum no hálito, devido à aspiração ou ingestão de algum produto químico nocivo; \n"
+        "Alteração na coloração dos lábios; \n"
+        "Lesões na pele; \n"
+        "Redução da capacidade respiratória; \n"
+        "Queimação na boca, garganta ou estômago; \n"
+        "Sonolência; \n"
+        "Cólica; \n"
+        "Diarréia; \n"
+        "Sangue nas fezes; \n"
+        "Náuseas e vômitos; \n"
+        "Confusão mental e estado de coma. \n \n"
+
+        "<b>Como ajudar?</b> \n \n"
+
+        "Leve a vítima imediatamente ao hospital; \n"
+        "Observe-a com atenção, para explicar ao médico como ocorreu a intoxicação; \n"
+        "Em caso de intoxicação por produto químico, encontre a respectiva caixa, na qual você "
+        "poderá saber a composição do produto e qual é o antídoto adequado; \n"
+        "Se possível, leve o produto tóxico para o médico no frasco original; \n"
+        "Em caso de intoxicação alimentar ou por plantas, leve para o médico uma amostra do "
+        "alimento ou planta; \n"
+        "Dê bastante líquido à vítima; \n"
+        "Nunca ofereça medicação para segurar a diarréia, pois esta é o mecanismo de defesa do "
+        "organismo, que elimina as toxinas através das fezes. \n \n"
+
+        "Auxílio pelo telefone: Centro de Assistência Toxicológica do Hospital das Clínicas de "
+        "São Paulo (CEATOX). Está disponível 24 horas para informações sobre intoxicação. \n"
+        "A ligação é gratuita: 0800-148110. \n \n"
+
+        "<i>Intoxicação por plantas</i> \n \n"
+
+        "Plantas tóxicas existem em todos os ambientes, e podem ser muito perigosas quando "
+        "manuseadas ou até ingeridas, especialmente por crianças. \n \n"
+
+        "<b>Sinais e sintomas</b> \n \n"
+
+        "Variam conforme as diversas espécies de plantas. Porém, os mais comuns são: \n \n"
+
+        "Náuseas; \n"
+        "Vômitos; \n"
+        "Diarréia e desidratação. \n \n"
+
+        "<b>Como ajudar?</b> \n \n"
+
+        "Não provoque o vômito na vítima, muito menos se tiver ingerido soda cáustica, derivados "
+        "do petróleo (querosene, gasolina, líquido de isqueiro, removedores), ácidos, água de cal, "
+        "amônia, alvejantes de uso doméstico, tira-ferrugem ou desodorantes. Isto porque, da mesma "
+        "forma que, ao entrar no organismo provoca-lhe danos durante o trajeto, a substância tóxica "
+        "fará o mesmo quando sair em forma de vômito; \n"
+        "A rapidez é imprescindível: trate a vítima antes que seu organismo absorva o veneno; \n"
+        "Remova os resíduos restantes da planta da boca da vítima, lavando-a com bastante água; \n"
+        "Não permita que a vítima ande; \n"
+        "Dê-lhe leite ou clara de ovo; \n"
+        "Observe a língua e a garganta, para verificar a dimensão da irritação provocada; \n"
+        "Mantenha a vítima aquecida; \n"
+        "Guarde a planta para identificação futura; \n"
+        "Leve a vítima para o hospital mais próximo. \n \n"
+
+        "<i>Tóxico ingerido — Sinais e Sintomas</i> \n \n"
+
+        "Enjôo; \n"
+        "Vômito; \n"
+        "Diarréia; \n"
+        "Suor; \n"
+        "Palidez; \n"
+        "Febre; \n"
+        "Tonteira. \n \n"
+
+        "<b>Como ajudar?</b> \n \n"
+
+        "Siga os mesmos procedimentos acima \n \n"
+
+        "<i>Tóxico inalado — Sinais e sintomas</i> \n \n"
+
+        "Enjôo; \n"
+        "Vômito; \n"
+        "Diarréia; \n"
+        "Suor; \n"
+        "Palidez; \n"
+        "Sufocamento; \n"
+        "Febre. \n \n"
+
+        "<b>Como ajudar?</b> \n \n"
+
+        "Coloque a vítima em local arejado; \n"
+        "Mantenha a vítima respirando, e verifique a respiração; \n"
+        "Posicione o queixo da vítima para cima o quanto puder, e sopre em sua boca ou "
+        "nariz de 12 a 18 vezes por minuto; \n"
+        "Conserve a vítima aquecida; \n"
+        "Leve-a ao hospital. \n \n"
+
+        "<i>Contaminação pela pele — Sinais e Sintomas</i> \n \n"
+
+        "Queimação ou resfriamento; \n"
+        "Diarréia; \n"
+        "Vômito; \n"
+        "Salivação intensa; \n"
+        "Náuseas; \n"
+        "Dificuldade respiratória; \n"
+        "Perda de consciência. \n \n"
+
+        "<b>Como ajudar?</b> \n \n"
+
+        "Leve a vítima para o chuveiro ou jato de água corrente, enquanto remove toda a roupa; \n"
+        "Coloque roupas limpas na pessoa; \n"
+        "Não medique a vítima; \n"
+        "Leve-a ao hospital. \n"
+
+        "<i>Contaminação pelos olhos — Sinais e Sintomas</i> \n \n"
+
+        "Ardência; \n"
+        "Lacrimejamento; \n"
+        "Dor. \n \n"
+
+        "<b>Como ajudar?</b> \n \n"
+
+        "Lave os olhos imediatamente após o acidente, porque a demora no atendimento pode "
+        "aumentar a gravidade da lesão; \n"
+        "Afaste as pálpebras da vítima e lave bem os olhos com água corrente (de 15 a 20 minutos); \n"
+        "Não use colírio; \n"
+        "Leve a vítima ao hospital \n \n"
+
+        "Retirado de: http://www.prefeiturarp.usp.br/pages/cipa/manual_primeiros_socorros.htm "
+    </string>
+
+    <string name="inconsious"> Vítima inconsciente ou com crise convulsiva</string>
+    <string name="inconsious_text">
+        "Siga estas orientações gerais: \n \n"
+
+        "Examine a respiração da vítima; \n"
+        "Verifique se a língua não está atrapalhando a respiração; \n"
+        "Posicione a vítima lateralmente para evitar que se engasgue com o vômito espontâneo; \n"
+        "Leve-a imediatamente ao hospital. \n \n"
+        
+        "Retirado de: http://www.prefeiturarp.usp.br/pages/cipa/manual_primeiros_socorros.htm "
+    </string>
+
+    <string name="rabies">Mordidas de animais raivosos</string>
+    <string name="rabies_text">
+        "A hidrofobia, ou raiva, pode afetar todos os mamíferos, e não só os cães e gatos. A doença "
+        "atua no sistema nervoso central, através de um vírus, provocando sinais e sintomas de "
+        "encefalite (inflamação no cérebro), e pode ser fatal. \n \n"
+
+        "O vírus tem uma característica particular, que o faz ainda mais perigoso: ele penetra no "
+        "organismo humano através dos nervos, e não pela corrente sanguínea. Ou seja, enquanto "
+        "estiver fazendo este trajeto, as defesas do corpo não conseguem notar sua presença. "
+        "A produção de anticorpos só se iniciará quando o vírus atingir seu alvo, o cérebro, e aí "
+        "já é mais difícil evitar a morte da vítima. \n \n"
+
+        "O animal contaminado pode transmitir o vírus ao homem através da saliva. Por isso, "
+        "lembre-se: um arranhão ou uma simples lambida em um ferimento é o suficiente para o "
+        "contágio. É importante reforçar que a raiva pode ser transmitida não só por cão e gato, "
+        "mas também por outros mamíferos. \n \n"
+
+        "<b>Sinais e sintomas</b> \n \n"
+
+        "Dificuldades para engolir; \n"
+        "Alteração de comportamento; \n"
+        "Sensibilidade à luz (fotofobia); \n"
+        "Medo de água (hidrofobia); \n"
+        "Paralisia. \n \n"
+
+        "<b>Como ajudar?</b> \n \n"
+
+        "Lave a ferida com água e sabão em abundância, de preferência detergente; o sabão é "
+        "responsável pela destruição do invólucro do microorganismo, reduzindo desta forma sua "
+        "capacidade de reprodução; \n"
+        "Leve a vítima ao hospital mais próximo, mesmo que você conheça o animal ou que ele esteja "
+        "vacinado contra a raiva. Isto porque aproximadamente 5% dos cães não reagem apropriadamente à vacina; \n"
+        "Em caso de ataque, não sacrifique o animal. Coloque-o em local seguro para um intervalo de "
+        "observação (10 dias para cães e gatos). \n \n"
+
+        "<b>O que é a vacina anti-rábica?</b> \n \n"
+
+        "É o vírus inativo, ou seja, morto. Ao ser injetado no organismo, provoca uma resposta "
+        "imunológica, que é a produção de anticorpos para defesa. Também existe o soro anti-rábico, "
+        "que é o anticorpo já pronto, mas só é utilizado quando o estado da vítima pede um "
+        "tratamento de ação mais rápida. \n \n"
+
+        "<b>Vacinação para os cães</b> \n \n"
+
+        "A primeira dose deve administrada a partir dos 3 meses de idade, com reforço 45 dias "
+        "depois. A partir daí, é preciso aplicar doses anuais. \n \n"
+
+        "Retirado de: http://www.prefeiturarp.usp.br/pages/cipa/manual_primeiros_socorros.htm "
+    </string>
+
+    <string name="overdose">Overdose</string>
+    <string name="overdose_text">
+        "Como a própria tradução já diz, é uma superdosagem de qualquer substância — isto é, a "
+        "utilização de alguma droga (medicação ou substância) acima dos níveis terapêuticos. \n \n"
+
+        "<b>Sinais e sintomas</b> \n \n"
+
+        "Confusão mental; \n"
+        "Desmaios; \n"
+        "Convulsões; \n"
+        "Parada cárdio-respiratória. \n \n"
+
+        "<b>Como ajudar?</b> \n \n"
+
+        "Leve a vítima imediatamente ao hospital mais próximo; somente lá ela receberá o tratamento "
+        "adequado. Este é o procedimento mais apropriado, independentemente da substância ingerida. \n \n"
+
+        "<b>Quando não for overdose</b> \n \n"
+
+        "Às vezes o indivíduo tem apenas alucinações, angústia ou depressão, devido ao consumo de "
+        "drogas como ácido, chá de cogumelos ou maconha. Nestes casos: \n \n"
+
+        "Leve a vítima para um local tranqüilo; \n"
+        "Fale com ela até que a crise passe; \n"
+        "Mantenha a calma, para não desesperar ainda mais a pessoa. \n \n"
+
+        "Se não tiver controle da situação, leve a vítima imediatamente ao hospital mais próximo. \n \n"
+
+        "Retirado de: http://www.prefeiturarp.usp.br/pages/cipa/manual_primeiros_socorros.htm "
+    </string>
+
+    <string name="arrest">Parada cardiorespiratória</string>
+    <string name="arrest_text">
+        "A parada cardíaca acontece quando há interrupção ou diminuição significativa dos "
+        "batimentos do coração, o que provoca a redução da quantidade satisfatória de sangue "
+        "circulante. Como costuma ocorrer simultaneamente à parada respiratória, daí tem-se "
+        "a parada cárdio-respiratória. \n \n"
+
+        "A parada cárdio-respiratória (PCR) é o tipo mais comum de emergência médica. É importante "
+        "ressaltar que, no entanto, uma pode ser conseqüencia da outra; tanto a parada cardíaca "
+        "quanto a respiratória podem ocorrer de forma isolada, levando rapidamente ao aparecimento "
+        "da outra ocorrência. \n \n"
+
+        "O tempo para o socorrista identificar o ocorrido e tratar a vítima é de poucos minutos. "
+        "E o sucesso no atendimento conta com a agilidade e a perfeição com que são feitas as "
+        "manobras de socorro. \n \n"
+
+        "Os motivos de uma parada cárdio-respiratória são os mais distintos possíveis, mas os "
+        "mais comuns são: \n \n"
+
+        "Intoxicações; \n"
+        "Choque elétrico; \n"
+        "Asfixia; \n"
+        "Afogamento; \n"
+        "Ataque cardíaco. \n \n"
+        
+        "<b>Sinais e sintomas</b> \n \n"
+
+        "Incapacidade ou ausência respiratória; \n"
+        "Midríase (dilatação das pupilas); \n"
+        "Perda de consciência; \n"
+        "Falta de pulso; \n"
+        "Cianose (as extremidades dos dedos e dos lábios tornam-se roxas); \n"
+        "Ausência de batimentos cardíacos. \n \n"
+        
+        "<b>Como ajudar?</b> \n \n"
+
+        "Verifique se a vítima ainda respira, e analise seu estado de consciência; \n"
+        "Remova resíduos alimentares e próteses dentárias; \n"
+        "Faça a respiração boca-a-boca tantas vezes quantas forem necessárias, até o "
+        "restabelecimento dos movimentos respiratórios; \n"
+        "Mantenha sempre o mesmo ritmo: 15 massagens para 2 sopros; \n"
+        "Examine o pulso e observe suas características (batimentos acelerados ou pouco "
+        "perceptíveis, por exemplo); \n"
+        "Realize a massagem cardíaca; \n"
+        "Se necessário, continue o atendimento de primeiros socorros durante o transporte "
+        "para o hospital. \n \n"
+        
+        "Retirado de: http://www.prefeiturarp.usp.br/pages/cipa/manual_primeiros_socorros.htm "
+    </string>
+
+    <string name="mouth_to_mouth">Respiração boca a boca</string>
+    <string name="mouth_text">
+        "Deite a vítima com a cabeça inclinada e o queixo elevado; \n"
+        "Pressione a narina da vítima com o polegar e o indicador da mesma mão usada para inclinar "
+        "a cabeça, e passe a outra mão por trás do pescoço, para dar apoio (veja a figura); \n"
+        "Retire da boca as próteses incompletas ("dentaduras", "pontes", etc.) e alimentos "
+        "(chicletes e balas, por exemplo); \n"
+        "Coloque sua boca sobre a boca da vítima e faça duas ventilações (sopros para dentro da "
+        "boca da vítima), até notar que o peito se levanta; para que isto aconteça, é preciso "
+        "soprar com bastante força. Cada ventilação deve durar em média de 1 segundo a 1 segundo "
+        "e meio; \n"
+        "Em crianças, as ventilações devem durar 4 segundos e, nos recém-nascidos, 3 segundos. A "
+        "boca do socorrista cobre a boca e o nariz da criança ao mesmo tempo, por ser impossível "
+        "fazer da mesma forma que com os adultos; \n"
+        "Permita que a vítima expire livremente; \n"
+        "Repita o movimento 15 vezes por minuto; \n"
+        "Chame o médico ou leve a vítima para o hospital. \n \n"
+
+        "Retirado de: http://www.prefeiturarp.usp.br/pages/cipa/manual_primeiros_socorros.htm "
+    </string>
+
+    <string name="cardiac">Massagem cardíaca</string>
+    <string name="cardiac_text">
+        "Coloque a vítima deitada de costas sobre uma superfície dura; \n"
+        "Coloque as mãos sobrepostas na metade inferior do esterno (osso no meio do tórax). Os "
+        "dedos devem ficar abertos, sem tocar a parede do tórax; \n"
+        "A seguir, faça pressão, com bastante vigor, para que se abaixe o esterno, comprimindo o "
+        "coração de encontro à coluna vertebral; \n"
+        "Descomprima em seguida; \n"
+        "Repita a manobra quantas vezes forem necessárias (cerca de 60 vezes por minuto/1 vez por segundo); \n"
+        "Leve a vítima ao hospital. \n \n"
+
+        "<b>CUIDADOS:</b> Nas crianças com peso inferior a 30kg, deve-se fazer pressão apenas com uma das "
+        "mãos, e utilizando os dedos, a fim de que não ocorram fraturas ósseas no esterno ou costelas. \n \n"
+        
+        "Retirado de: http://www.prefeiturarp.usp.br/pages/cipa/manual_primeiros_socorros.htm "
+    </string>
+
+    <string name="cpr">Reanimação cárdio-pulmonar</string>
+    <string name="cpr_text">
+        "Verifique a respiração; \n"
+        "Examine o pulso; \n"
+        "Quando a vítima apresentar dispnéia (dificuldade respiratória) grave ou ausência de "
+        "movimentos respiratórios, comece rapidamente o atendimento com a respiração boca-a-boca; \n"
+        "Encontre a área de compressão que está localizada um pouco abaixo do meio do osso do tórax "
+        "(esterno); pressione esta parte; \n"
+        "Faça a massagem cardíaca; \n"
+        "Faça respiração boca-a-boca; \n"
+        "Leve a vítima ao hospital. \n"
+
+        "<b>Instruções para a reanimação</b> \n \n"
+
+        "Coloque a vítima de barriga para cima sobre uma superfície lisa e rígida; \n"
+        "Ajoelhe-se do lado da vítima, na altura de seus ombros; \n"
+        "Examine o estado de consciência da vítima; \n"
+        "Faça o exame primário, diagnosticando a parada cárdio-respiratória; \n"
+        "Faça a respiração boca-a-boca em duas ventilações, cada uma com a duração de 1 a 5 segundos; \n"
+        "Descubra o tórax da vítima; \n"
+        "Identifique o ponto de compressão da seguinte forma: localize o fim do osso esterno
+        "(o osso do tórax, abaixo do estômago), dê a distância de um palmo e mais duas polpas "
+        "digitais; imediatamente acima deste nível, coloque as mãos para iniciar a massagem "
+        "cardíaca. \n"
+        "Realize 15 compressões torácicas seguidas, com uma freqüência aproximada de 80 por minuto; \n"
+        "Mantenha a relação de 15 compressões para 2 ventilações; \n"
+        "Examine o pulso após 1 minuto de reanimação cárdio-pulmonar, e depois, a cada 3 minutos; \n"
+        "Chame o médico ou leve a vítima ao hospital. \n \n"
+
+        "Em caso de dois socorristas \n \n"
+
+        "Siga estes passos: \n \n"
+
+        "O socorrista líder faz o contato inicial e o exame primário; \n"
+        "Um dos socorristas se responsabiliza pela ventilação e o outro, pela compressão do tórax; \n"
+        "Começar com 2 ventilações, fazendo em seguida 5 compressões no tórax para cada ventilação; \n"
+        "Contar as compressões em voz alta; \n"
+        "Deve-se fazer uma pausa entre as compressões para permitir a ventilação; \n"
+        "O socorrista a cargo da ventilação verifica a eficácia das compressões no tórax, através "
+        "do controle do pulso da vítima; \n"
+        "Depois do primeiro minuto, e a cada 3 minutos de RCP, verificar o retorno da atividade cardíaca; \n"
+        "Deve-se chamar o médico ou levar a vítima ao hospital. \n \n"
+
+        "<b>Como saber se a RCP funcionou?</b> \n \n"
+
+        "Observe com muita atenção, durante o processo de reanimação: \n \n"
+
+        "Se o tórax está se expandindo; \n"
+        "Se pulso está presente. \n \n"
+        
+        "Retirado de: http://www.prefeiturarp.usp.br/pages/cipa/manual_primeiros_socorros.htm "
+    </string>
+
+    <string name="anakin">Queimaduras</string>
+    <string name="anakin_text">
+        "A queimadura se caracteriza pela lesão de tecidos, podendo ter várias repercussões no "
+        "organismo, mais ou menos graves, dependendo de vários fatores. Alguns deles são listados "
+        "a seguir: \n \n"
+
+        "Extensão da área queimada: quanto maior a área da queimadura, mais grave é o paciente; \n"
+        "Profundidade da queimadura: pode ser difícil de se avaliar nos primeiros dias do acidente, "
+        "pois pode evoluir de um grau para outro. \n \n"
+
+        "<b>Graus de profundidade da queimadura</b> \n \n"
+
+        "1° grau: vermelhidão; \n"
+        "2° grau superficial: vermelhidão e bolhas; \n"
+        "2° grau profunda: bolhas, pele branco-rosada e úmida; \n"
+        "3° grau: pele nacarada, cinzenta e seca. \n"
+
+        "<i>Agentes causadores da lesão</i> \n \n"
+
+        "Físicos: calor, frio, radiações, eletricidade; \n"
+        "Químicos: ácidos, álcalis; \n"
+        "Biológicos: picada de insetos. \n"
+
+        "Os acidentes mais freqüentes são os causados por líquidos superaquecidos. As queimaduras "
+        "químicas necessitam de lavagem exaustiva com água. Já a característica primordial da "
+        "queimadura elétrica é sua evolução progressiva. Nos casos em que há concomitante inalação "
+        "de vapores aquecidos, pode haver comprometimento pulmonar variável. \n \n"
+
+        "<b>Como ajudar?</b> \n \n"
+
+        "Os cuidados serão determinados pelas características da região e pelo risco de seqüelas, "
+        "dependendo da área acometida (face, mãos, pés, genitais e pregas de flexão, como joelhos "
+        "e cotovelos). No entanto, há algumas medidas essenciais a serem tomadas em cada caso: \n \n"
+
+        "<i>Queimaduras pequenas:</i> \n \n"
+
+        "Deixe correr água fria sobre a lesão durante 10 minutos; \n"
+        "Lave com água e sabonete neutro; \n"
+        "Coloque uma camada fina de vaselina estéril sobre o local; \n"
+        "Cubra a ferida com gaze esterilizada, para protegê-la das bactérias. \n \n"
+
+        "<i>Roupas em chamas:</i> \n \n"
+
+        "Faça a vítima se deitar o mais rápido possível, com o lado queimado voltado para cima; \n"
+        "Apague as chamas com água, a menos que haja aparelho elétrico próximo; \n"
+        "Jogue água ao longo do corpo, de cima para baixo, para impedir que as chamas atinjam o rosto; \n"
+        "Se não for possível usar água, enrole a vítima em cobertores, casacos grossos ou tapetes, "
+        "para que as chamas não sejam mais alimentadas com oxigênio. Não use tecidos inflamáveis "
+        "(nylon, tecidos sintéticos e outros). \n \n"
+
+        "<i>Queimaduras extensas e/ou profundas:</i> \n \n"
+
+        "Chame imediatamente a ambulância; \n"
+        "Deite a vítima e jogue água fria sobre a água afetada por 10 minutos ou até que o "
+        "socorro chegue; \n"
+        "Verifique se a pessoa está respirando e tome seu pulso; \n"
+        "Corte ou tire delicadamente as roupas caso estejam aderindo à área queimada. \n \n"
+
+        "Se a queimadura foi causada por material superaquecido ou produto químico, lave o local "
+        "em água corrente, e dirija-se a um hospital. O tratamento pode ser feito com a "
+        "internação do acidentado, ou por atendimento ambulatorial com curativos diários feitos no "
+        "hospital. Dependendo do tipo de lesão, o médico poderá orientar o paciente a proceder "
+        os curativos e cuidados em casa, e marcar consultas de revisão. \n \n"
+
+        "<b>NÃO faça:</b> \n \n"
+
+        "Não aplique substâncias, loção ou gordura na área; \n"
+        "Não coloque emplastro ou curativo adesivo na queimadura; \n"
+        "Não use algodão ou qualquer tipo de tecido que solte fiapos para cobrir a queimadura; \n"
+        "Não remova nada que esteja grudado na ferida. Isto pode provocar danos posteriores à "
+        "pele ou aos tecidos, e ainda causar uma infecção; \n"
+        "Não resfrie demais a vítima se ela tiver queimaduras graves; isto pode levar à "
+        "hipotermia (redução anormal da temperatura corporal). \n \n"
+
+        "Retirado de: http://www.prefeiturarp.usp.br/pages/cipa/manual_primeiros_socorros.htm "
+    </string>
+
+    <string name="dislocation">Luxação(deslocamento)</string>
+    <string name="dislocation_text">
+        "É quando o osso se desloca parcial ou totalmente de sua articulação. Normalmente é "
+        "seguida de sérias lesões nos ligamentos articulares adjacentes. A luxação pode ser "
+        "dividida em total (completo deslocamento dos ossos articulados) e parcial (quando os ossos "
+        "da articulação ainda continuam em contato). \n \n"
+
+        "<b>Sinais e sintomas</b> \n \n"
+
+        "Dor profunda; \n"
+        "Sangramento intenso; \n"
+        "Movimento anormal da articulação. \n"
+
+        "<b>Como ajudar?</b> \n \n"
+
+        "Procure imobilizar a vítima em uma posição que amenize a dor e facilite o transporte; \n"
+        "Dê analgésico via oral, para aliviar a dor; \n"
+        "Não faça compressa com calor ou massagem no local do trauma; \n"
+        "Leve a pessoa ao médico ou ao hospital mais próximo. \n \n"
+
+        "Retirado de: http://www.prefeiturarp.usp.br/pages/cipa/manual_primeiros_socorros.htm "
+    </string>
+
+    <string name="torsion">Torção</string>
+    <string name="torsion_text">
+        "É a distensão dos nervos e ligamentos — tecidos que ajudam a manter os ossos na posição "
+        "correta — devido a uma movimentação forçada da articulação. Acontece com mais freqüência "
+        "nos joelhos, tornozelos, punhos, dedos e pescoço. \n \n"
+
+        "<b>Sinais e sintomas</b> \n \n"
+
+        "Dor profunda em torno da articulação; \n"
+        "Incapacidade de movimentação. Pode até ocorrer sangramento na parte interna do local lesado. \n \n"
+
+        "<b>Como ajudar?</b> \n \n"
+
+        "Coloque compressa fria no local; \n"
+        "Imobilize a área traumatizada; \n"
+        "Dê analgésico via oral, para amenizar a dor; \n"
+        "Chame o médico ou leve a pessoa ao hospital. \n \n"
+
+        "Retirado de: http://www.prefeiturarp.usp.br/pages/cipa/manual_primeiros_socorros.htm "
+    </string>
+
+    <string name="contusion">Contusão</string>
+    <string name="contusion_text">
+        "É resultado de um forte impacto na superfície do corpo. Pode acontecer de o local da "
+        "contusão ficar arroxeado, com dor e inchaço; isto é sinal de que houve hemorragia ou "
+        "derrame por debaixo da pele. \n \n"
+
+        "<b>Sinais e sintomas</b> \n \n"
+
+        "Pele do local arroxeada; \n"
+        "Dor na região de contato. \n \n"
+
+        "<b>Como ajudar?</b> \n \n"
+
+        "Faça compressa de gelo no local; \n"
+        "Dê analgésico via oral, para amenizar a dor; \n"
+        "Consulte o médico. \n"
+
+        "Retirado de: http://www.prefeiturarp.usp.br/pages/cipa/manual_primeiros_socorros.htm "
+    </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

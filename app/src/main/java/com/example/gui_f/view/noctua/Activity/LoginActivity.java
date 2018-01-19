@@ -6,10 +6,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,14 +17,9 @@ import android.widget.TextView;
 
 import com.example.gui_f.model.noctua.UserDTO;
 import com.example.gui_f.noctua.R;
-import com.example.gui_f.viewmodel.noctua.Login;
-import com.example.gui_f.viewmodel.noctua.LoginImpl;
-import com.example.gui_f.viewmodel.noctua.MainScreen;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.example.gui_f.viewmodel.noctua.Login.Login;
+import com.example.gui_f.viewmodel.noctua.Login.LoginImpl;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -43,6 +36,8 @@ public class LoginActivity extends AppCompatActivity {
     private UserDTO userDTO;
 
     private Context context = this;
+
+    private String firebaseKey;
 
 
 
@@ -95,8 +90,11 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 userText = user.getText().toString();
                 passwordText = password.getText().toString();
+                //Send the firebaseKey for sending push notifications
+                //The back end will check if the key has changed
+                firebaseKey = FirebaseInstanceId.getInstance().getToken();
 
-                userDTO = loginImpl.searchUser(userText, passwordText, context);
+                userDTO = loginImpl.searchUser(userText, passwordText, firebaseKey, context);
                 if(!userDTO.isExists()){
                     showIncorrectDialog();
                 }

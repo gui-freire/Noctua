@@ -14,6 +14,7 @@ public class UserDTO implements Parcelable{
     private String email;
     private String password;
     private ResponsibleDTO responsible;
+    private String firebaseKey;
     private boolean resp;
     private boolean exists;
 
@@ -81,6 +82,14 @@ public class UserDTO implements Parcelable{
         this.exists = exists;
     }
 
+    public String getFirebaseKey() {
+        return firebaseKey;
+    }
+
+    public void setFirebaseKey(String firebaseKey) {
+        this.firebaseKey = firebaseKey;
+    }
+
     public UserDTO(){}
 
     //Parcelable methods
@@ -100,6 +109,7 @@ public class UserDTO implements Parcelable{
         dest.writeInt(resp ? 1 : 0);
         dest.writeInt(exists ? 1 : 0);
         dest.writeParcelable(responsible, flags);
+        dest.writeString(firebaseKey);
     }
 
     public static final Parcelable.Creator<UserDTO> CREATOR = new Creator<UserDTO>() {
@@ -123,5 +133,6 @@ public class UserDTO implements Parcelable{
         resp = (pc.readInt() == 1);
         exists = (pc.readInt() == 1);
         responsible = pc.readParcelable(ResponsibleDTO.class.getClassLoader());
+        firebaseKey = pc.readString();
     }
 }

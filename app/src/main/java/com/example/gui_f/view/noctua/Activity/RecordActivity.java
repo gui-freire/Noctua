@@ -4,19 +4,16 @@ import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.gui_f.model.noctua.MainScreen.VitalResponse;
-import com.example.gui_f.noctua.R;
-import com.example.gui_f.viewmodel.noctua.MainScreen;
-import com.example.gui_f.viewmodel.noctua.MainScreenImpl;
+import com.example.gui_f.viewmodel.noctua.MainScreen.MainScreen;
+import com.example.gui_f.viewmodel.noctua.MainScreen.MainScreenImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,20 +77,28 @@ public class RecordActivity extends ListActivity {
                     android.R.layout.simple_list_item_1,
                     list
             );
+            listView.setAdapter(listAdapter);
         } else if(method.equals("Monthly")){
             TextView title = new TextView(this);
             title.setText(MONTHLY);
             title.setTextSize(30);
             title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
-            listView.addHeaderView(title);
-            List<String> list = listToString(mainScreen.searchMonthly(email, month, context));
+            try {
+                listView.addHeaderView(title);
+                List<String> list = listToString(mainScreen.searchMonthly(email, month, context));
 
-            listAdapter = new ArrayAdapter<String>(
-                    this,
-                    android.R.layout.simple_list_item_1,
-                    list
-            );
+
+                listAdapter = new ArrayAdapter<String>(
+                        this,
+                        android.R.layout.simple_list_item_1,
+                        list
+                );
+                listView.setAdapter(listAdapter);
+
+            } catch (Exception e){
+                Log.d("error", e.getMessage());
+            }
         }
     }
 

@@ -2,9 +2,9 @@ package com.example.gui_f.view.noctua.Activity;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -20,8 +20,8 @@ import android.widget.TextView;
 import com.example.gui_f.model.noctua.UserDTO;
 import com.example.gui_f.model.noctua.MainScreen.VitalResponse;
 import com.example.gui_f.noctua.R;
-import com.example.gui_f.viewmodel.noctua.MainScreen;
-import com.example.gui_f.viewmodel.noctua.MainScreenImpl;
+import com.example.gui_f.viewmodel.noctua.MainScreen.MainScreen;
+import com.example.gui_f.viewmodel.noctua.MainScreen.MainScreenImpl;
 
 import java.util.Calendar;
 
@@ -162,8 +162,6 @@ public class MainScreenActivity extends AppCompatActivity
             intent.putExtra("user", dto);
             startActivity(intent);
 
-        } else if (id == R.id.nav_settings) {
-
         } else if (id == R.id.navlog_daily) {
             list = new Intent(this, RecordActivity.class);
 
@@ -175,14 +173,23 @@ public class MainScreenActivity extends AppCompatActivity
         } else if (id == R.id.navlog_monthly) {
             Intent intent = new Intent(this, RecordActivity.class);
             intent.putExtra("user", dto);
+            intent.putExtra("Method", "Monthly");
             intent.putExtra("Weekly", Calendar.WEEK_OF_MONTH);
             intent.putExtra("Month", Calendar.MONTH);
             startActivity(intent);
 
         } else if(id == R.id.navlog_weekly){
             Intent intent = new Intent(this, RecordActivity.class);
+            intent.putExtra("Method", "Weekly");
             intent.putExtra("user", dto);
             intent.putExtra("Monthly", Calendar.MONTH);
+            try {
+                startActivity(intent);
+            }catch (Exception e) {
+                Log.d("error", e.getMessage());
+            }
+        } else if(id == R.id.nav_firstAid){
+            Intent intent = new Intent(this, FirstAidActivity.class);
             startActivity(intent);
         }
 

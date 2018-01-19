@@ -10,18 +10,31 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.gui_f.view.noctua.Activity.RegisterActivity"
     tools:showIn="@layout/activity_register"
-    android:background="@color/backgroundColour">
+    android:background="@color/backgroundColour"
+    android:scrollbars="vertical">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Name"
-        android:textSize="10pt"/>
+        android:textSize="10pt"
+        android:textColor="@color/textColour"/>
 
     <EditText
         android:id="@+id/editRegisterName"
-        android:layout_width="700px"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
         android:textSize="10pt"
         android:textColor="@color/textColour"/>
 
@@ -29,16 +42,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/textColour"
         android:text="@string/Surname"
         android:textSize="10pt"/>
 
     <EditText
         android:id="@+id/editRegisterSurname"
-        android:layout_width="700px"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
         android:textSize="10pt"
         android:textColor="@color/textColour"/>
 
@@ -51,12 +68,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/EmailUser"
+        android:textColor="@color/textColour"
         android:textSize="10pt"/>
 
     <EditText
         android:id="@+id/editRegisterEmail"
-        android:layout_width="700px"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
         android:textSize="10pt"
         android:textColor="@color/textColour"/>
 
@@ -69,12 +89,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Birthday"
-        android:textSize="10pt"/>
+        android:textSize="10pt"
+        android:textColor="@color/textColour"/>
 
     <EditText
         android:id="@+id/editRegisterBirthday"
-        android:layout_width="700px"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
         android:textSize="10pt"
         android:textColor="@color/textColour"/>
 
@@ -83,33 +106,33 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
     <Button
         android:id="@+id/btnRegisterSave"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:text="@string/Save"
         android:textSize="10pt"
         android:background="@color/buttonColour"/>
 
         <Space
-            android:layout_width="2pt"
-            android:layout_height="wrap_content" />
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_weight="1"/>
     <Button
         android:id="@+id/btnRegisterResp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:text="@string/Responsible"
         android:textSize="10pt"
         android:background="@color/buttonColour"/>
-    </LinearLayout>
 
     <Space
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

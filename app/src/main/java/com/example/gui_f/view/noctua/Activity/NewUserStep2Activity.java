@@ -14,8 +14,6 @@ import android.widget.EditText;
 import com.example.gui_f.model.noctua.ResponsibleDTO;
 import com.example.gui_f.model.noctua.UserDTO;
 import com.example.gui_f.noctua.R;
-import com.example.gui_f.view.noctua.GenericError;
-import com.example.gui_f.view.noctua.UserAlreadyExists;
 import com.example.gui_f.viewmodel.noctua.NewUser.NewUser;
 import com.example.gui_f.viewmodel.noctua.NewUser.NewUserImpl;
 
@@ -32,9 +30,6 @@ public class NewUserStep2Activity extends AppCompatActivity {
     private NewUser newUser = new NewUserImpl();
     private int result;
     private Context context = this;
-
-    private UserAlreadyExists userAlreadyExists = new UserAlreadyExists();
-    private GenericError genericError = new GenericError();
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -17,9 +16,8 @@ import android.widget.ImageView;
 
 import com.example.gui_f.model.noctua.Diary.FeelEnum;
 import com.example.gui_f.noctua.R;
-import com.example.gui_f.view.noctua.GenericError;
-import com.example.gui_f.viewmodel.noctua.Diary;
-import com.example.gui_f.viewmodel.noctua.DiaryImpl;
+import com.example.gui_f.viewmodel.noctua.Diary.Diary;
+import com.example.gui_f.viewmodel.noctua.Diary.DiaryImpl;
 
 public class DiaryActivity extends AppCompatActivity {
 
@@ -32,9 +30,6 @@ public class DiaryActivity extends AppCompatActivity {
     private String feeling;
 
     private Diary diaryService = new DiaryImpl();
-
-    private GenericError genericError = new GenericError();
-
     private Context context = this;
 
     private String user;

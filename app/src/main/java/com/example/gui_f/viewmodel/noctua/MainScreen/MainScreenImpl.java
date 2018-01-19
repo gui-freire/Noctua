@@ -1,4 +1,4 @@
-package com.example.gui_f.viewmodel.noctua;
+package com.example.gui_f.viewmodel.noctua.MainScreen;
 
 import android.content.Context;
 import android.util.Log;

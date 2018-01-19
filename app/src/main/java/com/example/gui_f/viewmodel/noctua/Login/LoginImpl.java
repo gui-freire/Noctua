@@ -1,4 +1,4 @@
-package com.example.gui_f.viewmodel.noctua;
+package com.example.gui_f.viewmodel.noctua.Login;
 
 import android.content.Context;
 import android.util.Log;
@@ -15,8 +15,8 @@ public class LoginImpl implements Login {
     private LoginService login = new LoginServiceImpl();
 
     @Override
-    public UserDTO searchUser(String user, String password, Context context) {
+    public UserDTO searchUser(String user, String password, String firebaseKey, Context context) {
         Log.i("SearchUser", "Sending user to service");
-        return login.searchUser(user, password, context);
+        return login.searchUser(user, password, firebaseKey, context);
     }
 }

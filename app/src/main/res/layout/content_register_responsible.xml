@@ -26,8 +26,10 @@
 
     <EditText
         android:id="@+id/editNameResponsibleRegister"
-        android:layout_width="700px"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
         android:textSize="10pt"
         android:textColor="@color/textColour" />
 
@@ -45,8 +47,10 @@
 
     <EditText
         android:id="@+id/editEmailResponsibleRegister"
-        android:layout_width="700px"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
         android:textSize="10pt"
         android:textColor="@color/textColour"/>
 
@@ -64,8 +68,10 @@
 
     <EditText
         android:id="@+id/editRelationRegister"
-        android:layout_width="700px"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
         android:textColor="@color/textColour"
         android:textSize="10pt"/>
 
@@ -76,14 +82,14 @@
 
     <Button
         android:id="@+id/btnRespRegisterSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:text="@string/Save"
         android:textSize="10pt"
         android:background="@color/buttonColour"/>
 
     <Space
-        android:layout_width="wrap_content"
+        android:layout_width="1dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"/>
 </LinearLayout>

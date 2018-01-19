@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -16,7 +15,6 @@ import android.widget.EditText;
 
 import com.example.gui_f.model.noctua.UserDTO;
 import com.example.gui_f.noctua.R;
-import com.example.gui_f.view.noctua.GenericError;
 import com.example.gui_f.viewmodel.noctua.Register.Register;
 import com.example.gui_f.viewmodel.noctua.Register.RegisterImpl;
 
@@ -30,8 +28,6 @@ public class RegisterActivity extends AppCompatActivity {
     private Button responsible;
     private Register register = new RegisterImpl();
     private UserDTO user = new UserDTO();
-
-    private GenericError genericError = new GenericError();
 
     private Context context = this;
 

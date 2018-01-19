@@ -95,10 +95,10 @@ public class MainScreenServiceImpl implements MainScreenService {
 
             return vitalList;
         } catch (JSONException je){
-            Log.i("SearchDayJsonFail", "Error in sending user and day to webservice " + je.getMessage());
+            Log.d("SearchDayJsonFail", "Error in sending user and day to webservice " + je.getMessage());
             return null;
         } catch (Exception e){
-            Log.i("SearchDayFail", "Error in sending user and day to webservice " + e.getMessage());
+            Log.d("SearchDayFail", "Error in sending user and day to webservice " + e.getMessage());
             return null;
         }
 
@@ -143,25 +143,25 @@ public class MainScreenServiceImpl implements MainScreenService {
             Log.i("SearchWeek", "Sending user, week and month to webservice");
 
             vital.setHeartbeats("60");
-            vital.setHeartbeats("11/10");
+            vital.setPression("11/10");
             vitalList.add(vital);
-            vitalList = new ArrayList<>();
+            vital = new VitalResponse();
 
             vital.setHeartbeats("64");
-            vital.setHeartbeats("13/10");
+            vital.setPression("13/10");
             vitalList.add(vital);
-            vitalList = new ArrayList<>();
+            vital = new VitalResponse();
 
             vital.setHeartbeats("67");
-            vital.setHeartbeats("16/10");
+            vital.setPression("16/10");
             vitalList.add(vital);
 
             return vitalList;
         }catch (JSONException je){
-            Log.i("SearchWeekJsonFail", "Error in sending user, week and month to webservice " + je.getMessage());
+            Log.d("SearchWeekJsonFail", "Error in sending user, week and month to webservice " + je.getMessage());
             return null;
         }catch (Exception e){
-            Log.i("SearchWeekFail", "Error in sending user, week and month to webservice " + e.getMessage());
+            Log.d("SearchWeekFail", "Error in sending user, week and month to webservice " + e.getMessage());
             return null;
         }
 
@@ -178,15 +178,15 @@ public class MainScreenServiceImpl implements MainScreenService {
             vital.setHeartbeats("69");
             vital.setPression("13/9");
             vitalList.add(vital);
-            vitalList = new ArrayList<>();
+            vital = new VitalResponse();
 
             vital.setHeartbeats("60");
-            vital.setHeartbeats("11/10");
+            vital.setPression("11/10");
             vitalList.add(vital);
-            vitalList = new ArrayList<>();
+            vital = new VitalResponse();
 
             vital.setHeartbeats("60");
-            vital.setHeartbeats("11/13");
+            vital.setPression("11/13");
             vitalList.add(vital);
 
             return vitalList;
