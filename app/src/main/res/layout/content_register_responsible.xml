@@ -86,7 +86,7 @@
         android:layout_height="50dp"
         android:text="@string/Save"
         android:textSize="10pt"
-        android:background="@color/buttonColour"/>
+        android:background="@drawable/button_shape"/>
 
     <Space
         android:layout_width="1dp"

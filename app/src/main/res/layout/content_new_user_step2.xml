@@ -27,9 +27,9 @@
         android:id="@+id/editNameResponsible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="20dp"
         android:hint="@string/NameResponsibleExample"
-        android:gravity="center"
+        android:gravity="left"
         android:textSize="10pt"
         android:textColor="@color/textColour"/>
 
@@ -49,9 +49,9 @@
         android:id="@+id/editEmailResponsible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:gravity="left"
         android:hint="@string/EmailExample"
-        android:layout_margin="10dp"
+        android:layout_margin="20dp"
         android:inputType="textEmailAddress"
         android:textSize="10pt"
         android:textColor="@color/textColour"/>
@@ -72,8 +72,8 @@
         android:id="@+id/editRelation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:gravity="center"
+        android:layout_margin="20dp"
+        android:gravity="left"
         android:hint="@string/RelationExample"
         android:textSize="10pt"
         android:textColor="@color/textColour"/>
@@ -87,9 +87,10 @@
         android:id="@+id/btnSignOn"
         android:layout_width="150dp"
         android:layout_height="50dp"
+        android:layout_margin="20dp"
         android:text="@string/SignOn"
         android:textSize="10pt"
-        android:background="@color/buttonColour"/>
+        android:background="@drawable/button_shape"/>
 
     <Space
         android:layout_width="0dp"

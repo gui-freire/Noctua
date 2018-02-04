@@ -39,8 +39,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/UserExmp"
-        android:gravity="center_horizontal"
-        android:layout_margin="10dp"
+        android:gravity="left"
+        android:layout_margin="20dp"
         android:textSize="10pt"
         android:textColor="@color/textColour"
         />
@@ -63,8 +63,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
-        android:layout_margin="10dp"
-        android:gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:gravity="left"
         android:hint="************"
         android:textSize="10pt"
         android:textColor="@color/textColour"/>
@@ -81,7 +81,7 @@
             android:layout_height="50dp"
             android:text="@string/Login"
             android:textSize="10pt"
-            android:backgroundTint="@color/buttonColour" />
+            android:background="@drawable/button_shape" />
 
         <Space
             android:layout_width="wrap_content"

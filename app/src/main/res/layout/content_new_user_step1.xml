@@ -48,8 +48,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/NameExample"
-        android:layout_margin="10dp"
-        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:gravity="left"
         android:textSize="10pt"
         android:textColor="@color/textColour" />
 
@@ -69,9 +69,9 @@
         android:id="@+id/editSurname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_gravity="center"
+        android:layout_margin="20dp"
         android:hint="@string/SurnameExample"
+        android:gravity="left"
         android:textColor="@color/textColour"
         android:textSize="10pt" />
 
@@ -91,8 +91,8 @@
         android:id="@+id/editEmailNewUsr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:gravity="left"
         android:hint="@string/EmailExample"
         android:textSize="10pt"
         android:textColor="@color/textColour"/>
@@ -116,8 +116,8 @@
         android:inputType="date"
         android:hint="@string/BirthdayExample"
         android:textSize="10pt"
-        android:layout_margin="10dp"
-        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:gravity="left"
         android:textColor="@color/textColour"/>
 
     <Space
@@ -134,24 +134,25 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:gravity="left"
         android:id="@+id/editPasswReg"
         android:textSize="10pt"
         android:textColor="@color/textColour"
         android:hint="*************"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:gravity="center">
     <Button
         android:id="@+id/btnContinue"
         android:layout_width="150dp"
         android:layout_height="50dp"
+        android:layout_margin="20dp"
         android:text="@string/Continue"
         android:textSize="10pt"
-        android:background="@color/buttonColour"/>
+        android:background="@drawable/button_shape"/>
     </LinearLayout>
 
     <Space

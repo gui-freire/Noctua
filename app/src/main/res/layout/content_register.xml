@@ -33,8 +33,8 @@
         android:id="@+id/editRegisterName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:gravity="center"
+        android:layout_margin="20dp"
+        android:gravity="left"
         android:textSize="10pt"
         android:textColor="@color/textColour"/>
 
@@ -54,8 +54,8 @@
         android:id="@+id/editRegisterSurname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:gravity="center"
+        android:layout_margin="20dp"
+        android:gravity="left"
         android:textSize="10pt"
         android:textColor="@color/textColour"/>
 
@@ -75,8 +75,8 @@
         android:id="@+id/editRegisterEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:gravity="center"
+        android:layout_margin="20dp"
+        android:gravity="left"
         android:textSize="10pt"
         android:textColor="@color/textColour"/>
 
@@ -96,8 +96,8 @@
         android:id="@+id/editRegisterBirthday"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:gravity="center"
+        android:layout_margin="20dp"
+        android:gravity="left"
         android:textSize="10pt"
         android:textColor="@color/textColour"/>
 
@@ -112,7 +112,7 @@
         android:layout_height="50dp"
         android:text="@string/Save"
         android:textSize="10pt"
-        android:background="@color/buttonColour"/>
+        android:background="@drawable/button_shape"/>
 
         <Space
             android:layout_width="wrap_content"
@@ -124,7 +124,7 @@
         android:layout_height="50dp"
         android:text="@string/Responsible"
         android:textSize="10pt"
-        android:background="@color/buttonColour"/>
+        android:background="@drawable/button_shape"/>
 
     <Space
         android:layout_width="wrap_content"

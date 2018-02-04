@@ -62,61 +62,10 @@
         android:orientation="vertical"
         android:layout_gravity="center">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/Heartbeats"
-            android:textSize="10pt"
-            android:textColor="@color/textColour"/>
-
-        <ImageView
-            android:src="@mipmap/ic_heartbeat"
+        <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_gravity="center"/>
-
-        <TextView
-            android:id="@+id/textHearbeat"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Placeholder"
-            android:layout_gravity="center"
-            android:textSize="10pt"
-            android:textColor="@color/textColour"/>
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Bloodpression"
-            android:layout_gravity="center"
-            android:textSize="10pt"
-            android:textColor="@color/textColour"/>
-
-        <ImageView
-            android:src="@mipmap/ic_pression"
-            android:layout_width="400px"
-            android:layout_height="350px"
-            android:layout_gravity="center"/>
-
-        <TextView
-            android:id="@+id/textBloodPrss"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/Placeholder"
-            android:textSize="10pt"
-            android:textColor="@color/textColour"/>
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:id="@+id/fragment" />
 
     </LinearLayout>
 
@@ -127,11 +76,13 @@
 
     <Button
         android:id="@+id/btnDiary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
         android:layout_gravity="center"
-        android:text="@string/Diary" android:textSize="10pt"
-        android:backgroundTint="@color/buttonColour"/>
+        android:layout_margin="20dp"
+        android:text="@string/Diary"
+        android:textSize="10pt"
+        android:background="@drawable/button_shape"/>
 
     <Space
         android:layout_width="wrap_content"

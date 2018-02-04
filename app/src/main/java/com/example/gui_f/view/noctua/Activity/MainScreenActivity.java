@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -15,11 +17,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.gui_f.model.noctua.UserDTO;
 import com.example.gui_f.model.noctua.MainScreen.VitalResponse;
+import com.example.gui_f.model.noctua.VitalCard;
 import com.example.gui_f.noctua.R;
+import com.example.gui_f.view.noctua.Activity.Adapter.VitalInfoAdapter;
 import com.example.gui_f.viewmodel.noctua.MainScreen.MainScreen;
 import com.example.gui_f.viewmodel.noctua.MainScreen.MainScreenImpl;
 
@@ -45,6 +50,10 @@ public class MainScreenActivity extends AppCompatActivity
 
     private Context context = this;
 
+    private VitalCard[] vitalCards = new VitalCard[2];
+
+    private RecyclerView recyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +61,8 @@ public class MainScreenActivity extends AppCompatActivity
         setContentView(R.layout.activity_main_screen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        recyclerView = (RecyclerView) findViewById(R.id.fragment);
 
         if(intent != null)
             intent = getIntent();
@@ -73,14 +84,16 @@ public class MainScreenActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        int[] imageIds = {R.mipmap.ic_heartbeat, R.mipmap.ic_bloopressure}; //Array com as imagens
+        int[] nameIds = {R.string.Heartbeats, R.string.Bloodpression}; //Array com os nomes
+        String[] titles = {vital.getHeartbeats(), vital.getPression()};
+
+        populateCard(nameIds, imageIds, titles);
+
         user = (TextView) findViewById(R.id.textUserName);
-        heartbeats = (TextView) findViewById(R.id.textHearbeat);
-        bloodpression = (TextView) findViewById(R.id.textBloodPrss);
         diary = (Button) findViewById(R.id.btnDiary);
 
         user.setText(dto.getName());
-        heartbeats.setText(vital.getHeartbeats());
-        bloodpression.setText(vital.getPression());
     }
 
     @Override
@@ -100,9 +113,6 @@ public class MainScreenActivity extends AppCompatActivity
                 startActivity(intent1);
             }
         });
-
-        if(heartbeats.equals("-") || bloodpression.equals("-"))
-            showNoDataDialog();
     }
 
     @Override
@@ -203,5 +213,19 @@ public class MainScreenActivity extends AppCompatActivity
                 .setMessage(R.string.NoData)
                 .setNeutralButton(R.string.Okay, null)
                 .show();
+    }
+
+    public void populateCard(int[] titleId, int[] imageId, String[] vital){
+        TextView title = (TextView) findViewById(R.id.cardTitle);
+        ImageView image = (ImageView) findViewById(R.id.cardImage);
+        TextView value = (TextView) findViewById(R.id.cardValue);
+
+        recyclerView.setHasFixedSize(true);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        VitalInfoAdapter adapter = new VitalInfoAdapter(imageId, titleId, vital);
+        recyclerView.setAdapter(adapter);
     }
 }
