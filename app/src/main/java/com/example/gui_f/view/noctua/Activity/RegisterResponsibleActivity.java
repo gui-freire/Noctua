@@ -23,7 +23,7 @@ public class RegisterResponsibleActivity extends AppCompatActivity {
 
     private EditText responsibleName;
     private EditText responsibleEmail;
-    private EditText relation;
+    private EditText surname;
     private Button save;
 
     private ResponsibleDTO dto = new ResponsibleDTO();
@@ -50,7 +50,7 @@ public class RegisterResponsibleActivity extends AppCompatActivity {
 
         responsibleName = (EditText) findViewById(R.id.editNameResponsibleRegister);
         responsibleEmail = (EditText) findViewById(R.id.editEmailResponsibleRegister);
-        relation = (EditText) findViewById(R.id.editRelationRegister);
+        surname = (EditText) findViewById(R.id.editRelationRegister);
         save = (Button) findViewById(R.id.btnRespRegisterSave);
 
         intent = getIntent();
@@ -59,13 +59,13 @@ public class RegisterResponsibleActivity extends AppCompatActivity {
 
         responsibleName.setText(receivedResp.getName());
         responsibleEmail.setText(receivedResp.getEmail());
-        relation.setText(receivedResp.getRelation());
+        surname.setText(receivedResp.getRelation());
 
 
         if(savedInstanceState != null){
             responsibleName.setText(savedInstanceState.getString("Name"));
             responsibleEmail.setText(savedInstanceState.getString("Email"));
-            relation.setText(savedInstanceState.getString("Relation"));
+            surname.setText(savedInstanceState.getString("Relation"));
         }
     }
 
@@ -76,12 +76,12 @@ public class RegisterResponsibleActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dto.setEmail(responsibleEmail.getText().toString());
-                dto.setName(responsibleName.getText().toString());
-                dto.setRelation(relation.getText().toString());
+                received.setEmailResp(responsibleEmail.getText().toString());
+                received.setNameResp(responsibleName.getText().toString());
+                received.setSurnameResp(surname.getText().toString());
                 email = intent.getStringExtra("Email");
 
-                result = register.changeResponsible(email, dto, context);
+                result = register.changeResponsible(email, received, context);
 
                 if(result){
                     finish();
@@ -98,7 +98,7 @@ public class RegisterResponsibleActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         outState.putString("Name", responsibleName.getText().toString());
         outState.putString("Email", responsibleEmail.getText().toString());
-        outState.putString("Relation", relation.getText().toString());
+        outState.putString("Surname", surname.getText().toString());
     }
 
     private void showAlertDialog() {
@@ -111,12 +111,12 @@ public class RegisterResponsibleActivity extends AppCompatActivity {
                         Log.i("FragmentAlertDialog", "Positive click!");
 //                        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
                         setProgressBarIndeterminateVisibility(true);
-                        dto.setEmail(responsibleEmail.getText().toString());
-                        dto.setName(responsibleName.getText().toString());
-                        dto.setRelation(relation.getText().toString());
+                        received.setEmailResp(responsibleEmail.getText().toString());
+                        received.setNameResp(responsibleName.getText().toString());
+                        received.setSurnameResp(surname.getText().toString());
                         email = intent.getStringExtra("Email");
 
-                        result = register.changeResponsible(email, dto, context);
+                        result = register.changeResponsible(email, received, context);
 
                         if(result){
                             setProgressBarIndeterminateVisibility(false);

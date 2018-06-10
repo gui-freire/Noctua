@@ -29,13 +29,33 @@ public class MainScreenServiceImpl implements MainScreenService {
     private List<VitalResponse> vitalList = new ArrayList<>();
     private String webserviceUri = "http://jfjosajfsjaf";
 
-    //TODO: FAZER CHAMADAS NOS SERVIÇOS
     @Override
-    public VitalResponse searchLast(String user, Context context) {
+    public VitalResponse searchLast(int id, Context context) {
         try{
-            json.put("user", user);
+            json.put("id", id);
             Log.d("SearchLast", "Sending user to webservice");
 
+            final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, webserviceUri, json,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                JSONObject jsonObject = response.getJSONObject("vitals");
+                                vital.setHeartbeats(jsonObject.getString("heartbeat"));
+                                vital.setPression(jsonObject.getString("pression"));
+
+                            } catch (JSONException je) {
+                                Log.d("JsonMainScreenError", "Something went wrong on the webservice call " + je.getMessage());
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    VolleyLog.d(error.getMessage());
+                }
+            });
+
+            AppController.getInstance(context).addToRequestQueue(request);
             //Mock
             vital.setHeartbeats("68");
             vital.setPression("11/8");
@@ -49,35 +69,43 @@ public class MainScreenServiceImpl implements MainScreenService {
             return null;
         }
 
-//        final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, webserviceUri, json,
-//                new Response.Listener<JSONObject>() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        try {
-//                            JSONObject jsonObject = response.getJSONObject("vitals");
-//                            vital.setHeartbeats(jsonObject.getString("heartbeat"));
-//                            vital.setPression(jsonObject.getString("pression"));
-//
-//                        } catch (JSONException je) {
-//                             Log.d("JsonMainScreenError", "Something went wrong on the webservice call " + e.getMessage());
-//                        }
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                VolleyLog.d(error.getMessage());
-//            }
-//        });
 
-//        AppController.getInstance(context).addToRequestQueue(request);
     }
 
     @Override
-    public List<VitalResponse> searchDaily(String user, int day, Context context) {
+    public List<VitalResponse> searchDaily(int id, int day, Context context) {
         try{
-            json.put("user", user);
+            json.put("id", id);
             json.put("day", day);
             Log.i("SearchDay", "Sending user and day to webservice");
+
+            final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, webserviceUri, json,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                JSONObject jsonObject = response.getJSONObject("vitals");
+                                Iterator<String> temp = jsonObject.keys();
+//                                while(1 == 0){
+//                                    String key = temp.next();
+//                                    JSONArray obj = jsonObject.getJSONArray(key);
+//                                    vital.setPression("kfak");
+//                                }
+                                vital.setHeartbeats(jsonObject.getString("heartbeat"));
+                                vital.setPression(jsonObject.getString("pression"));
+
+                            } catch (JSONException je) {
+                                Log.d("JsonMainScreenError", "Something went wrong on the webservice call " + je.getMessage());
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    VolleyLog.d(error.getMessage());
+                }
+            });
+
+            AppController.getInstance(context).addToRequestQueue(request);
 
             vital.setPression("10/7");
             vital.setHeartbeats("72");
@@ -104,40 +132,14 @@ public class MainScreenServiceImpl implements MainScreenService {
 
 
         //TODO: ver como iterar pela lista do JSON
-//        final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, webserviceUri, json,
-//                new Response.Listener<JSONObject>() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        try {
-//                            JSONObject jsonObject = response.getJSONObject("vitals");
-//                            Iterator<String> temp = jsonObject.keys();
-//                            while{
-//                                String key = temp.next();
-//                                JSONArray obj = jsonObject.getJSONArray(key);
-//                                vital.setPression(obj.getString());
-//                            }
-//                            vital.setHeartbeats(jsonObject.getString("heartbeat"));
-//                            vital.setPression(jsonObject.getString("pression"));
-//
-//                        } catch (JSONException je) {
-//                             Log.d("JsonMainScreenError", "Something went wrong on the webservice call " + e.getMessage());
-//                        }
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                VolleyLog.d(error.getMessage());
-//            }
-//        });
-//
-//        AppController.getInstance(context).addToRequestQueue(request);
+
 
     }
 
     @Override
-    public List<VitalResponse> searchWeekly(String user, int week, int month, Context context) {
+    public List<VitalResponse> searchWeekly(int id, int week, int month, Context context) {
         try{
-            json.put("user", user);
+            json.put("id", id);
             json.put("week", week);
             json.put("month", month);
             Log.i("SearchWeek", "Sending user, week and month to webservice");
@@ -169,9 +171,9 @@ public class MainScreenServiceImpl implements MainScreenService {
     }
 
     @Override
-    public List<VitalResponse> searchMonthly(String user, int month, Context context) {
+    public List<VitalResponse> searchMonthly(int id, int month, Context context) {
         try{
-            json.put("user", user);
+            json.put("id", id);
             json.put("month", month);
             Log.i("SearchMonth", "Sending user and month to webservice");
 

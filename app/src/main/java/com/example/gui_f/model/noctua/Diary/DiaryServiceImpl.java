@@ -68,37 +68,35 @@ public class DiaryServiceImpl implements DiaryService {
             json.put("DiaryActivity", diary);
             json.put("Feeling", feel);
             Log.i("SendDiary", "Sending diary to request");
-            //TODO: Fazer chamada no serviço
-            return true;
+
+            final JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, webserviceUri, json,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                httpResponse = response.toString();
+                            } catch (Exception je) {
+                                Log.d("JsonDiaryError", "Something went wrong on the webservice call " + je.getMessage());
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    VolleyLog.d(error.getMessage());
+                }
+            });
+
+            AppController.getInstance(context).addToRequestQueue(request);
+
+            if(httpResponse == "200"){
+                return true;
+            } else{
+                return false;
+            }
+
         } catch (Exception e){
             Log.i("SendDiaryError", "Error sending diary to request: " + e.getMessage());
             return false;
         }
-
-        //        final JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, webserviceUri, json,
-//                new Response.Listener<JSONObject>() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        try {
-//                            httpResponse = response.toString();
-//                        } catch (JSONException je) {
-//                            Log.d("JsonDiaryError", "Something went wrong on the webservice call " + je.getMessage())
-//                        }
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                VolleyLog.d(error.getMessage());
-//            }
-//        });
-//
-//        AppController.getInstance(context).addToRequestQueue(request);
-//
-//        if(httpResponse == "200"){
-//            return true;
-//        } else{
-//            return false;
-//        }
-
     }
 }

@@ -8,6 +8,7 @@ import android.os.Parcelable;
  */
 
 public class UserDTO implements Parcelable{
+    private int id;
     private String name;
     private String surname;
     private String birthday;
@@ -17,6 +18,9 @@ public class UserDTO implements Parcelable{
     private String firebaseKey;
     private boolean resp;
     private boolean exists;
+    private String nameResp;
+    private String  surnameResp;
+    private String emailResp;
 
     public String getName() {
         return name;
@@ -101,6 +105,7 @@ public class UserDTO implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
         dest.writeString(name);
         dest.writeString(surname);
         dest.writeString(birthday);
@@ -110,6 +115,9 @@ public class UserDTO implements Parcelable{
         dest.writeInt(exists ? 1 : 0);
         dest.writeParcelable(responsible, flags);
         dest.writeString(firebaseKey);
+        dest.writeString(getNameResp());
+        dest.writeString(getSurnameResp());
+        dest.writeString(getEmailResp());
     }
 
     public static final Parcelable.Creator<UserDTO> CREATOR = new Creator<UserDTO>() {
@@ -125,6 +133,7 @@ public class UserDTO implements Parcelable{
     };
 
     public UserDTO(Parcel pc){
+        id = pc.readInt();
         name = pc.readString();
         surname = pc.readString();
         birthday = pc.readString();
@@ -134,5 +143,40 @@ public class UserDTO implements Parcelable{
         exists = (pc.readInt() == 1);
         responsible = pc.readParcelable(ResponsibleDTO.class.getClassLoader());
         firebaseKey = pc.readString();
+        setNameResp(pc.readString());
+        setSurnameResp(pc.readString());
+        setEmailResp(pc.readString());
+    }
+
+    public String getNameResp() {
+        return nameResp;
+    }
+
+    public void setNameResp(String nameResp) {
+        this.nameResp = nameResp;
+    }
+
+    public String getSurnameResp() {
+        return surnameResp;
+    }
+
+    public void setSurnameResp(String surnameResp) {
+        this.surnameResp = surnameResp;
+    }
+
+    public String getEmailResp() {
+        return emailResp;
+    }
+
+    public void setEmailResp(String emailResp) {
+        this.emailResp = emailResp;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

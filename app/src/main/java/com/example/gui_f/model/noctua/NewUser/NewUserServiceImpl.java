@@ -28,14 +28,32 @@ public class NewUserServiceImpl implements NewUserService {
         try{
             json.put("name", user.getName());
             json.put("surname", user.getSurname());
-            json.put("birthday", user.getBirthday());
             json.put("email", user.getEmail());
-            json.accumulate("responsible", user.getResponsible());
+            json.put("nameResp", user.getNameResp());
+            json.put("surnameResp", user.getSurnameResp());
+            json.put("emailResp", user.getEmailResp());
 
             Log.i("RegisterNewUser", "User sent to service");
 
             //TODO: FAZER CHAMADA DO SERVIÇO
-            //return chamada
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, webserviceUri, json,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                httpResponse = response.toString();
+                            } catch (Exception je) {
+                                Log.d("JsonNewUserError", "Something went wrong on the webservice call " + je.getMessage());
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    VolleyLog.d(error.getMessage());
+                }
+            });
+
+            AppController.getInstance(context).addToRequestQueue(request);
             return 1;
         } catch (JSONException je){
             Log.i("RegisterNwUserJsonError", "Error in sending user to service " + je.getMessage());
@@ -45,23 +63,6 @@ public class NewUserServiceImpl implements NewUserService {
             return 0;
         }
 
-//        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, webserviceUri, json,
-//                new Response.Listener<JSONObject>() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        try {
-//                            httpResponse = response.toString();
-//                        } catch (JSONException je) {
-//                            Log.d("JsonNewUserError", "Something went wrong on the webservice call " + je.getMessage())
-//                        }
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                VolleyLog.d(error.getMessage());
-//            }
-//        });
-//
-//        AppController.getInstance(context).addToRequestQueue(request);
+
     }
 }

@@ -28,7 +28,7 @@ public class RegisterImpl implements Register {
     }
 
     @Override
-    public boolean changeResponsible(String email, ResponsibleDTO resp, Context context) {
+    public boolean changeResponsible(String email, UserDTO resp, Context context) {
         Log.i("ChangeResponsible", "Sending user to service");
         try{
             return registerService.changeResponsible(email, resp, context);

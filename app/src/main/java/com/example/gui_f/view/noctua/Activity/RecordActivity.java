@@ -23,7 +23,7 @@ public class RecordActivity extends ListActivity {
     private Intent intent;
     private String method;
     private MainScreen mainScreen = new MainScreenImpl();
-    private String email;
+    private int id;
     private int day;
     private int week;
     private int month;
@@ -39,7 +39,7 @@ public class RecordActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         intent = getIntent();
         method = intent.getStringExtra("Method");
-        email = intent.getStringExtra("user");
+        id = intent.getIntExtra("user",0);
         day = intent.getIntExtra("day", 0);
         week = intent.getIntExtra("week", 0);
         month = intent.getIntExtra("month", 0);
@@ -55,7 +55,7 @@ public class RecordActivity extends ListActivity {
 
             listView.addHeaderView(title);
             listView.setBackgroundColor(getResources().getColor(R.color.backgroundColour));
-            List<String> list = listToString(mainScreen.searchDaily(email, day, context));
+            List<String> list = listToString(mainScreen.searchDaily(id, day, context));
             listAdapter = new ArrayAdapter<String>(
                     this,
                     android.R.layout.simple_list_item_1, //Android pre made list
@@ -71,7 +71,7 @@ public class RecordActivity extends ListActivity {
 
             listView.addHeaderView(title);
             listView.setBackgroundColor(getResources().getColor(R.color.backgroundColour));
-            List<String> list = listToString(mainScreen.searchWeekly(email, week, month, context));
+            List<String> list = listToString(mainScreen.searchWeekly(id, week, month, context));
 
             listAdapter = new ArrayAdapter<String>(
                     this,
@@ -87,7 +87,7 @@ public class RecordActivity extends ListActivity {
 
             listView.addHeaderView(title);
             listView.setBackgroundColor(getResources().getColor(R.color.backgroundColour));
-            List<String> list = listToString(mainScreen.searchMonthly(email, month, context));
+            List<String> list = listToString(mainScreen.searchMonthly(id, month, context));
 
             listAdapter = new ArrayAdapter<String>(
                     this,

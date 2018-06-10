@@ -73,7 +73,7 @@ public class MainScreenActivity extends AppCompatActivity
             dto = (UserDTO) intent.getParcelableExtra("user");
         }
 
-        vital = mainScreen.searchLast(dto.getName(), context);
+        vital = mainScreen.searchLast(dto.getId(), context);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -109,7 +109,7 @@ public class MainScreenActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(v.getContext(), DiaryActivity.class);
-                intent1.putExtra("user", dto.getName());
+                intent1.putExtra("user", dto.getEmail());
                 startActivity(intent1);
             }
         });
@@ -173,12 +173,12 @@ public class MainScreenActivity extends AppCompatActivity
 
             list.putExtra("Method", "Daily");
             list.putExtra("Day", Calendar.DAY_OF_MONTH);
-            list.putExtra("user", dto.getEmail());
+            list.putExtra("user", dto.getId());
 
             startActivity(list);
         } else if (id == R.id.navlog_monthly) {
             Intent intent = new Intent(this, RecordActivity.class);
-            intent.putExtra("user", dto);
+            intent.putExtra("user", dto.getId());
             intent.putExtra("Method", "Monthly");
             intent.putExtra("Weekly", Calendar.WEEK_OF_MONTH);
             intent.putExtra("Month", Calendar.MONTH);
@@ -187,7 +187,7 @@ public class MainScreenActivity extends AppCompatActivity
         } else if(id == R.id.navlog_weekly){
             Intent intent = new Intent(this, RecordActivity.class);
             intent.putExtra("Method", "Weekly");
-            intent.putExtra("user", dto);
+            intent.putExtra("user", dto.getId());
             intent.putExtra("Monthly", Calendar.MONTH);
             try {
                 startActivity(intent);

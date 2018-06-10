@@ -21,10 +21,10 @@ public class MainScreenImpl implements MainScreen {
     private List<VitalResponse> vitalList = new ArrayList<>();
 
     @Override
-    public VitalResponse searchLast(String user, Context context) {
+    public VitalResponse searchLast(int id, Context context) {
         try{
             Log.i("SearchLast","Sending data to MainScreenService");
-            vital = mainScreenService.searchLast(user, context);
+            vital = mainScreenService.searchLast(id, context);
             return vital;
         } catch (Exception e){
             Log.i("SearchLastFail", "Error in searchLast " + e.getMessage());
@@ -33,10 +33,10 @@ public class MainScreenImpl implements MainScreen {
     }
 
     @Override
-    public List<VitalResponse> searchDaily(String user, int day, Context context) {
+    public List<VitalResponse> searchDaily(int id, int day, Context context) {
         try{
             Log.i("SearchDay", "Sending data to MainScreenService");
-            vitalList = mainScreenService.searchDaily(user, day, context);
+            vitalList = mainScreenService.searchDaily(id, day, context);
             return vitalList;
         }catch (Exception e){
             Log.i("SearchDayFail", "Error in searchDaily " + e.getMessage());
@@ -45,10 +45,10 @@ public class MainScreenImpl implements MainScreen {
     }
 
     @Override
-    public List<VitalResponse> searchWeekly(String user, int week, int month, Context context) {
+    public List<VitalResponse> searchWeekly(int id, int week, int month, Context context) {
         try{
             Log.i("SearchWeek", "Sending data to MainScreenService");
-            vitalList = mainScreenService.searchWeekly(user, week, month, context);
+            vitalList = mainScreenService.searchWeekly(id, week, month, context);
             return vitalList;
         }catch (Exception e){
             Log.i("SearchWeekFail", "Error in searchWeekly " + e.getMessage());
@@ -57,10 +57,10 @@ public class MainScreenImpl implements MainScreen {
     }
 
     @Override
-    public List<VitalResponse> searchMonthly(String user, int month, Context context) {
+    public List<VitalResponse> searchMonthly(int id, int month, Context context) {
         try{
             Log.i("SearchMonth", "Sending data to MainScreenService");
-            vitalList = mainScreenService.searchMonthly(user, month, context);
+            vitalList = mainScreenService.searchMonthly(id, month, context);
             return vitalList;
         }catch (Exception e){
             Log.i("SearchMonthFail", "Error in searchMonthly " + e.getMessage());

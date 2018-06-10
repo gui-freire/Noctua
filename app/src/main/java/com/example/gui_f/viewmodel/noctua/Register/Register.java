@@ -12,5 +12,5 @@ import com.example.gui_f.model.noctua.UserDTO;
 public interface Register {
     boolean changeData(UserDTO user, Context context);
 
-    boolean changeResponsible(String email, ResponsibleDTO resp, Context context);
+    boolean changeResponsible(String email, UserDTO resp, Context context);
 }

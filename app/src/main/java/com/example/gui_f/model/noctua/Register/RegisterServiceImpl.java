@@ -28,17 +28,42 @@ public class RegisterServiceImpl implements RegisterService {
     @Override
     public boolean changeData(UserDTO user, Context context) {
         try{
+            json.put("id", user.getId());
             json.put("name", user.getName());
             json.put("surname", user.getSurname());
-            json.put("birthday", user.getBirthday());
             json.put("email", user.getEmail());
-            json.accumulate("responsible", user.getResponsible());
+            json.put("nameResp", user.getNameResp());
+            json.put("surnameResp", user.getSurnameResp());
+            json.put("emailResp", user.getEmailResp());
 
             Log.i("Register", "User with changes sent to service");
 
             //TODO: FAZER CHAMADA DO SERVIÇO
-            //return chamada
-            return true;
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, webserviceUri, json,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                httpResponse = response.toString();
+                            } catch (Exception e){
+                                Log.d("RegisterError", "Something went wrong on the webservice call " + e.getMessage());
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    VolleyLog.d(error.getMessage());
+                }
+            });
+
+            AppController.getInstance(context).addToRequestQueue(request);
+
+            if(httpResponse == "200"){
+                return true;
+            } else{
+                return false;
+            }
+
         } catch (JSONException je){
             Log.i("RegisterJsonError", "Error in sending changed user to service " + je.getMessage());
             return false;
@@ -47,39 +72,38 @@ public class RegisterServiceImpl implements RegisterService {
             return false;
         }
 
-//        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, webserviceUri, json,
-//                new Response.Listener<JSONObject>() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        try {
-//                            httpResponse = response.toString();
-//                        } catch (Exception e){
-//                            Log.d("RegisterError", "Something went wrong on the webservice call " + e.getMessage());
-//                        }
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                VolleyLog.d(error.getMessage());
-//            }
-//        });
-//
-//        AppController.getInstance(context).addToRequestQueue(request);
-
-//        if(httpResponse == "200"){
-//            return true;
-//        } else{
-//            return false;
-//        }
     }
 
     @Override
-    public boolean changeResponsible(String user, ResponsibleDTO responsibleDTO, Context context) {
+    public boolean changeResponsible(String user, UserDTO userDTO, Context context) {
         try{
-            json.put("user", user);
-            json.accumulate("responsible", responsibleDTO);
+            json.put("id", userDTO.getId());
+            json.put("name", userDTO.getName());
+            json.put("surname", userDTO.getSurname());
+            json.put("email", userDTO.getEmail());
+            json.put("nameResp", userDTO.getNameResp());
+            json.put("surnameResp", userDTO.getSurnameResp());
+            json.put("emailResp", userDTO.getEmailResp());
 
             Log.i("RegisterResponsible", "Sending responsible to service");
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, webserviceUri, json,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                httpResponse = response.toString();
+                            } catch (Exception e) {
+                                Log.d("JsonLoginError", "Something went wrong on the webservice call " + e.getMessage());
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    VolleyLog.d(error.getMessage());
+                }
+            });
+
+            AppController.getInstance(context).addToRequestQueue(request);
             return true;
         } catch (JSONException je){
             Log.i("RegisterRespJsonError", "Error in sending responsible to service " + je.getMessage());
@@ -88,24 +112,5 @@ public class RegisterServiceImpl implements RegisterService {
             Log.i("RegisterRespError", "Error in sending responsible to service " + e.getMessage());
             return false;
         }
-
-//        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, webserviceUri, json,
-//                new Response.Listener<JSONObject>() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        try {
-//                            httpResponse = response.toString();
-//                        } catch (Exception e) {
-//                            Log.d("JsonLoginError", "Something went wrong on the webservice call " + e.getMessage());
-//                        }
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                VolleyLog.d(error.getMessage());
-//            }
-//        });
-//
-//        AppController.getInstance(context).addToRequestQueue(request);
     }
 }

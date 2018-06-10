@@ -10,11 +10,11 @@ import java.util.List;
 
 public interface MainScreenService {
 
-    public VitalResponse searchLast(String user, Context context);
+    public VitalResponse searchLast(int id, Context context);
 
-    public List<VitalResponse> searchDaily(String user, int day, Context context);
+    public List<VitalResponse> searchDaily(int id, int day, Context context);
 
-    public List<VitalResponse> searchWeekly(String user, int week, int month, Context context);
+    public List<VitalResponse> searchWeekly(int id, int week, int month, Context context);
 
-    public List<VitalResponse> searchMonthly(String user, int month, Context context);
+    public List<VitalResponse> searchMonthly(int id, int month, Context context);
 }

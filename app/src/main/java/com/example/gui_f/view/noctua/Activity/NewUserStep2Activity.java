@@ -21,11 +21,10 @@ public class NewUserStep2Activity extends AppCompatActivity {
 
     private EditText name;
     private EditText email;
-    private EditText relation;
+    private EditText surname;
     private Button login;
     private Intent i;
 
-    private ResponsibleDTO responsible = new ResponsibleDTO();
     private UserDTO received = new UserDTO();
     private NewUser newUser = new NewUserImpl();
     private int result;
@@ -43,13 +42,13 @@ public class NewUserStep2Activity extends AppCompatActivity {
 
        name = (EditText) findViewById(R.id.editNameResponsible);
        email = (EditText) findViewById(R.id.editEmailResponsible);
-       relation = (EditText) findViewById(R.id.editRelation);
+       surname = (EditText) findViewById(R.id.editRelation);
        login = (Button) findViewById(R.id.btnSignOn);
 
        if(savedInstanceState != null){
            name.setText(savedInstanceState.getString("Name"));
            email.setText(savedInstanceState.getString("Email"));
-           relation.setText(savedInstanceState.getString("Relation"));
+           surname.setText(savedInstanceState.getString("Surname"));
        }
     }
 
@@ -65,10 +64,9 @@ public class NewUserStep2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                responsible.setEmail(email.getText().toString());
-                responsible.setName(name.getText().toString());
-                responsible.setRelation(relation.getText().toString());
-                received.setResponsible(responsible);
+                received.setEmailResp(email.getText().toString());
+                received.setNameResp(name.getText().toString());
+                received.setSurnameResp(surname.getText().toString());
 
                 result = newUser.registerNewUser(received, context);
                 if(result == 0){
@@ -98,7 +96,7 @@ public class NewUserStep2Activity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         outState.putString("Name", name.getText().toString());
         outState.putString("Email", email.getText().toString());
-        outState.putString("Relation", relation.getText().toString());
+        outState.putString("Surname", surname.getText().toString());
     }
 
     public void showErrorDialog(){

@@ -33,9 +33,9 @@ public class LoginServiceImpl implements LoginService {
     public UserDTO searchUser(String user, String password, String firebaseKey, Context context) {
 
         try{
-            jsonObject.put("user", user);
+            jsonObject.put("email", user);
             jsonObject.put("password", password);
-            jsonObject.put("key", firebaseKey);
+            jsonObject.put("firebaseId", firebaseKey);
 
         } catch(JSONException je){
             Log.i("SearchUserFail", "Error sending user for search " + je.getMessage());
@@ -46,29 +46,32 @@ public class LoginServiceImpl implements LoginService {
             return null;
         }
 
-//        final JsonObjectRequest json = new JsonObjectRequest(Request.Method.GET, webserviceUri,jsonObject,
-//                new Response.Listener<JSONObject>() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        try {
-//                            JSONObject jsonObj = response.getJSONObject("user");
-//                            userReturn.setName(jsonObj.getString("name"));
-//                            userReturn.setEmail(jsonObj.getString("email"));
-//                            userReturn.setBirthday(jsonObj.getString("birthday"));
-//                            userReturn.setSurname(jsonObj.getString("surname"));
+        final JsonObjectRequest json = new JsonObjectRequest(Request.Method.GET, webserviceUri,jsonObject,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONObject jsonObj = response.getJSONObject("user");
+                            userReturn.setId(jsonObj.getInt("id"));
+                            userReturn.setName(jsonObj.getString("name"));
+                            userReturn.setEmail(jsonObj.getString("email"));
+                            userReturn.setBirthday(jsonObj.getString("birthday"));
+                            userReturn.setSurname(jsonObj.getString("surname"));
 //                            responseRespons = jsonObj.getJSONArray("responsible").getJSONObject(0);
-//
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                            Log.d("JsonLoginError", "Something went wrong on the webservice call " + e.getMessage());
-//                        }
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                VolleyLog.d(error.getMessage());
-//            }
-//        });
+                            userReturn.setNameResp(jsonObj.getString("nameResp"));
+                            userReturn.setSurnameResp(jsonObj.getString("surnameResp"));
+                            userReturn.setEmailResp(jsonObj.getString("emailResp"));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Log.d("JsonLoginError", "Something went wrong on the webservice call " + e.getMessage());
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d(error.getMessage());
+            }
+        });
 
 
         //MOCK
