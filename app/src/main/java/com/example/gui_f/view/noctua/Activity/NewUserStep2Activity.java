@@ -14,8 +14,11 @@ import android.widget.EditText;
 import com.example.gui_f.model.noctua.ResponsibleDTO;
 import com.example.gui_f.model.noctua.UserDTO;
 import com.example.gui_f.noctua.R;
+import com.example.gui_f.utils.ServerCallback;
 import com.example.gui_f.viewmodel.noctua.NewUser.NewUser;
 import com.example.gui_f.viewmodel.noctua.NewUser.NewUserImpl;
+
+import org.json.JSONObject;
 
 public class NewUserStep2Activity extends AppCompatActivity {
 
@@ -62,25 +65,30 @@ public class NewUserStep2Activity extends AppCompatActivity {
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
 
                 received.setEmailResp(email.getText().toString());
                 received.setNameResp(name.getText().toString());
                 received.setSurnameResp(surname.getText().toString());
 
-                result = newUser.registerNewUser(received, context);
-                if(result == 0){
-                    showErrorDialog();
-                } else if(result == 1) {
-                    showUserRegisteredDialog();
-                    Intent intent = new Intent(v.getContext(), MainScreenActivity.class);
-                    intent.putExtra("user", received);
+                newUser.registerNewUser(received, context, new ServerCallback() {
+                    @Override
+                    public void onSuccess(int result) {
+                        if(result == 400){
+                            showErrorDialog();
+                        } else if(result == 200) {
+                            showUserRegisteredDialog();
+                            Intent intent = new Intent(v.getContext(), MainScreenActivity.class);
+                            intent.putExtra("user", received);
 
-                    startActivity(intent);
-                    finish();
-                } else if(result == 2) {
-                    showUserExistsDialog();
-                }
+                            startActivity(intent);
+                            finish();
+                        } else if(result == 2) {
+                            showUserExistsDialog();
+                        }
+                    }
+                });
+
             }
         });
 

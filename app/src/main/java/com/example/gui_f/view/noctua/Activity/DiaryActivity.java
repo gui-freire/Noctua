@@ -16,8 +16,11 @@ import android.widget.ImageView;
 
 import com.example.gui_f.model.noctua.Diary.FeelEnum;
 import com.example.gui_f.noctua.R;
+import com.example.gui_f.utils.JsonCallback;
 import com.example.gui_f.viewmodel.noctua.Diary.Diary;
 import com.example.gui_f.viewmodel.noctua.Diary.DiaryImpl;
+
+import org.json.JSONObject;
 
 public class DiaryActivity extends AppCompatActivity {
 
@@ -131,11 +134,21 @@ public class DiaryActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     if (diary != null) {
-                        diaryService.sendDiary(user, diary.getText().toString(), feeling, context);
-                        ((Activity) context).finish();
+                        diaryService.sendDiary(user, diary.getText().toString(), feeling, context, new JsonCallback(){
+                            @Override
+                            public void onSuccess(JSONObject jsonObject) {
+                                ((Activity) context).finish();
+                            }
+                        });
+
                     } else{
-                        diaryService.sendDiary(user, "", feeling, context);
-                        ((Activity) context).finish();
+                        diaryService.sendDiary(user, "", feeling, context, new JsonCallback() {
+                            @Override
+                            public void onSuccess(JSONObject jsonObject) {
+                                ((Activity) context).finish();
+                            }
+                        });
+
                     }
                 }catch (Exception e){
                     Log.d("Error", e.getMessage());
@@ -171,8 +184,12 @@ public class DiaryActivity extends AppCompatActivity {
                             if (diary == null) {
                                 diary.setText("");
                             }
-                            if(diaryService.sendDiary(user, diary.getText().toString(), feeling, context))
-                                showSuccessDialog();
+                            if(diaryService.sendDiary(user, diary.getText().toString(), feeling, context, new JsonCallback() {
+                                @Override
+                                public void onSuccess(JSONObject jsonObject) {
+                                    showSuccessDialog();
+                                }
+                            }));
                             else
                                 showErrorDialog();
                         }catch (Exception e){

@@ -16,8 +16,12 @@ import android.widget.EditText;
 import com.example.gui_f.model.noctua.ResponsibleDTO;
 import com.example.gui_f.model.noctua.UserDTO;
 import com.example.gui_f.noctua.R;
+import com.example.gui_f.utils.JsonCallback;
 import com.example.gui_f.viewmodel.noctua.Register.Register;
 import com.example.gui_f.viewmodel.noctua.Register.RegisterImpl;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class RegisterResponsibleActivity extends AppCompatActivity {
 
@@ -81,15 +85,21 @@ public class RegisterResponsibleActivity extends AppCompatActivity {
                 received.setSurnameResp(surname.getText().toString());
                 email = intent.getStringExtra("Email");
 
-                result = register.changeResponsible(email, received, context);
+                register.changeResponsible(email, received, context, new JsonCallback() {
+                    @Override
+                    public void onSuccess(JSONObject jsonObject) {
+                        int ret = 0;
+                        try{
+                            ret = jsonObject.getInt("key");
+                        } catch (JSONException je){
 
-                if(result){
-                    finish();
-                } else {
-//                    genericError.setMessage(R.string.Error);
-//                    genericError.onCreateDialog(savedInstanceState);
+                        }
+                        if(ret == 200){
+                            finish();
+                        }
+                    }
+                });
                 }
-            }
         });
     }
 
@@ -116,16 +126,27 @@ public class RegisterResponsibleActivity extends AppCompatActivity {
                         received.setSurnameResp(surname.getText().toString());
                         email = intent.getStringExtra("Email");
 
-                        result = register.changeResponsible(email, received, context);
+                        register.changeResponsible(email, received, context, new JsonCallback() {
+                            @Override
+                            public void onSuccess(JSONObject jsonObject) {
+                                int ret = 0;
+                                try{
+                                    ret = jsonObject.getInt("key");
+                                } catch (JSONException je){
 
-                        if(result){
-                            setProgressBarIndeterminateVisibility(false);
-                            finish();
-                            ((Activity) context).finish();
-                        } else{
-                            setProgressBarIndeterminateVisibility(false);
-                            showErrorDialog();
-                        }
+                                }
+                                if(ret == 200){
+                                    setProgressBarIndeterminateVisibility(false);
+                                    finish();
+                                    ((Activity) context).finish();
+                                } else{
+                                    setProgressBarIndeterminateVisibility(false);
+                                    showErrorDialog();
+                                }
+                            }
+                        });
+
+
                     }
                 })
 

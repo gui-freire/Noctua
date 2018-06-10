@@ -24,9 +24,13 @@ import com.example.gui_f.model.noctua.UserDTO;
 import com.example.gui_f.model.noctua.MainScreen.VitalResponse;
 import com.example.gui_f.model.noctua.VitalCard;
 import com.example.gui_f.noctua.R;
+import com.example.gui_f.utils.JsonCallback;
 import com.example.gui_f.view.noctua.Activity.Adapter.VitalInfoAdapter;
 import com.example.gui_f.viewmodel.noctua.MainScreen.MainScreen;
 import com.example.gui_f.viewmodel.noctua.MainScreen.MainScreenImpl;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Calendar;
 
@@ -73,7 +77,18 @@ public class MainScreenActivity extends AppCompatActivity
             dto = (UserDTO) intent.getParcelableExtra("user");
         }
 
-        vital = mainScreen.searchLast(dto.getId(), context);
+        mainScreen.searchLast(dto.getId(), context, new JsonCallback() {
+            @Override
+            public void onSuccess(JSONObject jsonObject) {
+                vital = parseToVital(jsonObject);
+
+                int[] imageIds = {R.mipmap.ic_heartbeat, R.mipmap.ic_bloopressure}; //Array com as imagens
+                int[] nameIds = {R.string.Heartbeats, R.string.Bloodpression}; //Array com os nomes
+                String[] titles = {vital.getHeartbeats(), vital.getPression()};
+
+                populateCard(nameIds, imageIds, titles);
+            }
+        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -84,11 +99,7 @@ public class MainScreenActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        int[] imageIds = {R.mipmap.ic_heartbeat, R.mipmap.ic_bloopressure}; //Array com as imagens
-        int[] nameIds = {R.string.Heartbeats, R.string.Bloodpression}; //Array com os nomes
-        String[] titles = {vital.getHeartbeats(), vital.getPression()};
 
-        populateCard(nameIds, imageIds, titles);
 
         user = (TextView) findViewById(R.id.textUserName);
         diary = (Button) findViewById(R.id.btnDiary);
@@ -227,5 +238,23 @@ public class MainScreenActivity extends AppCompatActivity
 
         VitalInfoAdapter adapter = new VitalInfoAdapter(imageId, titleId, vital);
         recyclerView.setAdapter(adapter);
+    }
+
+    private VitalResponse parseToVital(JSONObject jsonObject){
+        VitalResponse vitalResponse = new VitalResponse();
+
+        try {
+            if(jsonObject.getString("heartbeat") == null){
+                vitalResponse.setHeartbeats("-");
+                vitalResponse.setPression("-");
+            } else {
+                vitalResponse.setHeartbeats(jsonObject.getString("heartbeat"));
+                vitalResponse.setPression(jsonObject.getString("pression"));
+            }
+        } catch (JSONException je){
+            je.printStackTrace();
+        }
+
+        return vitalResponse;
     }
 }

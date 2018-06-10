@@ -11,8 +11,13 @@ import android.widget.TextView;
 
 import com.example.gui_f.model.noctua.MainScreen.VitalResponse;
 import com.example.gui_f.noctua.R;
+import com.example.gui_f.utils.JsonCallback;
 import com.example.gui_f.viewmodel.noctua.MainScreen.MainScreen;
 import com.example.gui_f.viewmodel.noctua.MainScreen.MainScreenImpl;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,15 +44,15 @@ public class RecordActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         intent = getIntent();
         method = intent.getStringExtra("Method");
-        id = intent.getIntExtra("user",0);
+        id = intent.getIntExtra("user", 0);
         day = intent.getIntExtra("day", 0);
         week = intent.getIntExtra("week", 0);
         month = intent.getIntExtra("month", 0);
 
-        ListView listView = getListView();
+        final ListView listView = getListView();
 
         //Makes list for the records of the day
-        if(method.equals("Daily")){
+        if (method.equals("Daily")) {
             TextView title = new TextView(this);
             title.setText(DAILY);
             title.setTextSize(30);
@@ -55,15 +60,23 @@ public class RecordActivity extends ListActivity {
 
             listView.addHeaderView(title);
             listView.setBackgroundColor(getResources().getColor(R.color.backgroundColour));
-            List<String> list = listToString(mainScreen.searchDaily(id, day, context));
-            listAdapter = new ArrayAdapter<String>(
-                    this,
-                    android.R.layout.simple_list_item_1, //Android pre made list
-                    list);
-            listView.setAdapter(listAdapter);
+
+            mainScreen.searchDaily(id, day, context, new JsonCallback() {
+                @Override
+                public void onSuccess(JSONObject jsonObject) {
+                    List<VitalResponse> listVital = new ArrayList<>();
+                    listVital = parseToList(jsonObject);
+                    List<String> list = listToString(listVital);
+                    listAdapter = new ArrayAdapter<String>(
+                            context,
+                            android.R.layout.simple_list_item_1, //Android pre made list
+                            list);
+                    listView.setAdapter(listAdapter);
+                }
+            });
 
 
-        } else if(method.equals("Weekly")){
+        } else if (method.equals("Weekly")) {
             TextView title = new TextView(this);
             title.setText(WEEKLY);
             title.setTextSize(30);
@@ -71,15 +84,23 @@ public class RecordActivity extends ListActivity {
 
             listView.addHeaderView(title);
             listView.setBackgroundColor(getResources().getColor(R.color.backgroundColour));
-            List<String> list = listToString(mainScreen.searchWeekly(id, week, month, context));
+            mainScreen.searchWeekly(id, week, month, context, new JsonCallback() {
+                @Override
+                public void onSuccess(JSONObject jsonObject) {
+                    List<VitalResponse> listVital = new ArrayList<>();
+                    listVital = parseToList(jsonObject);
+                    List<String> list = listToString(listVital);
+                    listAdapter = new ArrayAdapter<String>(
+                            context,
+                            android.R.layout.simple_list_item_1,
+                            list
+                    );
+                    listView.setAdapter(listAdapter);
+                }
+            });
 
-            listAdapter = new ArrayAdapter<String>(
-                    this,
-                    android.R.layout.simple_list_item_1,
-                    list
-            );
-            listView.setAdapter(listAdapter);
-        } else if(method.equals("Monthly")){
+
+        } else if (method.equals("Monthly")) {
             TextView title = new TextView(this);
             title.setText(MONTHLY);
             title.setTextSize(30);
@@ -87,13 +108,21 @@ public class RecordActivity extends ListActivity {
 
             listView.addHeaderView(title);
             listView.setBackgroundColor(getResources().getColor(R.color.backgroundColour));
-            List<String> list = listToString(mainScreen.searchMonthly(id, month, context));
-
-            listAdapter = new ArrayAdapter<String>(
-                    this,
-                    android.R.layout.simple_list_item_1,
-                    list);
+            mainScreen.searchMonthly(id, month, context, new JsonCallback() {
+                @Override
+                public void onSuccess(JSONObject jsonObject) {
+                    List<VitalResponse> listVital = new ArrayList<>();
+                    listVital = parseToList(jsonObject);
+                    List<String> list = listToString(listVital);
+                    listAdapter = new ArrayAdapter<String>(
+                            context,
+                            android.R.layout.simple_list_item_1,
+                            list
+                    );
                     listView.setAdapter(listAdapter);
+                }
+            });
+
         }
     }
 
@@ -122,5 +151,27 @@ public class RecordActivity extends ListActivity {
         }
 
         return converted;
+    }
+
+    private List<VitalResponse> parseToList(JSONObject jsonObject){
+        List<VitalResponse> list = new ArrayList<>();
+        try {
+            JSONArray array = jsonObject.getJSONArray("vital");
+            if(array.length() == 0){
+                VitalResponse vital = new VitalResponse();
+                vital.setPression("-");
+                vital.setHeartbeats("-");
+                list.add(vital);
+            }
+            for(int i = 0; i < array.length(); i++){
+                VitalResponse vital = new VitalResponse();
+                vital.setPression(array.getJSONObject(i).getString("pression"));
+                vital.setHeartbeats(array.getJSONObject(i).getString("heartbeat"));
+                list.add(vital);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 }

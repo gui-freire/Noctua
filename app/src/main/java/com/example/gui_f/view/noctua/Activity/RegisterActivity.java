@@ -15,8 +15,12 @@ import android.widget.EditText;
 
 import com.example.gui_f.model.noctua.UserDTO;
 import com.example.gui_f.noctua.R;
+import com.example.gui_f.utils.JsonCallback;
 import com.example.gui_f.viewmodel.noctua.Register.Register;
 import com.example.gui_f.viewmodel.noctua.Register.RegisterImpl;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -86,14 +90,23 @@ public class RegisterActivity extends AppCompatActivity {
                 user.setSurname(surname.getText().toString());
                 user.setBirthday(birthday.getText().toString());
                 user.setEmail(email.getText().toString());
-                boolean result = register.changeData(user, context);
-                if(result){
-                    showSuccessDialog();
-                    finish();
-                }
-                else{
-                   showErrorDialog();
-                }
+                register.changeData(user, context, new JsonCallback() {
+                    @Override
+                    public void onSuccess(JSONObject jsonObject) {
+                        int ret = 0;
+                        try{
+                            ret = jsonObject.getInt("key");
+                        } catch (JSONException je){
+
+                        }
+                        if(ret == 200){
+                            showSuccessDialog();
+                            finish();
+                        } else{
+                            showErrorDialog();
+                        }
+                    }
+                });
             }
         });
     }
@@ -125,7 +138,23 @@ public class RegisterActivity extends AppCompatActivity {
                        user.setSurname(surname.getText().toString());
                        user.setBirthday(birthday.getText().toString());
                        user.setEmail(email.getText().toString());
-                       boolean result = register.changeData(user, context);
+                       boolean result = register.changeData(user, context, new JsonCallback() {
+                           @Override
+                           public void onSuccess(JSONObject jsonObject) {
+                               int ret = 0;
+                               try{
+                                   ret = jsonObject.getInt("key");
+                               } catch (JSONException je){
+
+                               }
+                               if(ret == 200){
+                                   showSuccessDialog();
+                                   finish();
+                               } else{
+                                   showErrorDialog();
+                               }
+                           }
+                       });
                        if(result){
                            setProgressBarIndeterminateVisibility(false);
                            showSuccessDialog();

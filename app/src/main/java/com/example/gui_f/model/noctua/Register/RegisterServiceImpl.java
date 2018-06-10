@@ -8,9 +8,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.gui_f.Constants;
 import com.example.gui_f.model.noctua.AppController;
 import com.example.gui_f.model.noctua.ResponsibleDTO;
 import com.example.gui_f.model.noctua.UserDTO;
+import com.example.gui_f.utils.JsonCallback;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,11 +24,11 @@ import org.json.JSONObject;
 public class RegisterServiceImpl implements RegisterService {
 
     private JSONObject json = new JSONObject();
-    private String webserviceUri = "http://jfsajfsa";
+    private String webserviceUri = Constants.URL + "/Noctua/mudar/mudarUsuario";
     private String httpResponse;
 
     @Override
-    public boolean changeData(UserDTO user, Context context) {
+    public boolean changeData(UserDTO user, Context context, final JsonCallback jsonCallback) {
         try{
             json.put("id", user.getId());
             json.put("name", user.getName());
@@ -38,16 +40,11 @@ public class RegisterServiceImpl implements RegisterService {
 
             Log.i("Register", "User with changes sent to service");
 
-            //TODO: FAZER CHAMADA DO SERVIÇO
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, webserviceUri, json,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
-                            try {
-                                httpResponse = response.toString();
-                            } catch (Exception e){
-                                Log.d("RegisterError", "Something went wrong on the webservice call " + e.getMessage());
-                            }
+                            jsonCallback.onSuccess(response);
                         }
                     }, new Response.ErrorListener() {
                 @Override
@@ -75,7 +72,7 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     @Override
-    public boolean changeResponsible(String user, UserDTO userDTO, Context context) {
+    public boolean changeResponsible(String user, UserDTO userDTO, Context context, final JsonCallback jsonCallback) {
         try{
             json.put("id", userDTO.getId());
             json.put("name", userDTO.getName());
@@ -90,11 +87,7 @@ public class RegisterServiceImpl implements RegisterService {
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
-                            try {
-                                httpResponse = response.toString();
-                            } catch (Exception e) {
-                                Log.d("JsonLoginError", "Something went wrong on the webservice call " + e.getMessage());
-                            }
+                            jsonCallback.onSuccess(response);
                         }
                     }, new Response.ErrorListener() {
                 @Override

@@ -8,7 +8,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.gui_f.Constants;
 import com.example.gui_f.model.noctua.AppController;
+import com.example.gui_f.utils.JsonCallback;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,11 +22,11 @@ import org.json.JSONObject;
 public class DiaryServiceImpl implements DiaryService {
 
     private JSONObject json = new JSONObject();
-    private String webserviceUri = "http://fkakjfksa";
+    private String webserviceUri = Constants.URL + "/Noctua/diario/enviarDiario";
     private String httpResponse;
 
     @Override
-    public boolean sendFeeling(String user, String feel, Context context) {
+    public boolean sendFeeling(String user, String feel, Context context, final JsonCallback jsonCallback) {
         try{
             json.put("User", user);
             json.put("Feeling", feel.toString());
@@ -62,7 +64,7 @@ public class DiaryServiceImpl implements DiaryService {
     }
 
     @Override
-    public boolean sendDiary(String user, String diary, String feel, Context context) {
+    public boolean sendDiary(String user, String diary, String feel, Context context, final JsonCallback jsonCallback) {
         try{
             json.put("User", user);
             json.put("DiaryActivity", diary);
@@ -73,11 +75,7 @@ public class DiaryServiceImpl implements DiaryService {
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
-                            try {
-                                httpResponse = response.toString();
-                            } catch (Exception je) {
-                                Log.d("JsonDiaryError", "Something went wrong on the webservice call " + je.getMessage());
-                            }
+                            jsonCallback.onSuccess(response);
                         }
                     }, new Response.ErrorListener() {
                 @Override

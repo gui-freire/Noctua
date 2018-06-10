@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -17,13 +18,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.gui_f.model.noctua.UserDTO;
 import com.example.gui_f.noctua.R;
+import com.example.gui_f.utils.JsonCallback;
+import com.example.gui_f.utils.ServerCallback;
 import com.example.gui_f.viewmodel.noctua.Login.Login;
 import com.example.gui_f.viewmodel.noctua.Login.LoginImpl;
 import com.google.firebase.iid.FirebaseInstanceId;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -32,6 +39,8 @@ public class LoginActivity extends AppCompatActivity {
     private Button login;
     private TextView forgotPwd;
     private TextView newUser;
+    private ProgressBar mProgressBar;
+
     private Login loginImpl = new LoginImpl();
 
     private String passwordText;
@@ -58,6 +67,7 @@ public class LoginActivity extends AppCompatActivity {
         login = (Button) findViewById(R.id.btnLogin);
         forgotPwd = (TextView) findViewById(R.id.textForgotPwdLoginScreen);
         newUser = (TextView) findViewById(R.id.textNewUserLoginScreen);
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -117,18 +127,22 @@ public class LoginActivity extends AppCompatActivity {
                 //The back end will check if the key has changed
                 firebaseKey = FirebaseInstanceId.getInstance().getToken();
 
-                userDTO = loginImpl.searchUser(userText, passwordText, firebaseKey, context);
-                if(!userDTO.isExists()){
-                    showIncorrectDialog();
-                }
-                else if(userDTO != null) {
-                    Intent mainIntent = new Intent(LoginActivity.this, MainScreenActivity.class);
-                    mainIntent.putExtra("user", userDTO);
-                    startActivity(mainIntent);
-                    finish();
-                } else{
-                    showInexistentDialog();
-                }
+                mProgressBar.setVisibility(View.VISIBLE);
+                loginImpl.searchUser(userText, passwordText, firebaseKey, context, new JsonCallback() {
+                    @Override
+                    public void onSuccess(JSONObject jsonCallback) {
+                        if(jsonCallback != null) {
+                            userDTO = parseToModel(jsonCallback);
+                            Intent mainIntent = new Intent(LoginActivity.this, MainScreenActivity.class);
+                            mainIntent.putExtra("user", userDTO);
+                            startActivity(mainIntent);
+                            finish();
+                        } else{
+                            showInexistentDialog();
+                        }
+                    }
+                });
+                mProgressBar.setVisibility(View.GONE);
             }
         });
 
@@ -168,6 +182,10 @@ public class LoginActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void exibirProgress(boolean exibir){
+        mProgressBar.setVisibility(exibir ? View.VISIBLE : View.GONE);
+    }
+
     public void showIncorrectDialog(){
         new AlertDialog.Builder(LoginActivity.this)
                 .setMessage(R.string.IncorrectUser)
@@ -189,5 +207,25 @@ public class LoginActivity extends AppCompatActivity {
                 .setNegativeButton(R.string.Okay, null)
                 .show();
     }
+
+    private UserDTO parseToModel(JSONObject json){
+        UserDTO user = new UserDTO();
+        try{
+            user.setId(json.getInt("id"));
+            user.setName(json.getString("name"));
+            user.setSurnameResp(json.getString("surnameResp"));
+            user.setSurname(json.getString("surname"));
+//            user.setNameResp(json.getString("nameResp"));
+            user.setEmailResp(json.getString("emailResp"));
+            user.setEmail(json.getString("email"));
+            user.setPassword(json.getString("password"));
+
+            return user;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
 }

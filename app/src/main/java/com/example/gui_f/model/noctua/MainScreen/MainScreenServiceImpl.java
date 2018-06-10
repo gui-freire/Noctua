@@ -8,7 +8,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.gui_f.Constants;
 import com.example.gui_f.model.noctua.AppController;
+import com.example.gui_f.utils.JsonCallback;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,26 +29,20 @@ public class MainScreenServiceImpl implements MainScreenService {
     private VitalResponse vital = new VitalResponse();
     private JSONObject json = new JSONObject();
     private List<VitalResponse> vitalList = new ArrayList<>();
-    private String webserviceUri = "http://jfjosajfsjaf";
+    private String webserviceUri = Constants.URL + "/Noctua/dadosVitais";
 
     @Override
-    public VitalResponse searchLast(int id, Context context) {
+    public VitalResponse searchLast(int id, Context context, final JsonCallback jsonCallback) {
         try{
             json.put("id", id);
             Log.d("SearchLast", "Sending user to webservice");
 
-            final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, webserviceUri, json,
+            webserviceUri += "/ultimo";
+            final JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, webserviceUri, json,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
-                            try {
-                                JSONObject jsonObject = response.getJSONObject("vitals");
-                                vital.setHeartbeats(jsonObject.getString("heartbeat"));
-                                vital.setPression(jsonObject.getString("pression"));
-
-                            } catch (JSONException je) {
-                                Log.d("JsonMainScreenError", "Something went wrong on the webservice call " + je.getMessage());
-                            }
+                        jsonCallback.onSuccess(response);
                         }
                     }, new Response.ErrorListener() {
                 @Override
@@ -57,8 +53,8 @@ public class MainScreenServiceImpl implements MainScreenService {
 
             AppController.getInstance(context).addToRequestQueue(request);
             //Mock
-            vital.setHeartbeats("68");
-            vital.setPression("11/8");
+//            vital.setHeartbeats("68");
+//            vital.setPression("11/8");
 
             return vital;
         } catch (JSONException je){
@@ -73,28 +69,22 @@ public class MainScreenServiceImpl implements MainScreenService {
     }
 
     @Override
-    public List<VitalResponse> searchDaily(int id, int day, Context context) {
+    public List<VitalResponse> searchDaily(int id, int day, Context context, final JsonCallback jsonCallback) {
         try{
             json.put("id", id);
             json.put("day", day);
             Log.i("SearchDay", "Sending user and day to webservice");
 
-            final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, webserviceUri, json,
+            webserviceUri += "/diario";
+
+            final JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, webserviceUri, json,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
-                                JSONObject jsonObject = response.getJSONObject("vitals");
-                                Iterator<String> temp = jsonObject.keys();
-//                                while(1 == 0){
-//                                    String key = temp.next();
-//                                    JSONArray obj = jsonObject.getJSONArray(key);
-//                                    vital.setPression("kfak");
-//                                }
-                                vital.setHeartbeats(jsonObject.getString("heartbeat"));
-                                vital.setPression(jsonObject.getString("pression"));
+                                jsonCallback.onSuccess(response);
 
-                            } catch (JSONException je) {
+                            } catch (Exception je) {
                                 Log.d("JsonMainScreenError", "Something went wrong on the webservice call " + je.getMessage());
                             }
                         }
@@ -137,12 +127,34 @@ public class MainScreenServiceImpl implements MainScreenService {
     }
 
     @Override
-    public List<VitalResponse> searchWeekly(int id, int week, int month, Context context) {
+    public List<VitalResponse> searchWeekly(int id, int week, int month, Context context, final JsonCallback jsonCallback) {
         try{
             json.put("id", id);
             json.put("week", week);
             json.put("month", month);
             Log.i("SearchWeek", "Sending user, week and month to webservice");
+
+            webserviceUri += "/semanal";
+
+            final JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, webserviceUri, json,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                jsonCallback.onSuccess(response);
+
+                            } catch (Exception je) {
+                                Log.d("JsonMainScreenError", "Something went wrong on the webservice call " + je.getMessage());
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    VolleyLog.d(error.getMessage());
+                }
+            });
+
+            AppController.getInstance(context).addToRequestQueue(request);
 
             vital.setHeartbeats("60");
             vital.setPression("11/10");
@@ -171,11 +183,33 @@ public class MainScreenServiceImpl implements MainScreenService {
     }
 
     @Override
-    public List<VitalResponse> searchMonthly(int id, int month, Context context) {
+    public List<VitalResponse> searchMonthly(int id, int month, Context context, final JsonCallback jsonCallback) {
         try{
             json.put("id", id);
             json.put("month", month);
             Log.i("SearchMonth", "Sending user and month to webservice");
+
+            webserviceUri += "/mensal";
+
+            final JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, webserviceUri, json,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                jsonCallback.onSuccess(response);
+
+                            } catch (Exception je) {
+                                Log.d("JsonMainScreenError", "Something went wrong on the webservice call " + je.getMessage());
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    VolleyLog.d(error.getMessage());
+                }
+            });
+
+            AppController.getInstance(context).addToRequestQueue(request);
 
             vital.setHeartbeats("69");
             vital.setPression("13/9");
