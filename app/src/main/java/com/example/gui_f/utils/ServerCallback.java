@@ -8,4 +8,6 @@ import org.json.JSONObject;
 
 public interface ServerCallback {
     void onSuccess(int result);
+
+    void onError();
 }

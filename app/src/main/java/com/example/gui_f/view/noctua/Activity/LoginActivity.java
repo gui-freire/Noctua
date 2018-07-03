@@ -123,28 +123,14 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 userText = user.getText().toString();
                 passwordText = password.getText().toString();
+                mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
                 //Send the firebaseKey for sending push notifications
                 //The back end will check if the key has changed
                 firebaseKey = FirebaseInstanceId.getInstance().getToken();
 
-                mProgressBar.setVisibility(View.VISIBLE);
-                loginImpl.searchUser(userText, passwordText, firebaseKey, context, new JsonCallback() {
-                    @Override
-                    public void onSuccess(JSONObject jsonCallback) {
-                        if(jsonCallback != null) {
-                            userDTO = parseToModel(jsonCallback);
-                            Intent mainIntent = new Intent(LoginActivity.this, MainScreenActivity.class);
-                            mainIntent.putExtra("user", userDTO);
-                            startActivity(mainIntent);
-                            finish();
-                        } else{
-                            showInexistentDialog();
-                        }
+                new ProgressTask().execute();
                     }
                 });
-                mProgressBar.setVisibility(View.GONE);
-            }
-        });
 
     }
 
@@ -182,10 +168,6 @@ public class LoginActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void exibirProgress(boolean exibir){
-        mProgressBar.setVisibility(exibir ? View.VISIBLE : View.GONE);
-    }
-
     public void showIncorrectDialog(){
         new AlertDialog.Builder(LoginActivity.this)
                 .setMessage(R.string.IncorrectUser)
@@ -208,6 +190,13 @@ public class LoginActivity extends AppCompatActivity {
                 .show();
     }
 
+    public void showNotConnected(){
+        new AlertDialog.Builder(LoginActivity.this)
+                .setMessage(R.string.not_connected)
+                .setNeutralButton(R.string.Okay, null)
+                .show();
+    }
+
     private UserDTO parseToModel(JSONObject json){
         UserDTO user = new UserDTO();
         try{
@@ -227,5 +216,44 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    private void exibirProgress(boolean exibir){
+        mProgressBar.setVisibility(exibir ? View.VISIBLE: View.GONE);
+    }
 
+    private class ProgressTask extends AsyncTask<Void, Void, JsonCallback>{
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            exibirProgress(true);
+        }
+
+        @Override
+        protected JsonCallback doInBackground(Void... voids) {
+            loginImpl.searchUser(userText, passwordText, firebaseKey, context, new JsonCallback() {
+                @Override
+                public void onSuccess(JSONObject jsonCallback) {
+                    userDTO = parseToModel(jsonCallback);
+                }
+
+                @Override
+                public void onError() {
+                    showNotConnected();
+                }
+            });
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(JsonCallback jsonCallback) {
+            super.onPostExecute(jsonCallback);
+            if(userDTO != null){
+                Intent mainIntent = new Intent(LoginActivity.this, MainScreenActivity.class);
+                mainIntent.putExtra("user", userDTO);
+                startActivity(mainIntent);
+                finish();
+            }
+            exibirProgress(false);
+        }
+    }
 }

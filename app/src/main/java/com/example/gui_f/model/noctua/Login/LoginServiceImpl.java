@@ -28,7 +28,7 @@ public class LoginServiceImpl implements LoginService {
     private ResponsibleDTO dto = new ResponsibleDTO();
     private JSONObject responseRespons = new JSONObject();
     private JSONObject jsonObject = new JSONObject();
-    //TODO: alterar essa URI
+
     private String webserviceUri = Constants.URL + "/Noctua/usuario/buscarUsuario";
 
     @Override
@@ -54,7 +54,9 @@ public class LoginServiceImpl implements LoginService {
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    VolleyLog.d(error.getMessage());
+                    if(error.networkResponse.statusCode == 404){
+                        jsonCallback.onError();
+                    }
                 }
             });
             AppController.getInstance(context).addToRequestQueue(json);
