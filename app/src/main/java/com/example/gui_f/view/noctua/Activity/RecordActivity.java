@@ -1,17 +1,17 @@
 package com.example.gui_f.view.noctua.Activity;
 
-import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.example.gui_f.model.noctua.MainScreen.VitalResponse;
 import com.example.gui_f.noctua.R;
 import com.example.gui_f.utils.JsonCallback;
+import com.example.gui_f.view.noctua.Activity.Adapter.RecordAdapter;
 import com.example.gui_f.viewmodel.noctua.MainScreen.MainScreen;
 import com.example.gui_f.viewmodel.noctua.MainScreen.MainScreenImpl;
 
@@ -22,16 +22,17 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecordActivity extends ListActivity {
+public class RecordActivity extends AppCompatActivity {
 
-    private ArrayAdapter<String> listAdapter;
     private Intent intent;
     private String method;
     private MainScreen mainScreen = new MainScreenImpl();
+
     private int id;
     private int day;
     private int week;
     private int month;
+    private boolean mock;
 
     private Context context = this;
 
@@ -39,39 +40,45 @@ public class RecordActivity extends ListActivity {
     private final String WEEKLY = "Relatório Semanal";
     private final String MONTHLY = "Reatório Mensal";
 
+    private List<VitalResponse> listVital;
+
+    private RecyclerView recyclerView;
+    private TextView title;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        intent = getIntent();
-        method = intent.getStringExtra("Method");
-        id = intent.getIntExtra("user", 0);
-        day = intent.getIntExtra("day", 0);
-        week = intent.getIntExtra("week", 0);
-        month = intent.getIntExtra("month", 0);
+        setContentView(R.layout.activity_record);
 
-        final ListView listView = getListView();
+        setUp();
+        receiveIntent();
 
         //Makes list for the records of the day
-        if (method.equals("Daily")) {
-            TextView title = new TextView(this);
-            title.setText(DAILY);
-            title.setTextSize(30);
-            title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        if(mock){
+            VitalResponse vitalResponse = new VitalResponse();
+            vitalResponse.setPression("12/5");
+            vitalResponse.setHeartbeats("55");
+            listVital.add(vitalResponse);
 
-            listView.addHeaderView(title);
-            listView.setBackgroundColor(getResources().getColor(R.color.backgroundColour));
+            vitalResponse.setHeartbeats("66");
+            vitalResponse.setPression("11/7");
+            listVital.add(vitalResponse);
+
+            vitalResponse.setPression("12/5");
+            vitalResponse.setHeartbeats("55");
+            listVital.add(vitalResponse);
+
+            vitalResponse.setHeartbeats("66");
+            vitalResponse.setPression("11/7");
+            listVital.add(vitalResponse);
+        } else {
+        if (method.equals("Daily")) {
+            title.setText(DAILY);
 
             mainScreen.searchDaily(id, day, context, new JsonCallback() {
                 @Override
                 public void onSuccess(JSONObject jsonObject) {
-                    List<VitalResponse> listVital = new ArrayList<>();
                     listVital = parseToList(jsonObject);
-                    List<String> list = listToString(listVital);
-                    listAdapter = new ArrayAdapter<String>(
-                            context,
-                            android.R.layout.simple_list_item_1, //Android pre made list
-                            list);
-                    listView.setAdapter(listAdapter);
                 }
 
                 @Override
@@ -82,63 +89,68 @@ public class RecordActivity extends ListActivity {
 
 
         } else if (method.equals("Weekly")) {
-            TextView title = new TextView(this);
             title.setText(WEEKLY);
-            title.setTextSize(30);
-            title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
-            listView.addHeaderView(title);
-            listView.setBackgroundColor(getResources().getColor(R.color.backgroundColour));
             mainScreen.searchWeekly(id, week, month, context, new JsonCallback() {
                 @Override
                 public void onSuccess(JSONObject jsonObject) {
-                    List<VitalResponse> listVital = new ArrayList<>();
                     listVital = parseToList(jsonObject);
-                    List<String> list = listToString(listVital);
-                    listAdapter = new ArrayAdapter<String>(
-                            context,
-                            android.R.layout.simple_list_item_1,
-                            list
-                    );
-                    listView.setAdapter(listAdapter);
                 }
 
                 @Override
                 public void onError() {
+                    VitalResponse vitalResponse = new VitalResponse();
+                    vitalResponse.setPression("12/5");
+                    vitalResponse.setHeartbeats("55");
+                    listVital.add(vitalResponse);
 
+                    vitalResponse.setHeartbeats("66");
+                    vitalResponse.setPression("11/7");
+                    listVital.add(vitalResponse);
+
+                    vitalResponse.setPression("12/5");
+                    vitalResponse.setHeartbeats("55");
+                    listVital.add(vitalResponse);
+
+                    vitalResponse.setHeartbeats("66");
+                    vitalResponse.setPression("11/7");
+                    listVital.add(vitalResponse);
                 }
             });
 
 
         } else if (method.equals("Monthly")) {
-            TextView title = new TextView(this);
             title.setText(MONTHLY);
-            title.setTextSize(30);
-            title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
-            listView.addHeaderView(title);
-            listView.setBackgroundColor(getResources().getColor(R.color.backgroundColour));
             mainScreen.searchMonthly(id, month, context, new JsonCallback() {
                 @Override
                 public void onSuccess(JSONObject jsonObject) {
-                    List<VitalResponse> listVital = new ArrayList<>();
                     listVital = parseToList(jsonObject);
-                    List<String> list = listToString(listVital);
-                    listAdapter = new ArrayAdapter<String>(
-                            context,
-                            android.R.layout.simple_list_item_1,
-                            list
-                    );
-                    listView.setAdapter(listAdapter);
                 }
 
                 @Override
                 public void onError() {
+                    VitalResponse vitalResponse = new VitalResponse();
+                    vitalResponse.setPression("12/5");
+                    vitalResponse.setHeartbeats("55");
+                    listVital.add(vitalResponse);
 
+                    vitalResponse.setHeartbeats("66");
+                    vitalResponse.setPression("11/7");
+                    listVital.add(vitalResponse);
+
+                    vitalResponse.setPression("12/5");
+                    vitalResponse.setHeartbeats("55");
+                    listVital.add(vitalResponse);
+
+                    vitalResponse.setHeartbeats("66");
+                    vitalResponse.setPression("11/7");
+                    listVital.add(vitalResponse);
                 }
             });
-
         }
+        }
+        populateCards();
     }
 
     @Override
@@ -146,27 +158,23 @@ public class RecordActivity extends ListActivity {
         super.onStart();
     }
 
-
-    //Converts the object to a string to be showed on the list
-    private List<String> listToString(List<VitalResponse> vitalList){
-        List<String> converted = new ArrayList<>();
-        StringBuilder item;
-
-        for(VitalResponse l: vitalList){
-            item = new StringBuilder();
-//            item.append(horaData + "    ");
-
-            item.append("BPM:   ");
-            item.append(l.getHeartbeats() + "\n");
-
-            item.append("Pressão:    ");
-            item.append(l.getPression());
-
-            converted.add(item.toString());
-        }
-
-        return converted;
+    private void setUp(){
+        recyclerView = (RecyclerView) findViewById(R.id.frgRecord);
+        title = (TextView) findViewById(R.id.recordToolbarTitle);
+        listVital = new ArrayList<>();
+        mock = false;
     }
+
+    private void receiveIntent(){
+        intent = getIntent();
+        method = intent.getStringExtra("Method");
+        id = intent.getIntExtra("user", 0);
+        day = intent.getIntExtra("day", 0);
+        week = intent.getIntExtra("week", 0);
+        month = intent.getIntExtra("month", 0);
+        mock = intent.getBooleanExtra("mock", false);
+    }
+
 
     private List<VitalResponse> parseToList(JSONObject jsonObject){
         List<VitalResponse> list = new ArrayList<>();
@@ -188,5 +196,14 @@ public class RecordActivity extends ListActivity {
             e.printStackTrace();
         }
         return list;
+    }
+
+    private void populateCards(){
+        recyclerView.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        RecordAdapter adapter = new RecordAdapter(listVital);
+        recyclerView.setAdapter(adapter);
     }
 }

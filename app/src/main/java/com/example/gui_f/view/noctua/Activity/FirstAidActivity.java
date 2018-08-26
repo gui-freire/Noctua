@@ -11,7 +11,7 @@ import com.example.gui_f.model.noctua.FirstAid;
 import com.example.gui_f.noctua.R;
 import com.example.gui_f.view.noctua.Activity.Adapter.FirstAidAdapter;
 
-public class FirstAidActivity extends AppCompatActivity implements FirstAidListFragment.FirstAidListListener{
+public class FirstAidActivity extends AppCompatActivity{
 
     private RecyclerView recyclerView;
 
@@ -27,16 +27,6 @@ public class FirstAidActivity extends AppCompatActivity implements FirstAidListF
     @Override
     protected void onStart() {
         super.onStart();
-
-
-    }
-
-    @Override
-    public void itemClicked(long id) {
-        Intent intent = new Intent(this, FirstAidDetail.class);
-        intent.putExtra("Id", id);
-
-        startActivity(intent);
     }
 
     private void setUp(){

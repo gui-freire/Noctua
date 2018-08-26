@@ -46,7 +46,7 @@ public class FirstAidAdapter extends RecyclerView.Adapter<FirstAidAdapter.ViewHo
     @Override
     public FirstAidAdapter.ViewHolder onCreateViewHolder(ViewGroup holder, int viewType) {
         CardView cv = (CardView) LayoutInflater.from(holder.getContext())
-                .inflate(R.layout.list_first_aid, holder, false);
+                .inflate(R.layout.card_first_aid, holder, false);
         return new ViewHolder(cv);
     }
 

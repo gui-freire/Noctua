@@ -58,6 +58,8 @@ public class MainScreenActivity extends AppCompatActivity
 
     private RecyclerView recyclerView;
 
+    private boolean mock;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,7 +79,7 @@ public class MainScreenActivity extends AppCompatActivity
             dto = (UserDTO) intent.getParcelableExtra("user");
         }
 
-        boolean mock = intent.getBooleanExtra("mock", false);
+        mock = intent.getBooleanExtra("mock", false);
 
         if(mock){
             vital.setHeartbeats(null);
@@ -113,6 +115,7 @@ public class MainScreenActivity extends AppCompatActivity
         recyclerView = (RecyclerView) findViewById(R.id.fragment);
         user = (TextView) findViewById(R.id.textUserName);
         diary = (Button) findViewById(R.id.btnDiary);
+        mock = false;
     }
 
     @Override
@@ -194,6 +197,7 @@ public class MainScreenActivity extends AppCompatActivity
             list.putExtra("Method", "Daily");
             list.putExtra("Day", Calendar.DAY_OF_MONTH);
             list.putExtra("user", dto.getId());
+            list.putExtra("mock", mock);
 
             startActivity(list);
         } else if (id == R.id.navlog_monthly) {
