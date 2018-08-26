@@ -98,6 +98,11 @@ public class RegisterResponsibleActivity extends AppCompatActivity {
                             finish();
                         }
                     }
+
+                    @Override
+                    public void onError() {
+
+                    }
                 });
                 }
         });
@@ -143,6 +148,11 @@ public class RegisterResponsibleActivity extends AppCompatActivity {
                                     setProgressBarIndeterminateVisibility(false);
                                     showErrorDialog();
                                 }
+                            }
+
+                            @Override
+                            public void onError() {
+
                             }
                         });
 

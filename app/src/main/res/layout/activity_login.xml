@@ -1,27 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.gui_f.view.noctua.Activity.LoginActivity">
+    android:orientation="vertical"
+    >
 
-    <android.support.design.widget.AppBarLayout
+    <LinearLayout
+
+        android:id="@+id/login"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_gravity="bottom"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="com.example.gui_f.view.noctua.Activity.LoginActivity"
+        tools:showIn="@layout/activity_login"
+        android:background="@color/backgroundColour">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            android:backgroundTint="@color/toolbarColour"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorPrimary">
 
-    </android.support.design.widget.AppBarLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-    <include layout="@layout/content_login" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily=""
+                android:textColor="@color/text"
+                android:gravity="center"
+                android:text="Noctua"
+                android:textSize="20pt"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="\n"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="\n"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/User"
+            android:gravity="center_horizontal"
+            android:textColor="@color/textColour"
+            android:textSize="10pt"
+            />
 
 
-</android.support.design.widget.CoordinatorLayout>
+        <EditText
+            android:id="@+id/editUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/UserExmp"
+            android:gravity="left"
+            android:layout_margin="20dp"
+            android:textSize="10pt"
+            android:textColor="@color/textColour"
+            />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="0.5"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Password"
+            android:textSize="10pt"
+            android:textColor="@color/textColour"
+            />
+
+        <EditText
+            android:id="@+id/editPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:layout_margin="20dp"
+            android:gravity="left"
+            android:hint="************"
+            android:textSize="10pt"
+            android:textColor="@color/textColour"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"/>
+
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="@string/Login"
+            android:textSize="10pt"
+            android:textColor="@color/text"
+            android:background="@drawable/button_shape" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <Switch
+            android:id="@+id/mock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mock "
+            android:textSize="10pt"/>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/textForgotPwdLoginScreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ForgotPwd"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:focusable="true"
+            android:textSize="10pt"
+            android:textColor="@color/textColour" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"/>
+
+        <TextView
+            android:id="@+id/textNewUserLoginScreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/NewUser"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:focusable="true"
+            android:textSize="10pt"
+            android:textColor="@color/textColour"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="0.5"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="top|center">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:attr/progressBarStyleLarge"
+            android:visibility="gone"
+            android:id="@+id/progressBar"/>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frgNoConnectLogin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</FrameLayout>

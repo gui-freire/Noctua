@@ -3,12 +3,12 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/toolbarColour</item>
-        <item name="colorPrimaryDark">@color/toolbarColour</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorPrimary">@color/textColour</item>
-        <item name="android:textColorSecondary">@color/textColour</item>
-        <item name="android:textColor">@color/textColour</item>
+        <item name="android:textColorSecondary">@color/secondaryTextColor</item>
+        <item name="android:textColor">@color/text</item>
         <item name="actionMenuTextColor">@color/toolbarColour</item>
     </style>
 

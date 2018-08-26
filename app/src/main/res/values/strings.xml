@@ -184,10 +184,20 @@
     <string name="ChangePassword">Sua senha foi enviada para seu e-mail.</string>
     <string name="title_activity_first_aid">FirstAidActivity</string>
 
+    <!--No internet connection alert fragment -->
+    <string name="no_internet">Sem conexão com a internet</string>
+    <string name="internet_warning">O dispositivo está sem conexão à internet. \n
+        Por favor, conecte-se a internet e tente novamente.</string>
+
+    <!--Not able to connect to service -->
+    <string name="no_service_title">Opa, algo deu errado...</string>
+    <string name="no_service_text">Não foi possível se conectar com o servidor. \n
+        Por favor, tente novamente mais tarde.</string>
+
     <!--Texts and title for the first aid screens-->
     <string name="basic">Exames primários</string>
     <string name="basic_text">
-        "Mantenha a calma. \n"
+        "Mantenha a calma. \n \n"
         "Procure o auxílio de outras pessoas, caso seja necessário, e peça que chamem um médico. \n"
         "Ligue para emergência em sua cidade \n"
         "Mantenha os curiosos à distância, pois assim o socorrista terá espaço suficiente para trabalhar. \n"
@@ -266,39 +276,39 @@
     <string name="transport_text">
         "Para aumentar as chances de recuperação, o ideal é que a vítima seja atendida no local do acidente. "
         "Caso isto não seja possível por falta de segurança, tanto para ela como para o socorrista, "
-        deve-se transportá-la para um local seguro, porém respeitando certos cuidados específicos. Veja como: \n \n"
+        deve-se transportá-la para um local seguro, porém respeitando certos cuidados específicos. Veja como:"
 
-        "<b>Como ajudar?</b> \n \n"
+        "<b>Como ajudar?</b> \n"
 
-        "Antes de retirar a vítima do local do acidente: \n \n"
+        "Antes de retirar a vítima do local do acidente:"
 
-        "Preste atenção ao movimentá-la para não agravar as lesões já existentes. \n"
-        "Examine o estado geral da vítima. \n"
-        "Tente calcular o peso da pessoa. \n"
-        "Considere o número de socorristas para ajudar. \n"
-        "Retenha a hemorragia. \n"
-        "Mantenha a vítima respirando. \n"
-        "Evite ou controle o estado de choque. \n"
-        "Imobilize as áreas com suspeita de fraturas. \n \n"
+        "Preste atenção ao movimentá-la para não agravar as lesões já existentes."
+        "Examine o estado geral da vítima."
+        "Tente calcular o peso da pessoa."
+        "Considere o número de socorristas para ajudar."
+        "Retenha a hemorragia."
+        "Mantenha a vítima respirando."
+        "Evite ou controle o estado de choque."
+        "Imobilize as áreas com suspeita de fraturas."
 
         "O transporte da vítima pode ser feito por maca, que é a melhor forma. "
         "Se por acaso não houver uma disponível no local, ela pode ser improvisada com duas camisas "
         "ou um paletó e dois bastões resistentes, ou até mesmo enrolando-se um "
-        "cobertor várias vezes em uma tábua larga. \n \n"
+        "cobertor várias vezes em uma tábua larga."
 
-        "Para erguer a vítima \n \n"
+        "Para erguer a vítima \n"
 
-        "Com apenas um socorrista: \n \n"
+        "Com apenas um socorrista:"
 
-        "Apoio lateral simples: \n \n"
+        "Apoio lateral simples:"
 
-        "O braço da vítima é passado sobre os ombros do socorrista, por trás do pescoço. \n"
-        "O socorrista segura firmemente o braço da vítima. \n"
-        "Com o outro braço, o socorrista envolve o acidentado por trás da cintura. \n \n"
+        "O braço da vítima é passado sobre os ombros do socorrista, por trás do pescoço."
+        "O socorrista segura firmemente o braço da vítima."
+        "Com o outro braço, o socorrista envolve o acidentado por trás da cintura."
 
-        "Arrastamento de roupa: \n"
+        "Arrastamento de roupa:"
         "A vítima é arrastada no sentido do eixo cranial pelo socorrista, "
-        "que utiliza a camisa ou casaco como ponto de apoio. \n \n"
+        "que utiliza a camisa ou casaco como ponto de apoio. \n"
 
         "Arrastamento tipo cobertor: \n"
         "Posicione a vítima estendida de lado. Coloque o cobertor por debaixo do corpo do paciente, "

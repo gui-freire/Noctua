@@ -87,6 +87,11 @@ public class NewUserStep2Activity extends AppCompatActivity {
                             showUserExistsDialog();
                         }
                     }
+
+                    @Override
+                    public void onError() {
+
+                    }
                 });
 
             }

@@ -66,7 +66,7 @@ public class MainScreenActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        recyclerView = (RecyclerView) findViewById(R.id.fragment);
+        setUp();
 
         if(intent != null)
             intent = getIntent();
@@ -77,19 +77,26 @@ public class MainScreenActivity extends AppCompatActivity
             dto = (UserDTO) intent.getParcelableExtra("user");
         }
 
-        mainScreen.searchLast(dto.getId(), context, new JsonCallback() {
-            @Override
-            public void onSuccess(JSONObject jsonObject) {
-                vital = parseToVital(jsonObject);
+        boolean mock = intent.getBooleanExtra("mock", false);
 
-                int[] imageIds = {R.mipmap.ic_heartbeat, R.mipmap.ic_bloopressure}; //Array com as imagens
-                int[] nameIds = {R.string.Heartbeats, R.string.Bloodpression}; //Array com os nomes
-                String[] titles = {vital.getHeartbeats(), vital.getPression()};
+        if(mock){
+            vital.setHeartbeats(null);
+            vital.setPression(null);
+        } else {
+            mainScreen.searchLast(dto.getId(), context, new JsonCallback() {
+                @Override
+                public void onSuccess(JSONObject jsonObject) {
+                    vital = parseToVital(jsonObject);
+                }
 
-                populateCard(nameIds, imageIds, titles);
-            }
-        });
+                @Override
+                public void onError() {
 
+                }
+            });
+        }
+
+        populateCards(vital);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -99,12 +106,13 @@ public class MainScreenActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        user.setText(dto.getName());
+    }
 
-
+    private void setUp(){
+        recyclerView = (RecyclerView) findViewById(R.id.fragment);
         user = (TextView) findViewById(R.id.textUserName);
         diary = (Button) findViewById(R.id.btnDiary);
-
-        user.setText(dto.getName());
     }
 
     @Override
@@ -116,6 +124,7 @@ public class MainScreenActivity extends AppCompatActivity
     @Override
     protected void onStart() {
         super.onStart();
+
         diary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -256,5 +265,13 @@ public class MainScreenActivity extends AppCompatActivity
         }
 
         return vitalResponse;
+    }
+
+    private void populateCards(VitalResponse vital){
+        int[] imageIds = {R.mipmap.ic_heartbeat, R.mipmap.ic_bloopressure}; //Array com as imagens
+        int[] nameIds = {R.string.Heartbeats, R.string.Bloodpression}; //Array com os nomes
+        String[] titles = {vital.getHeartbeats(), vital.getPression()};
+
+        populateCard(nameIds, imageIds, titles);
     }
 }

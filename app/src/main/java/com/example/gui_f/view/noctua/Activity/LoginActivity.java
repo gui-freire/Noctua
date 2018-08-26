@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
@@ -19,18 +20,25 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.gui_f.model.noctua.UserDTO;
 import com.example.gui_f.noctua.R;
+import com.example.gui_f.utils.InternetCheck;
 import com.example.gui_f.utils.JsonCallback;
 import com.example.gui_f.utils.ServerCallback;
+import com.example.gui_f.view.noctua.Activity.Fragment.NoInternetConnection;
 import com.example.gui_f.viewmodel.noctua.Login.Login;
 import com.example.gui_f.viewmodel.noctua.Login.LoginImpl;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -40,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView forgotPwd;
     private TextView newUser;
     private ProgressBar mProgressBar;
+    private Switch mock;
 
     private Login loginImpl = new LoginImpl();
 
@@ -68,6 +77,7 @@ public class LoginActivity extends AppCompatActivity {
         forgotPwd = (TextView) findViewById(R.id.textForgotPwdLoginScreen);
         newUser = (TextView) findViewById(R.id.textNewUserLoginScreen);
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+        mock = (Switch) findViewById(R.id.mock);
 
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -83,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                preferences.edit().putString("email", s.toString()).commit();
+                preferences.edit().putString("email", s.toString()).apply();
             }
         });
 
@@ -121,17 +131,34 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userText = user.getText().toString();
-                passwordText = password.getText().toString();
-                mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
-                //Send the firebaseKey for sending push notifications
-                //The back end will check if the key has changed
-                firebaseKey = FirebaseInstanceId.getInstance().getToken();
+                //Chamada que verifica conexão com a internet
+                InternetCheck internet = new InternetCheck(new InternetCheck.Consumer() {
+                    @Override
+                    public void accept(Boolean internet) {
+                        if(!internet){
+                            FragmentManager fragmentManager = getSupportFragmentManager();
+                            NoInternetConnection dialog = new NoInternetConnection();
 
-                new ProgressTask().execute();
+                            dialog.setTitle(R.string.no_internet);
+                            dialog.setText(R.string.internet_warning);
+
+                            dialog.show(fragmentManager, "NO_INTERNET");
+
+                        } else{
+                            userText = user.getText().toString();
+                            passwordText = password.getText().toString();
+                            mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+                            //Send the firebaseKey for sending push notifications
+                            //The back end will check if the key has changed
+                            firebaseKey = FirebaseInstanceId.getInstance().getToken();
+                            exibirProgress(true);
+
+                            new ProgressTask().execute();
+                        }
                     }
                 });
-
+            }
+        });
     }
 
     @Override
@@ -190,13 +217,6 @@ public class LoginActivity extends AppCompatActivity {
                 .show();
     }
 
-    public void showNotConnected(){
-        new AlertDialog.Builder(LoginActivity.this)
-                .setMessage(R.string.not_connected)
-                .setNeutralButton(R.string.Okay, null)
-                .show();
-    }
-
     private UserDTO parseToModel(JSONObject json){
         UserDTO user = new UserDTO();
         try{
@@ -230,24 +250,40 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         protected JsonCallback doInBackground(Void... voids) {
-            loginImpl.searchUser(userText, passwordText, firebaseKey, context, new JsonCallback() {
-                @Override
-                public void onSuccess(JSONObject jsonCallback) {
-                    userDTO = parseToModel(jsonCallback);
-                }
+            if(!mock.isChecked()) {
+                loginImpl.searchUser(userText, passwordText, firebaseKey, context, new JsonCallback() {
+                    @Override
+                    public void onSuccess(JSONObject jsonCallback) {
+                        userDTO = parseToModel(jsonCallback);
+                    }
 
-                @Override
-                public void onError() {
-                    showNotConnected();
-                }
-            });
+                    @Override
+                    public void onError() {
+                        FragmentManager fragmentManager = getSupportFragmentManager();
+                        NoInternetConnection dialog = new NoInternetConnection();
+
+                        dialog.setTitle(R.string.no_service_title);
+                        dialog.setText(R.string.no_service_text);
+
+                        dialog.show(fragmentManager, "SERVICE_NOT_AVAILABLE");
+                    }
+                });
+            }
             return null;
         }
 
         @Override
         protected void onPostExecute(JsonCallback jsonCallback) {
             super.onPostExecute(jsonCallback);
-            if(userDTO != null){
+            if(mock.isChecked()){
+                UserDTO userMock = setUserMock();
+
+                Intent mainIntent = new Intent(LoginActivity.this, MainScreenActivity.class);
+                mainIntent.putExtra("user", userMock);
+                mainIntent.putExtra("mock", true);
+                startActivity(mainIntent);
+                finish();
+            } else if(userDTO != null){
                 Intent mainIntent = new Intent(LoginActivity.this, MainScreenActivity.class);
                 mainIntent.putExtra("user", userDTO);
                 startActivity(mainIntent);
@@ -255,5 +291,15 @@ public class LoginActivity extends AppCompatActivity {
             }
             exibirProgress(false);
         }
+    }
+
+    public UserDTO setUserMock(){
+        UserDTO user = new UserDTO();
+        user.setEmail("gui-freire@uol.com.br");
+        user.setBirthday("30/04/1997");
+        user.setName("Guilherme");
+        user.setSurname("Freire");
+
+        return user;
     }
 }

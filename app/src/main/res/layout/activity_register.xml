@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.gui_f.view.noctua.Activity.RegisterActivity">
+    android:orientation="vertical"
+    android:gravity="center"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.gui_f.view.noctua.Activity.RegisterActivity"
+    tools:showIn="@layout/activity_register"
+    android:background="@color/backgroundColour"
+    android:scrollbars="vertical">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -14,14 +21,133 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="?android:attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             android:backgroundTint="@color/toolbarColour"/>
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_register" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Name"
+                android:textSize="10pt"
+                android:textColor="@color/textColour"/>
 
-</android.support.design.widget.CoordinatorLayout>
+            <EditText
+                android:id="@+id/editRegisterName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:gravity="left"
+                android:textSize="10pt"
+                android:textColor="@color/textColour"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textColour"
+                android:text="@string/Surname"
+                android:textSize="10pt"/>
+
+            <EditText
+                android:id="@+id/editRegisterSurname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:gravity="left"
+                android:textSize="10pt"
+                android:textColor="@color/textColour"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/EmailUser"
+                android:textColor="@color/textColour"
+                android:textSize="10pt"/>
+
+            <EditText
+                android:id="@+id/editRegisterEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:gravity="left"
+                android:textSize="10pt"
+                android:textColor="@color/textColour"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Birthday"
+                android:textSize="10pt"
+                android:textColor="@color/textColour"/>
+
+            <EditText
+                android:id="@+id/editRegisterBirthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:gravity="left"
+                android:textSize="10pt"
+                android:textColor="@color/textColour"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/btnRegisterSave"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:text="@string/Save"
+                android:textSize="10pt"
+                android:background="@drawable/button_shape"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_weight="1"/>
+            <Button
+                android:id="@+id/btnRegisterResp"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:text="@string/Responsible"
+                android:textSize="10pt"
+                android:background="@drawable/button_shape"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

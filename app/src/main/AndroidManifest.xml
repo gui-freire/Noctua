@@ -70,7 +70,8 @@
             </intent-filter>
         </service>
 
-        <activity android:name="com.example.gui_f.view.noctua.Activity.FirstAidActivity"></activity>
+        <activity android:name="com.example.gui_f.view.noctua.Activity.FirstAidActivity" />
+        <activity android:name="com.example.gui_f.view.noctua.Activity.FirstAidDetail"></activity>
     </application>
 
 </manifest>

@@ -139,6 +139,11 @@ public class DiaryActivity extends AppCompatActivity {
                             public void onSuccess(JSONObject jsonObject) {
                                 ((Activity) context).finish();
                             }
+
+                            @Override
+                            public void onError() {
+
+                            }
                         });
 
                     } else{
@@ -146,6 +151,11 @@ public class DiaryActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(JSONObject jsonObject) {
                                 ((Activity) context).finish();
+                            }
+
+                            @Override
+                            public void onError() {
+
                             }
                         });
 
@@ -188,6 +198,11 @@ public class DiaryActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(JSONObject jsonObject) {
                                     showSuccessDialog();
+                                }
+
+                                @Override
+                                public void onError() {
+
                                 }
                             }));
                             else

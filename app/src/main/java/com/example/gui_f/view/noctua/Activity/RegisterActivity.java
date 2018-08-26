@@ -106,6 +106,11 @@ public class RegisterActivity extends AppCompatActivity {
                             showErrorDialog();
                         }
                     }
+
+                    @Override
+                    public void onError() {
+
+                    }
                 });
             }
         });
@@ -153,6 +158,11 @@ public class RegisterActivity extends AppCompatActivity {
                                } else{
                                    showErrorDialog();
                                }
+                           }
+
+                           @Override
+                           public void onError() {
+
                            }
                        });
                        if(result){

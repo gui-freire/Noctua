@@ -4,6 +4,7 @@ package com.example.gui_f.model.noctua.MainScreen;
  * Created by gui-f on 01/01/2018.
  */
 
+//@Enti
 public class VitalResponse {
     private String heartbeats;
     private String pression;

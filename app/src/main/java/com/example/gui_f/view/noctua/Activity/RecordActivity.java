@@ -73,6 +73,11 @@ public class RecordActivity extends ListActivity {
                             list);
                     listView.setAdapter(listAdapter);
                 }
+
+                @Override
+                public void onError() {
+
+                }
             });
 
 
@@ -97,6 +102,11 @@ public class RecordActivity extends ListActivity {
                     );
                     listView.setAdapter(listAdapter);
                 }
+
+                @Override
+                public void onError() {
+
+                }
             });
 
 
@@ -120,6 +130,11 @@ public class RecordActivity extends ListActivity {
                             list
                     );
                     listView.setAdapter(listAdapter);
+                }
+
+                @Override
+                public void onError() {
+
                 }
             });
 
