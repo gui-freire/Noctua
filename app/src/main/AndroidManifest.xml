@@ -71,7 +71,10 @@
         </service>
 
         <activity android:name="com.example.gui_f.view.noctua.Activity.FirstAidActivity" />
-        <activity android:name="com.example.gui_f.view.noctua.Activity.FirstAidDetail"></activity>
+        <activity android:name="com.example.gui_f.view.noctua.Activity.FirstAidDetail" />
+        <activity
+            android:name="com.example.gui_f.view.noctua.Activity.PercentageActivity"
+            android:label="@string/title_activity_percentage"></activity>
     </application>
 
 </manifest>

@@ -2,6 +2,7 @@ package com.example.gui_f.view.noctua.Activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,9 +15,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -49,6 +53,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView newUser;
     private ProgressBar mProgressBar;
     private Switch mock;
+    private Dialog dialog;
 
     private Login loginImpl = new LoginImpl();
 
@@ -132,6 +137,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Chamada que verifica conexão com a internet
+                setLoading();
                 InternetCheck internet = new InternetCheck(new InternetCheck.Consumer() {
                     @Override
                     public void accept(Boolean internet) {
@@ -151,9 +157,7 @@ public class LoginActivity extends AppCompatActivity {
                             //Send the firebaseKey for sending push notifications
                             //The back end will check if the key has changed
                             firebaseKey = FirebaseInstanceId.getInstance().getToken();
-                            exibirProgress(true);
-
-                            new ProgressTask().execute();
+                            login();
                         }
                     }
                 });
@@ -240,57 +244,57 @@ public class LoginActivity extends AppCompatActivity {
         mProgressBar.setVisibility(exibir ? View.VISIBLE: View.GONE);
     }
 
-    private class ProgressTask extends AsyncTask<Void, Void, JsonCallback>{
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            exibirProgress(true);
-        }
-
-        @Override
-        protected JsonCallback doInBackground(Void... voids) {
-            if(!mock.isChecked()) {
-                loginImpl.searchUser(userText, passwordText, firebaseKey, context, new JsonCallback() {
-                    @Override
-                    public void onSuccess(JSONObject jsonCallback) {
-                        userDTO = parseToModel(jsonCallback);
-                    }
-
-                    @Override
-                    public void onError() {
-                        FragmentManager fragmentManager = getSupportFragmentManager();
-                        NoInternetConnection dialog = new NoInternetConnection();
-
-                        dialog.setTitle(R.string.no_service_title);
-                        dialog.setText(R.string.no_service_text);
-
-                        dialog.show(fragmentManager, "SERVICE_NOT_AVAILABLE");
-                    }
-                });
+    public void setLoading(){
+        dialog = new Dialog(this, R.style.AppTheme);
+        View view = LayoutInflater.from(this).inflate(R.layout.fragment_loading_frame, null);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawableResource(R.color.backgroundGray);
+        dialog.setContentView(view);
+        dialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
+            @Override
+            public boolean onKey(DialogInterface dialogInterface, int i, KeyEvent keyEvent) {
+                if(i == KeyEvent.KEYCODE_BACK){
+                    finish();
+                    dialog.dismiss();
+                    onBackPressed();
+                }
+                return true;
             }
-            return null;
-        }
+        });
 
-        @Override
-        protected void onPostExecute(JsonCallback jsonCallback) {
-            super.onPostExecute(jsonCallback);
-            if(mock.isChecked()){
-                UserDTO userMock = setUserMock();
-
-                Intent mainIntent = new Intent(LoginActivity.this, MainScreenActivity.class);
-                mainIntent.putExtra("user", userMock);
-                mainIntent.putExtra("mock", true);
-                startActivity(mainIntent);
-                finish();
-            } else if(userDTO != null){
-                Intent mainIntent = new Intent(LoginActivity.this, MainScreenActivity.class);
-                mainIntent.putExtra("user", userDTO);
-                startActivity(mainIntent);
-                finish();
-            }
-            exibirProgress(false);
+        if(userDTO == null){
+            dialog.show();
         }
+    }
+
+    private void login(){
+        if(!mock.isChecked()) {
+            loginImpl.searchUser(userText, passwordText, firebaseKey, context, new JsonCallback() {
+                @Override
+                public void onSuccess(JSONObject jsonCallback) {
+                    userDTO = parseToModel(jsonCallback);
+                }
+
+                @Override
+                public void onError() {
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    NoInternetConnection dialog = new NoInternetConnection();
+
+                    dialog.setTitle(R.string.no_service_title);
+                    dialog.setText(R.string.no_service_text);
+
+                    dialog.show(fragmentManager, "SERVICE_NOT_AVAILABLE");
+                }
+            });
+        }
+        Intent mainIntent = new Intent(LoginActivity.this, MainScreenActivity.class);
+        if(mock.isChecked()){
+            userDTO = setUserMock();
+            mainIntent.putExtra("mock", true);
+        }
+            mainIntent.putExtra("user", userDTO);
+            startActivity(mainIntent);
+            finish();
     }
 
     public UserDTO setUserMock(){

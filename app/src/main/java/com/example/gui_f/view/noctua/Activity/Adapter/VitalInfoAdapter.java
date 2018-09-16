@@ -1,14 +1,17 @@
 package com.example.gui_f.view.noctua.Activity.Adapter;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.gui_f.noctua.R;
+import com.example.gui_f.view.noctua.Activity.PercentageActivity;
 
 /**
  * Created by gui-f on 29/01/2018.
@@ -34,6 +37,13 @@ public class VitalInfoAdapter extends RecyclerView.Adapter<VitalInfoAdapter.View
         public ViewHolder(CardView cardView){
             super(cardView);
             this.cardView = cardView;
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(view.getContext(), PercentageActivity.class);
+                    view.getContext().startActivity(intent);
+                }
+            });
         }
     }
 
