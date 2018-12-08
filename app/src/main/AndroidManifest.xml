@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.example.gui_f.view.noctua.Activity.LoginActivity"
+            android:name="com.example.gui_f.Login.Presentation.LoginActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -22,55 +22,59 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.gui_f.view.noctua.Activity.NewUserStep1Activity"
+            android:name="com.example.gui_f.NewUser.Presenter.NewUserStep1Activity"
             android:label="@string/title_activity_new_user_step1"
-            android:parentActivityName="com.example.gui_f.view.noctua.Activity.LoginActivity"
+            android:parentActivityName="com.example.gui_f.Login.Presentation.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.gui_f.view.noctua.Activity.LoginActivity" />
+                android:value="com.example.gui_f.Login.Presentation.LoginActivity" />
         </activity>
         <activity
-            android:name="com.example.gui_f.view.noctua.Activity.NewUserStep2Activity"
+            android:name="com.example.gui_f.NewUser.Presenter.NewUserStep2Activity"
             android:label="@string/title_activity_new_user_step2"
-            android:parentActivityName="com.example.gui_f.view.noctua.Activity.NewUserStep1Activity"
+            android:parentActivityName="com.example.gui_f.NewUser.Presenter.NewUserStep1Activity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.gui_f.view.noctua.Activity.MainScreenActivity"
+            android:name="com.example.gui_f.Home.Presentation.MainScreenActivity"
             android:label="@string/title_activity_main_screen"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.gui_f.view.noctua.Activity.DiaryActivity"
+            android:name="com.example.gui_f.Diary.Presentation.DiaryActivity"
             android:label="@string/title_activity_diary"
-            android:parentActivityName="com.example.gui_f.view.noctua.Activity.MainScreenActivity"
+            android:parentActivityName="com.example.gui_f.Home.Presentation.MainScreenActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.gui_f.view.noctua.Activity.RegisterActivity"
+            android:name="com.example.gui_f.UpdateUser.Presenter.RegisterActivity"
             android:label="@string/title_activity_register"
-            android:parentActivityName="com.example.gui_f.view.noctua.Activity.MainScreenActivity"
+            android:parentActivityName="com.example.gui_f.Home.Presentation.MainScreenActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.gui_f.view.noctua.Activity.RegisterResponsibleActivity"
+            android:name="com.example.gui_f.UpdateUser.Presenter.RegisterResponsibleActivity"
             android:label="@string/title_activity_register_responsible"
-            android:parentActivityName="com.example.gui_f.view.noctua.Activity.RegisterActivity"
+            android:parentActivityName="com.example.gui_f.UpdateUser.Presenter.RegisterActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.gui_f.view.noctua.Activity.PasswordActivity"
+            android:name="com.example.gui_f.Password.Presenter.PasswordActivity"
             android:label="@string/title_activity_password"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.gui_f.view.noctua.Activity.RecordActivity"
+            android:name="com.example.gui_f.Record.Presenter.RecordActivity"
             android:label="@string/title_activity_record"
-            android:parentActivityName="com.example.gui_f.view.noctua.Activity.MainScreenActivity"
+            android:parentActivityName="com.example.gui_f.Home.Presentation.MainScreenActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <service android:name="com.example.gui_f.model.noctua.Notifications.NotificationsService">
+        <service android:name="com.example.gui_f.Notifications.NotificationsService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
 
-        <activity android:name="com.example.gui_f.view.noctua.Activity.FirstAidActivity"></activity>
+        <activity android:name="com.example.gui_f.FirstAid.Presenter.FirstAidActivity" />
+        <activity android:name="com.example.gui_f.FirstAid.Presenter.FirstAidDetail" />
+        <activity
+            android:name="com.example.gui_f.Percentage.Presenter.PercentageActivity"
+            android:label="@string/title_activity_percentage"></activity>
     </application>
 
 </manifest>

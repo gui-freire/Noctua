@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.gui_f.view.noctua.Activity.NewUserStep2Activity">
+    android:orientation="vertical"
+    android:gravity="center"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.gui_f.NewUser.Presenter.NewUserStep2Activity"
+    tools:showIn="@layout/activity_new_user_step2"
+    android:background="@color/backgroundColour">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -14,14 +19,96 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="?android:attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             android:backgroundTint="@color/toolbarColour"/>
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_new_user_step2" />
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_weight="1"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/NameResponsiblePerson"
+        android:textColor="@color/textColour"
+        android:textSize="10pt"/>
 
-</android.support.design.widget.CoordinatorLayout>
+    <EditText
+        android:id="@+id/editNameResponsible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:hint="@string/NameResponsibleExample"
+        android:gravity="left"
+        android:textSize="10pt"
+        android:textColor="@color/textColour"/>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/EmailResponsiblePerson"
+        android:textSize="10pt"
+        android:textColor="@color/textColour"/>
+
+    <EditText
+        android:id="@+id/editEmailResponsible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:hint="@string/EmailExample"
+        android:layout_margin="20dp"
+        android:inputType="textEmailAddress"
+        android:textSize="10pt"
+        android:textColor="@color/textColour"/>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Relation"
+        android:textColor="@color/textColour"
+        android:textSize="10pt"/>
+
+    <EditText
+        android:id="@+id/editRelation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:gravity="left"
+        android:hint="@string/RelationExample"
+        android:textSize="10pt"
+        android:textColor="@color/textColour"/>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/btnSignOn"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:text="@string/SignOn"
+        android:textSize="10pt"
+        android:background="@drawable/button_shape"/>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1"/>
+</LinearLayout>

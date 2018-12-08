@@ -1,26 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.gui_f.view.noctua.Activity.DiaryActivity">
+    android:orientation="vertical"
+    android:gravity="center"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.gui_f.Diary.Presentation.DiaryActivity"
+    tools:showIn="@layout/activity_diary"
+    android:background="@color/backgroundColour">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            android:backgroundTint="@color/toolbarColour"/>
-
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="?android:attr/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        android:backgroundTint="@color/toolbarColour"/>
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_diary" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Diary"
+        android:textSize="14pt"
+        android:textColor="@color/textColour"/>
 
-</android.support.design.widget.CoordinatorLayout>
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/HowAreU"
+        android:textSize="10pt"
+        android:textColor="@color/textColour"/>
+
+    <Space
+        android:layout_width="1px"
+        android:layout_height="1px"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Space
+            android:layout_width="1px"
+            android:layout_height="1px"
+            android:layout_weight="0.8"/>
+
+        <ImageView
+            android:id="@+id/imgBad"
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:src="@drawable/ic_mood_bad_black_24dp"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <Space
+            android:layout_width="1px"
+            android:layout_height="1px"
+            android:layout_weight="0.8"/>
+
+        <ImageView
+            android:id="@+id/imgKinda"
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:src="@drawable/ic_sentiment_neutral_black_24dp"
+            android:clickable="true"
+            android:focusable="true"/>
+        <Space
+            android:layout_width="1px"
+            android:layout_height="1px"
+            android:layout_weight="0.8"/>
+
+        <ImageView
+            android:id="@+id/imgGood"
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:src="@drawable/ic_mood_black_24dp"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <Space
+            android:layout_width="1px"
+            android:layout_height="1px"
+            android:layout_weight="0.8"/>
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:id="@+id/progressBar"/>
+
+    <Space
+        android:layout_width="1px"
+        android:layout_height="1px"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/NOK"
+        android:textSize="10pt"
+        android:textColor="@color/textColour"/>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+
+    <EditText
+        android:id="@+id/editDiary"
+        android:gravity="top|left"
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="400px"
+        android:textColor="@color/textColour"/>
+
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/btnSendDiary"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="@string/Send"
+        android:background="@drawable/button_shape" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+
+</LinearLayout>

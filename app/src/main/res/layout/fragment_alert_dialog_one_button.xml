@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.example.gui_f.Login.Presentation.Fragment.NoInternetConnection"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/alert_shape">
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/no_internet_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="10pt"
+        android:text="Título do alert"
+        android:layout_gravity="center"/>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/no_internet_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="7.5pt"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_gravity="center"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In porta enim eu porttitor vestibulum."/>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/frgNoConnect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Okay"
+        android:background="@drawable/button_shape"/>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+    </LinearLayout>

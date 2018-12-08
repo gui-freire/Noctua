@@ -1,0 +1,42 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.gui_f.Percentage.Presenter.Fragment.PercentageFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/frgPercentageTitle"
+        android:text="yo"
+        android:textSize="16pt"
+        android:textColor="@color/textColour"
+        android:gravity="center"/>
+
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:layout_width="100dp"
+            android:layout_height="200dp"
+            style="@style/Widget.ProgressBar.Vertical"
+            android:layout_gravity="center"
+            android:id="@+id/frgPercentageBar"/>
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
