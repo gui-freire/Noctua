@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:gravity="center"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.gui_f.view.noctua.Activity.NewUserStep1Activity"
+    tools:context="com.example.gui_f.NewUser.Presenter.NewUserStep1Activity"
     tools:showIn="@layout/activity_new_user_step1"
     android:background="@color/backgroundColour"
     android:scrollbars="vertical">

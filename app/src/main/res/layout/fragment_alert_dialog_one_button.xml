@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="com.example.gui_f.view.noctua.Activity.Fragment.NoInternetConnection"
+    tools:context="com.example.gui_f.Login.Presentation.Fragment.NoInternetConnection"
     android:orientation="vertical"
     android:gravity="center"
     android:background="@drawable/alert_shape">

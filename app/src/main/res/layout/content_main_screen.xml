@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.gui_f.view.noctua.Activity.MainScreenActivity"
+    tools:context="com.example.gui_f.Home.Presentation.MainScreenActivity"
     tools:showIn="@layout/app_bar_main_screen"
     android:background="@color/backgroundColour"
     android:scrollbars="vertical">
